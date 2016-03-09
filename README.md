@@ -1,2 +1,2 @@
-# fiscalcidadao
-Projeto de fiscalização de obras públicas para o Governo Federal.
+# Fiscal Cidadão
+Projeto de fiscalização de convênios públicos para o cidadão.

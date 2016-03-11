@@ -8,14 +8,14 @@ Projeto de fiscalização de convênios públicos para o cidadão.
 
 Recebe uma localização e retorna os convênios próximos a ela. Caso não haja nenhum convênio retorna status code 404
 - Parâmetro de entrada
-```sh
+```json
 {
     lat: -2.45,
     long: 0.437
 }
 ```
 - Retorno
-```sh
+```json
 [
   	{
   	    id: "ksje3rejr98745",

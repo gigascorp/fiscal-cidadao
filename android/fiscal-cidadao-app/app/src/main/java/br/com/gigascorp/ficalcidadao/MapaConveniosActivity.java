@@ -2,13 +2,15 @@ package br.com.gigascorp.ficalcidadao;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapaConveniosActivity extends FragmentActivity {
+public class MapaConveniosActivity extends AppCompatActivity {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
@@ -60,6 +62,9 @@ public class MapaConveniosActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        LatLng procuradoria = new LatLng(-2.532783,-44.291549);
+
+        mMap.addMarker(new MarkerOptions().position(procuradoria).title("Procuradoria Geral de Justiça"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(procuradoria));
     }
 }

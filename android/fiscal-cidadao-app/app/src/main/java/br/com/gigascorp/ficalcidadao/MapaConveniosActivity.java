@@ -15,7 +15,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
@@ -31,11 +33,14 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     private static final String TAG = "FISCAL-CIDADAO";
 
     private List<Convenio> convenios;
+    private Map<Marker, Convenio> marcadoresConvenio = new HashMap<Marker, Convenio>();
+
     private Retrofit retrofit;
     private FiscalCidadaoApi fiscalApi;
 
     private SlidingUpPanelLayout slidingLayout;
     private TextView txtSlideJustificativa;
+    private TextView txtSlideCoordenadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         setContentView(R.layout.activity_mapa_convenios);
 
         txtSlideJustificativa = (TextView) findViewById(R.id.txtSlideJustificatica);
+        txtSlideCoordenadas = (TextView) findViewById(R.id.txtSlideCoordenadas);
+
         slidingLayout = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 
@@ -89,7 +96,9 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         for (Convenio convenio : convenios) {
             LatLng coord = new LatLng(convenio.getCoordenada().getLat(), convenio.getCoordenada().getLng());
             builder.include(coord);
-            map.addMarker(new MarkerOptions().position(coord).title(convenio.getJustificativa()));
+
+            Marker marcador = map.addMarker(new MarkerOptions().position(coord).title(convenio.getJustificativa()));
+            marcadoresConvenio.put(marcador, convenio);
         }
 
         LatLngBounds bounds = builder.build();
@@ -99,7 +108,11 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        txtSlideJustificativa.setText(marker.getTitle());
+        Convenio convenio = marcadoresConvenio.get(marker);
+
+        txtSlideJustificativa.setText(convenio.getJustificativa());
+        txtSlideCoordenadas.setText("(" + String.valueOf(convenio.getCoordenada().getLat()) + ", " + String.valueOf(convenio.getCoordenada().getLng()) + ")");
+
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         return false;
     }

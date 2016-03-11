@@ -2,7 +2,7 @@ package br.com.gigascorp.ficalcidadao;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -11,9 +11,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
@@ -24,7 +25,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener {
 
     private static final String API_URI = "http://192.168.0.17:3000";
     private static final String TAG = "FISCAL-CIDADAO";
@@ -33,11 +34,18 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     private Retrofit retrofit;
     private FiscalCidadaoApi fiscalApi;
 
+    private SlidingUpPanelLayout slidingLayout;
+    private TextView txtSlideJustificativa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_mapa_convenios);
+
+        txtSlideJustificativa = (TextView) findViewById(R.id.txtSlideJustificatica);
+        slidingLayout = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
+        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_URI)
@@ -72,6 +80,10 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public void onMapReady(GoogleMap map) {
+
+        map.setOnMarkerClickListener(MapaConveniosActivity.this);
+        map.setOnMapClickListener(MapaConveniosActivity.this);
+
         LatLngBounds.Builder builder = LatLngBounds.builder();
 
         for (Convenio convenio : convenios) {
@@ -83,5 +95,17 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         LatLngBounds bounds = builder.build();
 
         map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        txtSlideJustificativa.setText(marker.getTitle());
+        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        return false;
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
     }
 }

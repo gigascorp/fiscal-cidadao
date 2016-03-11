@@ -3,7 +3,6 @@ package br.com.gigascorp.ficalcidadao;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,7 +29,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     private static final String API_URI = "http://192.168.0.17:3000";
     private static final String TAG = "FISCAL-CIDADAO";
 
-    private List<LatLng> coordenadas;
+    private List<Convenio> convenios;
     private Retrofit retrofit;
     private FiscalCidadaoApi fiscalApi;
 
@@ -53,14 +52,8 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
             @Override
             public void onResponse(Response<List<Convenio>> response, Retrofit retrofit) {
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
-                    List<Convenio> convenios = response.body();
 
-                    coordenadas = new ArrayList<>();
-
-                    for (Convenio c : convenios) {
-                        Log.d(TAG, c.getJustificativa() + " [" + String.valueOf(c.getCoordenada().getLat()) + ", " + String.valueOf(c.getCoordenada().getLng()) + "]");
-                        coordenadas.add(new LatLng(c.getCoordenada().getLat(), c.getCoordenada().getLng()));
-                    }
+                    convenios = response.body();
 
                     SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
                     mapFragment.getMapAsync(MapaConveniosActivity.this);
@@ -80,9 +73,11 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     @Override
     public void onMapReady(GoogleMap map) {
         LatLngBounds.Builder builder = LatLngBounds.builder();
-        for(LatLng coord : coordenadas){
+
+        for (Convenio convenio : convenios) {
+            LatLng coord = new LatLng(convenio.getCoordenada().getLat(), convenio.getCoordenada().getLng());
             builder.include(coord);
-            map.addMarker(new MarkerOptions().position(coord).title(coord.toString()));
+            map.addMarker(new MarkerOptions().position(coord).title(convenio.getJustificativa()));
         }
 
         LatLngBounds bounds = builder.build();

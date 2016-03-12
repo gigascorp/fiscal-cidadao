@@ -29,7 +29,7 @@ import retrofit.Retrofit;
 
 public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener {
 
-    private static final String API_URI = "http://192.168.0.17:3000";
+    private static final String API_URI = "http://fcapptest-60143.onmodulus.net/";
     private static final String TAG = "FISCAL-CIDADAO";
 
     private List<Convenio> convenios;

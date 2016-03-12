@@ -2,7 +2,8 @@ package br.com.gigascorp.ficalcidadao;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,12 +16,14 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
+import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.GsonConverterFactory;
@@ -38,9 +41,8 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     private Retrofit retrofit;
     private FiscalCidadaoApi fiscalApi;
 
+    private RecyclerView reciclerViewConvenios;
     private SlidingUpPanelLayout slidingLayout;
-    private TextView txtSlideJustificativa;
-    private TextView txtSlideCoordenadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +50,17 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
         setContentView(R.layout.activity_mapa_convenios);
 
-        txtSlideJustificativa = (TextView) findViewById(R.id.txtSlideJustificatica);
-        txtSlideCoordenadas = (TextView) findViewById(R.id.txtSlideCoordenadas);
-
+        //Inicializando o slidingPanel e lista com cardviews
         slidingLayout = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
 
+        reciclerViewConvenios = (RecyclerView) findViewById(R.id.cardList);
+        reciclerViewConvenios.setHasFixedSize(false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        reciclerViewConvenios.setLayoutManager(layoutManager);
+
+        //Inicializando o retrofit para a url da API
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_URI)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -110,8 +117,11 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     public boolean onMarkerClick(Marker marker) {
         Convenio convenio = marcadoresConvenio.get(marker);
 
-        txtSlideJustificativa.setText(convenio.getJustificativa());
-        txtSlideCoordenadas.setText("(" + String.valueOf(convenio.getCoordenada().getLat()) + ", " + String.valueOf(convenio.getCoordenada().getLng()) + ")");
+        List<Convenio> selecionados = new ArrayList<>();
+        selecionados.add(convenio);
+
+        ConvenioAdapter adapter = new ConvenioAdapter(selecionados);
+        reciclerViewConvenios.setAdapter(adapter);
 
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         return false;

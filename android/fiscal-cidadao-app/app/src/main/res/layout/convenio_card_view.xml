@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    card_view:cardCornerRadius="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtCardJustificativa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Justificativa"
+            android:textSize="14dp"
+            android:padding="8dp"
+            android:textColor="#222"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/txtcardCoordenada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="10dp"
+            android:layout_below="@id/txtCardJustificativa"
+            android:paddingBottom="8dp"
+            android:paddingLeft="14dp"
+            android:textColor="#666"
+            />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

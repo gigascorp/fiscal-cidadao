@@ -24,6 +24,7 @@ import java.util.Map;
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
+import br.com.gigascorp.ficalcidadao.util.Util;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.GsonConverterFactory;
@@ -36,7 +37,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     private static final String TAG = "FISCAL-CIDADAO";
 
     private List<Convenio> convenios;
-    private Map<Marker, Convenio> marcadoresConvenio = new HashMap<Marker, Convenio>();
+    private Map<Marker, List<Convenio>> marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
 
     private Retrofit retrofit;
     private FiscalCidadaoApi fiscalApi;
@@ -101,24 +102,31 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         LatLngBounds.Builder builder = LatLngBounds.builder();
 
         for (Convenio convenio : convenios) {
-            LatLng coord = new LatLng(convenio.getCoordenada().getLat(), convenio.getCoordenada().getLng());
-            builder.include(coord);
 
-            Marker marcador = map.addMarker(new MarkerOptions().position(coord).title(convenio.getJustificativa()));
-            marcadoresConvenio.put(marcador, convenio);
+            Marker marcador = Util.getConvenioNaMesmaLocalizacao(marcadoresConvenio, convenio);
+            if(marcador == null){
+                LatLng coord = new LatLng(convenio.getCoordenada().getLat(), convenio.getCoordenada().getLng());
+                builder.include(coord);
+                marcador = map.addMarker(new MarkerOptions().position(coord));
+
+                List<Convenio> conveniosDoMarcador = new ArrayList<>();
+                conveniosDoMarcador.add(convenio);
+                marcadoresConvenio.put(marcador, conveniosDoMarcador);
+
+            } else {
+                List<Convenio> conveniosDoMarcador = marcadoresConvenio.get(marcador);
+                conveniosDoMarcador.add(convenio);
+                marcadoresConvenio.put(marcador, conveniosDoMarcador);
+            }
         }
 
         LatLngBounds bounds = builder.build();
-
         map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Convenio convenio = marcadoresConvenio.get(marker);
-
-        List<Convenio> selecionados = new ArrayList<>();
-        selecionados.add(convenio);
+        List<Convenio> selecionados = marcadoresConvenio.get(marker);
 
         ConvenioAdapter adapter = new ConvenioAdapter(selecionados);
         reciclerViewConvenios.setAdapter(adapter);
@@ -131,4 +139,5 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     public void onMapClick(LatLng latLng) {
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
     }
+
 }

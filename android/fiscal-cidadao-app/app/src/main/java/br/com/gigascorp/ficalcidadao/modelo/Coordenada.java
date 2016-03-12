@@ -24,4 +24,8 @@ public class Coordenada {
     public void setLng(float lng) {
         this.lng = lng;
     }
+
+    public boolean equals(Coordenada other) {
+        return this.getLat() == other.getLat() && this.getLng() == other.getLng();
+    }
 }

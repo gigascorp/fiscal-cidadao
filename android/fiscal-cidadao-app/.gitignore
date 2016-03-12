@@ -7,3 +7,4 @@ build
 captures
 release
 debug
+!app/src/debug/res/values/google_maps_api.xml

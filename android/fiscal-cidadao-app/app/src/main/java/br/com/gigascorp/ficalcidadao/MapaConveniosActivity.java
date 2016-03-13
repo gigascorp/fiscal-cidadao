@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -133,6 +134,18 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         ConvenioAdapter adapter = new ConvenioAdapter(selecionados);
         reciclerViewConvenios.setAdapter(adapter);
 
+        int height = Util.dpToPx(80);
+        height = height * selecionados.size();
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int heightTela = dm.heightPixels;
+
+        if(height > heightTela/2){
+            height = heightTela/2;
+        }
+
+        slidingLayout.setPanelHeight(height);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         return false;
     }

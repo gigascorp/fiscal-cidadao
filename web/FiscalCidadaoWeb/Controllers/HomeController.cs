@@ -5,6 +5,7 @@ using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace FiscalCidadaoWeb.Controllers
 {
@@ -12,48 +13,42 @@ namespace FiscalCidadaoWeb.Controllers
     {
         public ActionResult Index()
         {
+            HomeViewModel retorno = new HomeViewModel();
             try
             {
                 using (var context = new ApplicationDBContext())
                 {
-                    var weba = context.Convenio.ToList();
+                    retorno.NomeUsuario = "Renier"; // tem que mudar
 
-                    var point = DbGeography.FromText("POINT(-122.348111 47.651870)", 4326);
+                    retorno.MaisDenunciados = context.Denuncia.Include(x => x.Convenio)
+                        .GroupBy(x => new { x.ConvenioId, x.Convenio.DescricaoObjeto })
+                        .Select(x => new MaisDenunciados()
+                        {
+                            Id = x.Key.ConvenioId,
+                            Objeto = x.Key.DescricaoObjeto,
+                            Count = x.Count()
+                        })
+                        .OrderByDescending(x => x.Count)
+                        .Take(3) // top 3
+                        .ToList();
 
-                    //distance em metros, dividindo por 1000 transformo em KM
-                    var emilio = context.Convenio.Where(x => (x.Coordenadas.Distance(point) / 1000) < 1000).ToList();
+                    retorno.CountDenunciasNaoAnalisadas = context.Convenio.Include(x => x.ParecerGoverno)
+                        .Where(x => x.ParecerGoverno.Id == 1 && x.Denuncias.Count > 0) // Nao analisado e denunciado
+                        .Count();
 
-                    var a = 1;
-
-                    //                    NpgsqlTypes.NpgsqlPoint
-
+                    retorno.CountAtualizacoesEndereco = context.PedidoAtualizacaoLocalizacao
+                        .Where(x => !x.Avaliado) // Nao avaliado
+                        .Count();
                 }
 
-                //var geos = context.PedidoAtualizacaoLocalizacao.ToList();
-
-                //var weba = DbGeography.FromBinary(geos[0].Coordenadas);
             }
             catch (Exception ex)
             {
                 var a = 1;
             }
 
-
-            return View();
+            return View(retorno);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

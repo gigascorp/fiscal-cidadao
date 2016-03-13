@@ -1,0 +1,28 @@
+﻿body {
+    padding-top: 5%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: left;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.tdFuncoes {
+    width: 17%;
+}
+
+.tdSituacao {
+    width: 12%;
+}
+
+.tdParecer {
+    width: 8%;
+}

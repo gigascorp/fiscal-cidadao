@@ -17,7 +17,7 @@ namespace FiscalCidadaoWeb.Models
 
         public string Email { get; set; }
 
-        public int FacebookId { get; set; }
+        public int? FacebookId { get; set; }
 
         public List<Denuncia> Denuncias { get; set; }
 

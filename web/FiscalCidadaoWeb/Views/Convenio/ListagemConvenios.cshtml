@@ -1,0 +1,34 @@
+﻿@model ICollection<FiscalCidadaoWeb.Models.ListagemConvenioViewModel>
+
+@{
+    ViewBag.Title = "Listagem";
+}
+
+<h1>Listagem de Convênios</h1>
+<br />
+<table style="width:100%">
+    <tr>
+        <th>Objeto</th>
+        <th>Situação</th>
+        <th>Denúncias</th>
+        <th>Parecer</th>
+        <th>Funções</th>
+    </tr>
+    @foreach (var convenio in Model)
+    {
+        <tr>
+            <td>@convenio.Objeto</td>
+            <td class="tdSituacao">@convenio.Situacao.Descricao</td>
+            <td>@convenio.CountDenuncias</td>
+            <td class="tdParecer">@convenio.ParecerGoverno.Parecer</td>
+            <td class="tdFuncoes">
+                <a>@Html.ActionLink("Ver", "DetalhesConvenio", "Convenio", new { id = convenio.Id }, null) / </a>
+                <a>@Html.ActionLink("Editar Local", "Index", "Home") / </a>
+                <a>@Html.ActionLink("Parecer", "Index", "Home")</a>
+
+            </td>
+        </tr>
+    }
+</table>
+
+<link href="~/Content/App/ListagemConvenios.css" rel="stylesheet" />

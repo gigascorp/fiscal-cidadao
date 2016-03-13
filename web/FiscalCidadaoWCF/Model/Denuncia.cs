@@ -13,10 +13,16 @@ namespace FiscalCidadaoWCF.Models
 
         public string Comentarios { get; set; }
 
+        public DateTime Data { get; set; }
+
         public List<DenunciaFoto> Fotos { get; set; }
 
         public int ConvenioId { get; set; }
 
         public Convenio Convenio { get; set; }
+
+        public int? UsuarioId { get; set; }
+
+        public Usuario Usuario { get; set; }
     }
 }

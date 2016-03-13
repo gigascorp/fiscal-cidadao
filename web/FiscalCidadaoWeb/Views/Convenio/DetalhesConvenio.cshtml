@@ -1,0 +1,90 @@
+﻿@model FiscalCidadaoWeb.Models.DetalhesConvenioViewModel
+
+@{
+    ViewBag.Title = "Convênio";
+}
+
+<div>
+    <div class="displayInline marginRight">
+        <h2 class="bold">Convênio #@Model.Id</h2>
+    </div>
+    <div class="displayInline">
+        <a>Ver no sincov</a>
+    </div>
+</div>
+<br />
+<div>
+    <div>
+        <h3 class="bold">Objeto</h3>
+        @Model.Objeto
+    </div>
+
+    <div>
+        <div class="displayInline marginRight">
+            <h3 class="bold">Situação</h3>
+            @Model.Situacao
+        </div>
+        <div class="displayInline marginRight">
+            <h3 class="bold">Início</h3>
+            @String.Format("{0:dd/MM/yy}", Model.DataInicio)
+        </div>
+        <div class="displayInline">
+            <h3 class="bold">Término</h3>
+            @String.Format("{0:dd/MM/yy}", Model.DataFim)
+        </div>
+    </div>
+    <div>
+        <div class="displayInline marginRight">
+            <h3 class="bold">Valor</h3>
+            @Model.Valor
+        </div>
+
+        <div class="displayInline">
+            <h3 class="bold">Concedente</h3>
+            @Model.ConcedenteNome
+        </div>
+    </div>
+    <div>
+        <div class="displayInline marginRight">
+            <h3 class="bold">Proponente</h3>
+            @Model.ProponenteNome
+        </div>
+
+        <div class="displayInline">
+            <h3 class="bold">Localização</h3>
+            @Html.ActionLink("Ver mapa", "", "") / @Html.ActionLink("Editar", "", "")
+        </div>
+    </div>
+</div>
+<br />
+<h3 class="bold">Denúncias (@Model.Denuncias.Count)</h3>
+<br />
+<table style="width:100%">
+    <tr>
+        <th>Denúncia</th>
+        <th>Data</th>
+        <th>Fotos</th>
+    </tr>
+    @foreach (var denuncia in Model.Denuncias)
+    {
+        <tr>
+            <td>@denuncia.Comentarios</td>
+            <td class="tdData">@String.Format("{0:dd/MM/yy}", denuncia.Data)</td>
+            <td class="tdFuncoes">
+                <a>@Html.ActionLink("Ver Fotos", "ListagemConvenios", "Convenio")</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<div>
+    <div class="displayInline marginRight">
+        <h3 class="bold">Parecer do Governo</h3>
+    </div>
+    <div class="displayInline">
+        <button>Editar Parecer</button>
+    </div>
+</div>
+@Model.Parecer.Parecer
+
+<link href="~/Content/App/DetalhesConvenio.css" rel="stylesheet" />

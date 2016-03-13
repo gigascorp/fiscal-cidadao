@@ -104,20 +104,22 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         for (Convenio convenio : convenios) {
 
             Marker marcador = Util.getConvenioNaMesmaLocalizacao(marcadoresConvenio, convenio);
+            List<Convenio> conveniosDoMarcador = null;
+
+            //Se não houver (ainda) nenhum convênio para esta mesma localização, cria o marcador
             if(marcador == null){
                 LatLng coord = new LatLng(convenio.getCoordenada().getLat(), convenio.getCoordenada().getLng());
                 builder.include(coord);
                 marcador = map.addMarker(new MarkerOptions().position(coord));
 
-                List<Convenio> conveniosDoMarcador = new ArrayList<>();
-                conveniosDoMarcador.add(convenio);
-                marcadoresConvenio.put(marcador, conveniosDoMarcador);
-
-            } else {
-                List<Convenio> conveniosDoMarcador = marcadoresConvenio.get(marcador);
-                conveniosDoMarcador.add(convenio);
-                marcadoresConvenio.put(marcador, conveniosDoMarcador);
+                conveniosDoMarcador = new ArrayList<>();
+            } else { //Se já houver, recupera os convênios deste marcador
+                conveniosDoMarcador = marcadoresConvenio.get(marcador);
             }
+
+            //Adiciona o novo marcador
+            conveniosDoMarcador.add(convenio);
+            marcadoresConvenio.put(marcador, conveniosDoMarcador);
         }
 
         LatLngBounds bounds = builder.build();

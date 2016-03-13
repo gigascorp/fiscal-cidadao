@@ -141,8 +141,8 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int heightTela = dm.heightPixels;
 
-        if(height > heightTela/2){
-            height = heightTela/2;
+        if(height > heightTela*2/5){
+            height = heightTela*2/5;
         }
 
         slidingLayout.setPanelHeight(height);
@@ -155,4 +155,12 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN){
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+            return;
+        }
+        super.onBackPressed();
+    }
 }

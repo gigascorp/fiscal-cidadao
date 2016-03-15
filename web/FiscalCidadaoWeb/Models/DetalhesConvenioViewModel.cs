@@ -17,7 +17,9 @@ namespace FiscalCidadaoWeb.Models
 
         public DateTime DataFim { get; set; }
 
-        public double Valor { get; set; }
+        public string Valor { get; set; }
+
+        public int SincovId { get; set; }
 
         public string ConcedenteNome { get; set; }
 

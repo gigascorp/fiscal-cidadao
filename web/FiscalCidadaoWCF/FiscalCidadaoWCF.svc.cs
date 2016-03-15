@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Data.Entity;
+using Newtonsoft.Json;
 
 namespace FiscalCidadaoWCF
 {
@@ -63,5 +64,11 @@ namespace FiscalCidadaoWCF
             return retorno;
         }
 
+        public string FazerDenuncia(string model)
+        {
+            FazerDenunciaViewModel denunciaCliente = JsonConvert.DeserializeObject<FazerDenunciaViewModel>(model);
+
+            return "entrou";
+        }
     }
 }

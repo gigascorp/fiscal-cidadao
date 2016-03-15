@@ -9,7 +9,8 @@
         <h2 class="bold">Convênio #@Model.Id</h2>
     </div>
     <div class="displayInline">
-        <a>Ver no sincov</a>
+        @{string link = "http://api.convenios.gov.br/siconv/dados/convenio/" + @Model.SincovId + ".html";}
+        <a href=@link target="_blank">Ver no sincov</a>
     </div>
 </div>
 <br />
@@ -57,24 +58,31 @@
     </div>
 </div>
 <br />
-<h3 class="bold">Denúncias (@Model.Denuncias.Count)</h3>
+<h3 class="bold">Denúncias (@(Model.Denuncias == null ? 0 : Model.Denuncias.Count))</h3>
 <br />
-<table style="width:100%">
-    <tr>
-        <th>Denúncia</th>
-        <th>Data</th>
-        <th>Fotos</th>
-    </tr>
-    @foreach (var denuncia in Model.Denuncias)
-    {
+<table id="convenioTable" class="tablesorter" style="width:100%">
+    <thead>
         <tr>
-            <td>@denuncia.Comentarios</td>
-            <td class="tdData">@String.Format("{0:dd/MM/yy}", denuncia.Data)</td>
-            <td class="tdFuncoes">
-                <a>@Html.ActionLink("Ver Fotos", "ListagemConvenios", "Convenio")</a>
-            </td>
+            <th>Denúncia</th>
+            <th>Data</th>
+            <th>Fotos</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @if (Model.Denuncias != null)
+        {
+            foreach (var denuncia in Model.Denuncias)
+            {
+                <tr>
+                    <td>@denuncia.Comentarios</td>
+                    <td class="tdData">@String.Format("{0:dd/MM/yy}", denuncia.Data)</td>
+                    <td class="tdFuncoes">
+                        <a>@Html.ActionLink("Ver Fotos", "ListagemConvenios", "Convenio")</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
 </table>
 <br />
 <div>
@@ -85,6 +93,13 @@
         <button>Editar Parecer</button>
     </div>
 </div>
-@Model.Parecer.Parecer
+@if (Model.Parecer != null)
+{
+    @Model.Parecer.Parecer
+}
 
 <link href="~/Content/App/DetalhesConvenio.css" rel="stylesheet" />
+<link href="~/Content/tablesorter.css" rel="stylesheet" />
+
+<script src="~/Scripts/App/VerConvenio.js"></script>
+<script src="~/Scripts/jquery.tablesorter.min.js"></script>

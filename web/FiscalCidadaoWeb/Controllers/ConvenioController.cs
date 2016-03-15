@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Globalization;
 
 namespace FiscalCidadaoWeb.Controllers
 {
@@ -78,10 +79,12 @@ namespace FiscalCidadaoWeb.Controllers
                     retorno.DataFim = convenio.DataFim;
                     retorno.ConcedenteNome = convenio.ConcedenteNome;
                     retorno.ProponenteNome = convenio.Proponente.Nome;
-                    retorno.Valor = convenio.ValorTotal;
+                    retorno.SincovId = convenio.SincovId;
                     retorno.Situacao = convenio.Situacao.Descricao;
                     retorno.Denuncias = convenio.Denuncias;
                     retorno.Parecer = convenio.ParecerGoverno;
+
+                    retorno.Valor = convenio.ValorTotal.ToString("C2", new CultureInfo("pt-BR").NumberFormat);
                 }
             }
             catch (Exception ex)

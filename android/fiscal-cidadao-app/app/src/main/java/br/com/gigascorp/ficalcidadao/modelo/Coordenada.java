@@ -9,6 +9,11 @@ public class Coordenada {
     @SerializedName("long")
     private float lng;
 
+    public Coordenada(float lat, float lng){
+        this.lat = lat;
+        this.lng = lng;
+    }
+
     public float getLat() {
         return lat;
     }

@@ -28,8 +28,8 @@ public class ConvenioAdapter extends RecyclerView.Adapter<ConvenioViewHolder> {
     @Override
     public void onBindViewHolder(ConvenioViewHolder holder, int position) {
         Convenio convenio = convenios.get(position);
-        holder.txtCardJustificativa.setText(convenio.getJustificativa());
-        holder.getTxtCardCoordenada.setText("(" + String.valueOf(convenio.getCoordenada().getLat()) + ", " + String.valueOf(convenio.getCoordenada().getLng()) + ")");
+        holder.txtCardJustificativa.setText(convenio.getObjeto());
+        holder.getTxtCardCoordenada.setText("(" + String.valueOf(convenio.getLat()) + ", " + String.valueOf(convenio.getLng()) + ")");
     }
 
     @Override

@@ -24,6 +24,7 @@ import java.util.Map;
 
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
 import br.com.gigascorp.ficalcidadao.util.Util;
 import retrofit.Call;
@@ -34,7 +35,7 @@ import retrofit.Retrofit;
 
 public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener {
 
-    private static final String API_URI = "http://fcapptest-60143.onmodulus.net/";
+    private static final String API_URI = "http://www.emilioweba.com/FiscalCidadaoWCF.svc/";
     private static final String TAG = "FISCAL-CIDADAO";
 
     private List<Convenio> convenios;
@@ -42,6 +43,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
     private Retrofit retrofit;
     private FiscalCidadaoApi fiscalApi;
+    private Call<ConveniosWrapper> conveniosProximosCall;
 
     private RecyclerView reciclerViewConvenios;
     private SlidingUpPanelLayout slidingLayout;
@@ -70,14 +72,21 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
         fiscalApi = retrofit.create(FiscalCidadaoApi.class);
 
-        Call<List<Convenio>> conveniosProximosCall = fiscalApi.conveniosProximos();
+        conveniosProximosCall = fiscalApi.conveniosProximos();
 
-        conveniosProximosCall.enqueue(new Callback<List<Convenio>>() {
+        conveniosProximosCall.enqueue(new Callback<ConveniosWrapper>() {
             @Override
-            public void onResponse(Response<List<Convenio>> response, Retrofit retrofit) {
+            public void onResponse(Response<ConveniosWrapper> response, Retrofit retrofit) {
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
 
-                    convenios = response.body();
+                    ConveniosWrapper conveniosWrapper = response.body();
+
+                    if(conveniosWrapper.getGetConveniosByCoordinateResult() == null){
+                        Toast.makeText(MapaConveniosActivity.this, "Erro ao recuperar convênios", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    convenios = conveniosWrapper.getGetConveniosByCoordinateResult().getListaConvenios();
 
                     SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
                     mapFragment.getMapAsync(MapaConveniosActivity.this);
@@ -90,6 +99,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
             @Override
             public void onFailure(Throwable t) {
                 Toast.makeText(MapaConveniosActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                t.printStackTrace();
             }
         });
     }
@@ -109,7 +119,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
             //Se não houver (ainda) nenhum convênio para esta mesma localização, cria o marcador
             if(marcador == null){
-                LatLng coord = new LatLng(convenio.getCoordenada().getLat(), convenio.getCoordenada().getLng());
+                LatLng coord = new LatLng(convenio.getLat(), convenio.getLng());
                 builder.include(coord);
                 marcador = map.addMarker(new MarkerOptions().position(coord));
 
@@ -162,5 +172,12 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
             return;
         }
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        if(conveniosProximosCall != null)
+            conveniosProximosCall.cancel();
+        super.onPause();
     }
 }

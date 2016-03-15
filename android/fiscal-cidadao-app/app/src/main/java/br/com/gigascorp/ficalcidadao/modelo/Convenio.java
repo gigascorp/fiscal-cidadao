@@ -1,9 +1,36 @@
 package br.com.gigascorp.ficalcidadao.modelo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Convenio {
+
+    @SerializedName("Id")
     private int id;
-    private String justificativa;
-    private Coordenada coordenada;
+
+    @SerializedName("ObjetoDescricao")
+    private String objeto;
+
+    @SerializedName("Latitude")
+    private float lat;
+
+    public float getLng() {
+        return lng;
+    }
+
+    public void setLng(float lng) {
+        this.lng = lng;
+    }
+
+    public float getLat() {
+        return lat;
+    }
+
+    public void setLat(float lat) {
+        this.lat = lat;
+    }
+
+    @SerializedName("Longitude")
+    private float lng;
 
     public int getId() {
         return id;
@@ -13,19 +40,15 @@ public class Convenio {
         this.id = id;
     }
 
-    public String getJustificativa() {
-        return justificativa;
+    public String getObjeto() {
+        return objeto;
     }
 
-    public void setJustificativa(String justificativa) {
-        this.justificativa = justificativa;
+    public void setObjeto(String objeto) {
+        this.objeto = objeto;
     }
 
-    public Coordenada getCoordenada() {
-        return coordenada;
-    }
-
-    public void setCoordenada(Coordenada coordenada) {
-        this.coordenada = coordenada;
+    public Coordenada getCoordenada(){
+        return new Coordenada(this.lat, this.lng);
     }
 }

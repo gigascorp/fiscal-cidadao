@@ -1,0 +1,119 @@
+﻿@model FiscalCidadaoWeb.Models.DetalhesConvenioViewModel
+
+@{
+    ViewBag.Title = "Convênio";
+}
+
+@if (Model.Id > 0)
+{
+    <div id="dialog" title="Confirmation" hidden>
+        <p id="dialogContent"></p>
+        @Html.DropDownListFor(m => m.Parecer.Parecer, Model.ListaParecer, null, new { @class = "form-control eventST" })
+        <input id="noBtn" type="submit" name="No" value="Cancelar" />
+        <input id="yesBtn" type="submit" name="Yes" value="Confirmar" />
+    </div>
+
+    <div>
+        <div class="displayInline marginRight">
+            <h2 class="bold">Convênio #<span id="convenioId">@Model.Id</span></h2>
+        </div>
+        <div class="displayInline">
+            @{string link = "http://api.convenios.gov.br/siconv/dados/convenio/" + @Model.SincovId + ".html";}
+            <a href=@link target="_blank">Ver no sincov</a>
+        </div>
+    </div>
+    <br />
+    <div>
+        <div>
+            <h3 class="bold">Objeto</h3>
+            <span id="objetoNome">@Model.Objeto</span>
+        </div>
+
+        <div>
+            <div class="displayInline marginRight">
+                <h3 class="bold">Situação</h3>
+                @Model.Situacao
+            </div>
+            <div class="displayInline marginRight">
+                <h3 class="bold">Início</h3>
+                @String.Format("{0:dd/MM/yy}", Model.DataInicio)
+            </div>
+            <div class="displayInline">
+                <h3 class="bold">Término</h3>
+                @String.Format("{0:dd/MM/yy}", Model.DataFim)
+            </div>
+        </div>
+        <div>
+            <div class="displayInline marginRight">
+                <h3 class="bold">Valor</h3>
+                @Model.Valor
+            </div>
+
+            <div class="displayInline">
+                <h3 class="bold">Concedente</h3>
+                @Model.ConcedenteNome
+            </div>
+        </div>
+        <div>
+            <div class="displayInline marginRight">
+                <h3 class="bold">Proponente</h3>
+                @Model.ProponenteNome
+            </div>
+
+            <div class="displayInline">
+                <h3 class="bold">Localização</h3>
+                @Html.ActionLink("Ver mapa", "", "") / @Html.ActionLink("Editar", "", "")
+            </div>
+        </div>
+    </div>
+    <br />
+    <h3 class="bold">Denúncias (@(Model.Denuncias == null ? 0 : Model.Denuncias.Count))</h3>
+    <br />
+    <table id="convenioTable" class="tablesorter" style="width:100%">
+        <thead>
+            <tr>
+                <th>Denúncia</th>
+                <th>Data</th>
+                <th>Fotos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Denuncias != null)
+            {
+                foreach (var denuncia in Model.Denuncias)
+                {
+                    <tr>
+                        <td>@denuncia.Comentarios</td>
+                        <td class="tdData">@String.Format("{0:dd/MM/yy}", denuncia.Data)</td>
+                        <td class="tdFuncoes">
+                            <a>@Html.ActionLink("Ver Fotos", "ListagemConvenios", "Convenio")</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+    <div>
+        <div class="displayInline marginRight">
+            <h3 class="bold">Parecer do Governo</h3>
+        </div>
+        <div class="displayInline">
+            <button id="editarParecer">Editar Parecer</button>
+        </div>
+    </div>
+    if (Model.Parecer != null)
+    {
+        @Html.Hidden("parecerId", Model.Parecer.Id)
+        @Model.Parecer.Parecer
+    }
+}
+
+<link href="~/Content/App/DetalhesConvenio.css" rel="stylesheet" />
+<link href="~/Content/tablesorter.css" rel="stylesheet" />
+
+<script src="~/Scripts/App/DetalhesConvenio.js"></script>
+<script src="~/Scripts/jquery.tablesorter.min.js"></script>
+
+@Scripts.Render("~/bundles/jqueryUi")
+@Styles.Render("~/Content/jqueryUi")

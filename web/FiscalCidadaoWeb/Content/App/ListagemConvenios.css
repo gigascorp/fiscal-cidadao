@@ -1,0 +1,52 @@
+﻿body {
+    padding-top: 5%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: left;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.tdFuncoes {
+    width: 17%;
+}
+
+.tdSituacao {
+    width: 12%;
+}
+
+.tdParecer {
+    width: 8%;
+}
+
+.tdDenuncia {
+    width: 9%;
+}
+
+.editarParecer {
+    cursor: pointer;
+}
+
+.displayInline {
+    display: inline-block;
+}
+
+.marginRight {
+    margin-right: 5%;
+}
+
+.marginLeft {
+    margin-left: 5%;
+}
+
+.maiorWidth {
+    width: 300px;
+}

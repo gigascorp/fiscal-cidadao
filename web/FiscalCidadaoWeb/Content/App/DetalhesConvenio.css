@@ -1,0 +1,29 @@
+﻿body {
+    /*padding-top: 10%;*/
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: left;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.displayInline {
+    display: inline-block;
+}
+
+.marginRight {
+    margin-right: 5%;
+}
+
+.bold {
+    font-weight: bold;
+}
+

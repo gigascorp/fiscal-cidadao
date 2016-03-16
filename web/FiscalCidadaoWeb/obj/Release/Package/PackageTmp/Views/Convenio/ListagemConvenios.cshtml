@@ -1,0 +1,42 @@
+﻿@model ICollection<FiscalCidadaoWeb.Models.ListagemConvenioViewModel>
+
+@{
+    ViewBag.Title = "Listagem";
+}
+
+<h1>Listagem de Convênios</h1>
+<br />
+<table id="conveniosTable" class="tablesorter" style="width:100%">
+    <thead>
+        <tr>
+            <th>Objeto</th>
+            <th>Situação</th>
+            <th>Denúncias</th>
+            <th>Parecer</th>
+            <th>Funções</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var convenio in Model)
+        {
+            <tr>
+                <td>@convenio.Objeto</td>
+                <td class="tdSituacao">@convenio.Situacao.Descricao</td>
+                <td class="tdDenuncia">@convenio.CountDenuncias</td>
+                <td class="tdParecer">@convenio.ParecerGoverno.Parecer</td>
+                <td class="tdFuncoes">
+                    <a>@Html.ActionLink("Ver", "DetalhesConvenio", "Convenio", new { id = convenio.Id }, null) / </a>
+                    <a>@Html.ActionLink("Editar Local", "Index", "Home") / </a>
+                    <a>@Html.ActionLink("Parecer", "Index", "Home")</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<link href="~/Content/App/ListagemConvenios.css" rel="stylesheet" />
+<link href="~/Content/tablesorter.css" rel="stylesheet" />
+
+<script src="~/Scripts/App/ListagemConvenios.js"></script>
+<script src="~/Scripts/jquery.tablesorter.min.js"></script>

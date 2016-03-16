@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,6 +31,7 @@ import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
+import br.com.gigascorp.ficalcidadao.ui.ConvenioLinearLayoutManager;
 import br.com.gigascorp.ficalcidadao.util.Util;
 import retrofit.Call;
 import retrofit.Callback;
@@ -35,7 +39,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener {
+public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener{
 
     private static final String API_URI = "http://www.emilioweba.com/FiscalCidadaoWCF.svc/";
     private static final String TAG = "FISCAL-CIDADAO";
@@ -48,6 +52,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     private Call<ConveniosWrapper> conveniosProximosCall;
 
     private RecyclerView reciclerViewConvenios;
+    private ConvenioLinearLayoutManager layoutManager;
     private SlidingUpPanelLayout slidingLayout;
 
     @Override
@@ -59,10 +64,11 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         //Inicializando o slidingPanel e lista com cardviews
         slidingLayout = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+        slidingLayout.addPanelSlideListener(this);
 
         reciclerViewConvenios = (RecyclerView) findViewById(R.id.cardList);
         reciclerViewConvenios.setHasFixedSize(false);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager = new ConvenioLinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclerViewConvenios.setLayoutManager(layoutManager);
 
@@ -146,7 +152,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
                 //Obs.: Como só há um marcador, todos os convênios apontam para a mesma locaçlização
                 if(convenios.get(0) != null){
                     Convenio c = convenios.get(0);
-                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(c.getLat(), c.getLng()), 13F));
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(c.getLat(), c.getLng()), 10F));
                 } else {
                     //Se houver mais de um marcador, dá um zoom considerando todos os pontos (bound)
                     LatLngBounds bounds = builder.build();
@@ -184,6 +190,8 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
     }
 
+
+
     @Override
     public void onBackPressed() {
         if(slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN){
@@ -194,9 +202,28 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     }
 
     @Override
-    protected void onPause() {
+    protected void onStop() {
         if(conveniosProximosCall != null)
             conveniosProximosCall.cancel();
-        super.onPause();
+        super.onStop();
+    }
+
+    @Override
+    public void onPanelSlide(View view, float slideOffset) {
+    }
+
+    @Override
+    public void onPanelStateChanged(View view, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+        
+        if(newState == SlidingUpPanelLayout.PanelState.EXPANDED){
+            layoutManager.setScrool(true);
+            return;
+        }
+
+        if(newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
+            layoutManager.scrollToPositionWithOffset(0, 0);
+            layoutManager.setScrool(false);
+            return;
+        }
     }
 }

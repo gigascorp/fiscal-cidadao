@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import br.com.gigascorp.ficalcidadao.R;
@@ -27,9 +29,12 @@ public class ConvenioAdapter extends RecyclerView.Adapter<ConvenioViewHolder> {
 
     @Override
     public void onBindViewHolder(ConvenioViewHolder holder, int position) {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
         Convenio convenio = convenios.get(position);
-        holder.txtCardJustificativa.setText(convenio.getObjeto());
-        holder.getTxtCardCoordenada.setText("(" + String.valueOf(convenio.getLat()) + ", " + String.valueOf(convenio.getLng()) + ")");
+        holder.txtCardObjeto.setText(convenio.getObjeto());
+        holder.txtCardDataFim.setText("Conclusão: " + dateFormat.format(convenio.getDataFim()));
+        holder.txtCardSituacao.setText("Situação: " + convenio.getSituacao());
     }
 
     @Override

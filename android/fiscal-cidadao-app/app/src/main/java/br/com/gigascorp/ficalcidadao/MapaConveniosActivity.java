@@ -214,7 +214,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public void onPanelStateChanged(View view, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
-        
+
         if(newState == SlidingUpPanelLayout.PanelState.EXPANDED){
             layoutManager.setScrool(true);
             return;

@@ -8,12 +8,14 @@ import br.com.gigascorp.ficalcidadao.R;
 
 public class ConvenioViewHolder extends RecyclerView.ViewHolder{
 
-    protected TextView txtCardJustificativa;
-    protected TextView getTxtCardCoordenada;
+    protected TextView txtCardObjeto;
+    protected TextView txtCardDataFim;
+    protected TextView txtCardSituacao;
 
     public ConvenioViewHolder(View v) {
         super(v);
-        txtCardJustificativa = (TextView) v.findViewById(R.id.txtCardJustificativa);
-        getTxtCardCoordenada = (TextView) v.findViewById(R.id.txtcardCoordenada);
+        txtCardObjeto = (TextView) v.findViewById(R.id.txtCardObjeto);
+        txtCardDataFim = (TextView) v.findViewById(R.id.txtCardDataFim);
+        txtCardSituacao = (TextView) v.findViewById(R.id.txtCardSituacao);
     }
 }

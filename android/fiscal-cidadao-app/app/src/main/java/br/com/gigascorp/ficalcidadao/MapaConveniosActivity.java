@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
@@ -64,10 +66,14 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclerViewConvenios.setLayoutManager(layoutManager);
 
+        Gson gson = new GsonBuilder()
+                .setDateFormat("dd/MM/yy")
+                .create();
+
         //Inicializando o retrofit para a url da API
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_URI)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         fiscalApi = retrofit.create(FiscalCidadaoApi.class);

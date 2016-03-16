@@ -30,3 +30,23 @@ td {
 .tdDenuncia {
     width: 9%;
 }
+
+.editarParecer {
+    cursor: pointer;
+}
+
+.displayInline {
+    display: inline-block;
+}
+
+.marginRight {
+    margin-right: 5%;
+}
+
+.marginLeft {
+    margin-left: 5%;
+}
+
+.maiorWidth {
+    width: 300px;
+}

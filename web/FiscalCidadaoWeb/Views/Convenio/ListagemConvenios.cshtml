@@ -1,42 +1,45 @@
-﻿@model ICollection<FiscalCidadaoWeb.Models.ListagemConvenioViewModel>
+﻿@model FiscalCidadaoWeb.Models.ListagemConvenioViewModel
 
 @{
     ViewBag.Title = "Listagem";
 }
 
+<div id="dialog" title="Confirmation" hidden>
+    <p id="dialogContent"></p>
+    @Html.DropDownListFor(x => x.Parecer, Model.ListaParecer, null, new { @class = "form-control eventST" })
+    <input id="noBtn" type="submit" name="No" value="Cancelar" />
+    <input id="yesBtn" type="submit" name="Yes" value="Confirmar" />
+</div>
+
 <h1>Listagem de Convênios</h1>
 <br />
-<table id="conveniosTable" class="tablesorter" style="width:100%">
-    <thead>
-        <tr>
-            <th>Objeto</th>
-            <th>Situação</th>
-            <th>Denúncias</th>
-            <th>Parecer</th>
-            <th>Funções</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var convenio in Model)
-        {
-            <tr>
-                <td>@convenio.Objeto</td>
-                <td class="tdSituacao">@convenio.Situacao.Descricao</td>
-                <td class="tdDenuncia">@convenio.CountDenuncias</td>
-                <td class="tdParecer">@convenio.ParecerGoverno.Parecer</td>
-                <td class="tdFuncoes">
-                    <a>@Html.ActionLink("Ver", "DetalhesConvenio", "Convenio", new { id = convenio.Id }, null) / </a>
-                    <a>@Html.ActionLink("Editar Local", "Index", "Home") / </a>
-                    <a>@Html.ActionLink("Parecer", "Index", "Home")</a>
+<div>
+    <div class="displayInline marginRight marginLeft maiorWidth">
+        @Html.Editor("searchBox", new { htmlAttributes = new { placeholder = "Busca", @class = "clearable maiorWidth", type = "search" } })
+    </div>
+    <div class="displayInline ">
+        <strong>Data Início:</strong>
+    </div>
+    <div class="displayInline marginRight">
+        <input type="date" name="Inicio" id="Inicio" />
+    </div>
+    <div class="displayInline ">
+        <strong>Data Fim:</strong>
+    </div>
+    <div class="displayInline marginRight">
+        <input type="date" name="Fim" id="Fim" />
+    </div>
+    <div class="displayInline">
+        <button id="btnFiltrar">Filtrar</button>
+    </div>
+</div>
+<br />
 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@Html.Partial("_ListagemPartial", Model)
 
 <link href="~/Content/App/ListagemConvenios.css" rel="stylesheet" />
 <link href="~/Content/tablesorter.css" rel="stylesheet" />
 
-<script src="~/Scripts/App/ListagemConvenios.js"></script>
 <script src="~/Scripts/jquery.tablesorter.min.js"></script>
+@Scripts.Render("~/bundles/jqueryUi")
+@Styles.Render("~/Content/jqueryUi")

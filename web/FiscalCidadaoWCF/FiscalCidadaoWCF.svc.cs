@@ -24,19 +24,17 @@ namespace FiscalCidadaoWCF
                 {
                     var point = DbGeography.FromText("POINT(" + longitude + " " + latitude + ")", 4326);
 
-                    var weba = context.Convenio.ToList();
-
                     // distance em metros, transformando em KM
                     var allConvenios = context.Convenio.Include(x => x.Proponente)
                         .Include(x => x.Situacao)
                         .Where(x => (x.Coordenadas.Distance(point) / 1000) < 100) // menor que 100 km
                         .ToList();
 
-                    List<ListaConvenioEnvioViewModel> lista = new List<ListaConvenioEnvioViewModel>();
+                    List<ConvenioEnvioViewModel> lista = new List<ConvenioEnvioViewModel>();
 
                     foreach (var convenio in allConvenios)
                     {
-                        lista.Add(new ListaConvenioEnvioViewModel()
+                        lista.Add(new ConvenioEnvioViewModel()
                         {
                             Id = convenio.Id,
                             DataInicio = String.Format("{0:dd/MM/yy}", convenio.DataInicio),
@@ -69,6 +67,56 @@ namespace FiscalCidadaoWCF
             FazerDenunciaViewModel denunciaCliente = JsonConvert.DeserializeObject<FazerDenunciaViewModel>(model);
 
             return "entrou";
+        }
+
+        public void GetConvenioByUsuario(string usuarioId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ConvenioEnvioViewModel GetConvenioById(string convenioId)
+        {
+            ConvenioEnvioViewModel retorno = null;
+
+            try
+            {
+                int id;
+
+                if (string.IsNullOrEmpty(convenioId) || !int.TryParse(convenioId, out id))
+                {
+                    return retorno;
+                }
+
+                using (var context = new ApplicationDBContext())
+                {
+                    var convenio = context.Convenio
+                        .Include(x => x.Situacao)
+                        .Include(x => x.Proponente)
+                        .Single(x => x.Id == id);
+
+                    retorno = new ConvenioEnvioViewModel
+                        {
+                            Id = convenio.Id,
+                            DataInicio = String.Format("{0:dd/MM/yy}", convenio.DataInicio),
+                            DataFim = String.Format("{0:dd/MM/yy}", convenio.DataFim),
+                            Valor = convenio.ValorTotal,
+                            ObjetoDescricao = convenio.DescricaoObjeto,
+                            Latitude = convenio.Coordenadas.Latitude,
+                            Longitude = convenio.Coordenadas.Longitude,
+                            Situacao = convenio.Situacao.Descricao,
+                            ProponenteNome = convenio.Proponente.Nome,
+                            ProponenteResponsavel = convenio.Proponente.ResponsavelNome,
+                            ProponenteTelefone = convenio.Proponente.ResponsavelTelefone
+                        };
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var a = 1;
+            }
+
+            return retorno;
         }
     }
 }

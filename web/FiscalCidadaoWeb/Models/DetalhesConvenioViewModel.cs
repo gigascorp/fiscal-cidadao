@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FiscalCidadaoWeb.Models
 {
@@ -28,5 +29,7 @@ namespace FiscalCidadaoWeb.Models
         public List<Denuncia> Denuncias { get; set; }
 
         public ParecerGoverno Parecer { get; set; }
+
+        public IEnumerable<SelectListItem> ListaParecer { get; set; }
     }
 }

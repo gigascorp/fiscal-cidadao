@@ -10,10 +10,10 @@ namespace FiscalCidadaoWCF.Models
     {
         public int Quantidade { get; set; }
 
-        public List<ListaConvenioEnvioViewModel> ListaConvenios { get; set; }
+        public List<ConvenioEnvioViewModel> ListaConvenios { get; set; }
     }
 
-    public class ListaConvenioEnvioViewModel
+    public class ConvenioEnvioViewModel
     {
         public int Id { get; set; }
 

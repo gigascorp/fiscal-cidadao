@@ -1,13 +1,10 @@
 package br.com.gigascorp.ficalcidadao;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +12,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -64,6 +60,8 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     private SlidingUpPanelLayout slidingLayout;
 
     private GoogleApiClient googleApiClient = null;
+
+    private SlidingUpPanelLayout.PanelState ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -221,14 +219,26 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     @Override
     public void onPanelStateChanged(View view, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
 
-        if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
-            layoutManager.setScrool(true);
+        Log.i(TAG, "OnPanelStateChanged " + previousState + "->" + newState);
+
+        if(ultimoEstado == SlidingUpPanelLayout.PanelState.COLLAPSED && newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
+            ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
             return;
+        }
+
+        if(newState != SlidingUpPanelLayout.PanelState.DRAGGING){
+            ultimoEstado = newState;
         }
 
         if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
             layoutManager.scrollToPositionWithOffset(0, 0);
             layoutManager.setScrool(false);
+            return;
+        }
+
+        if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
+            layoutManager.setScrool(true);
             return;
         }
     }

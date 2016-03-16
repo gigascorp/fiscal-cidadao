@@ -139,8 +139,21 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
             marcadoresConvenio.put(marcador, conveniosDoMarcador);
         }
 
-        LatLngBounds bounds = builder.build();
-        map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+        if(marcadoresConvenio != null && marcadoresConvenio.size() > 0){
+
+            if(marcadoresConvenio.size() == 1){
+                //Se tiver somente um marcador, dá um Zoom num nível da cidade
+                //Obs.: Como só há um marcador, todos os convênios apontam para a mesma locaçlização
+                if(convenios.get(0) != null){
+                    Convenio c = convenios.get(0);
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(c.getLat(), c.getLng()), 13F));
+                } else {
+                    //Se houver mais de um marcador, dá um zoom considerando todos os pontos (bound)
+                    LatLngBounds bounds = builder.build();
+                    map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+                }
+            }
+        }
     }
 
     @Override

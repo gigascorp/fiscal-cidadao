@@ -14,24 +14,35 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txtCardJustificativa"
+            android:id="@+id/txtCardObjeto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Justificativa"
-            android:textSize="14dp"
+            android:textSize="@dimen/text_size"
             android:padding="8dp"
-            android:textColor="#222"
+            android:textColor="@color/colorText"
             android:textStyle="bold"
             />
 
         <TextView
-            android:id="@+id/txtcardCoordenada"
+            android:id="@+id/txtCardDataFim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:textSize="10dp"
-            android:layout_below="@id/txtCardJustificativa"
+            android:textSize="@dimen/label_size"
+            android:layout_below="@id/txtCardObjeto"
+            android:paddingBottom="4dp"
+            android:paddingLeft="14dp"
+            android:textColor="@color/colorLabel"
+            />
+
+        <TextView
+            android:id="@+id/txtCardSituacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textSize="12dp"
+            android:layout_below="@id/txtCardDataFim"
             android:paddingBottom="8dp"
             android:paddingLeft="14dp"
             android:textColor="#666"

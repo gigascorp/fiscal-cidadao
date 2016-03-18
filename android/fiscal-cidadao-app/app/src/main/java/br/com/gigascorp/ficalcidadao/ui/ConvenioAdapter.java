@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class ConvenioAdapter extends RecyclerView.Adapter<ConvenioViewHolder> {
     }
 
     @Override
-    public ConvenioViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ConvenioViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.convenio_card_view, parent, false);
         return new ConvenioViewHolder(itemView);
     }
@@ -28,8 +27,7 @@ public class ConvenioAdapter extends RecyclerView.Adapter<ConvenioViewHolder> {
     @Override
     public void onBindViewHolder(ConvenioViewHolder holder, int position) {
         Convenio convenio = convenios.get(position);
-        holder.txtCardJustificativa.setText(convenio.getJustificativa());
-        holder.getTxtCardCoordenada.setText("(" + String.valueOf(convenio.getCoordenada().getLat()) + ", " + String.valueOf(convenio.getCoordenada().getLng()) + ")");
+        holder.setConvenio(convenio);
     }
 
     @Override

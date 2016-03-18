@@ -160,6 +160,5 @@ C:\Users\Emilio\Source\Repos\fiscal-cidadao2\web\FiscalCidadaoWeb\bin\Microsoft.
 C:\Users\Emilio\Source\Repos\fiscal-cidadao2\web\FiscalCidadaoWeb\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Emilio\Source\Repos\fiscal-cidadao2\web\FiscalCidadaoWeb\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Emilio\Source\Repos\fiscal-cidadao2\web\FiscalCidadaoWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Emilio\Source\Repos\fiscal-cidadao2\web\FiscalCidadaoWeb\obj\Debug\FiscalCidadaoWeb.csprojResolveAssemblyReference.cache
 C:\Users\Emilio\Source\Repos\fiscal-cidadao2\web\FiscalCidadaoWeb\obj\Debug\FiscalCidadaoWeb.dll
 C:\Users\Emilio\Source\Repos\fiscal-cidadao2\web\FiscalCidadaoWeb\obj\Debug\FiscalCidadaoWeb.pdb

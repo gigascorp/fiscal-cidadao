@@ -45,6 +45,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -171,12 +173,16 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
     <Compile Include="Models\Convenio.cs" />
+    <Compile Include="Models\ConvenioViewModel.cs" />
     <Compile Include="Models\Denuncia.cs" />
+    <Compile Include="Models\DenunciaEnvioViewModel.cs" />
     <Compile Include="Models\DenunciaFoto.cs" />
     <Compile Include="Models\DetalhesConvenioViewModel.cs" />
+    <Compile Include="Models\FazerDenunciaViewModel.cs" />
     <Compile Include="Models\HistoricoAtualizacaoLocalizacao.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ListaConvenioEnvioViewModel.cs" />
     <Compile Include="Models\ListagemConvenioViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ParecerGoverno.cs" />
@@ -186,6 +192,14 @@
     <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="APIUploadDB.svc.cs">
+      <DependentUpon>APIUploadDB.svc</DependentUpon>
+    </Compile>
+    <Compile Include="FiscalCidadaoWCF.svc.cs">
+      <DependentUpon>FiscalCidadaoWCF.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IAPIUploadDB.cs" />
+    <Compile Include="IFiscalCidadaoWCF.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +211,9 @@
     <Content Include="Content\Images\asc.gif" />
     <Content Include="Content\Images\bg.gif" />
     <Content Include="Content\Images\desc.gif" />
+    <Content Include="Content\Images\sort_asc.png" />
+    <Content Include="Content\Images\sort_both.png" />
+    <Content Include="Content\Images\sort_desc.png" />
     <Content Include="Content\Images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Content\Images\ui-bg_diagonals-thick_20_666666_40x40.png" />
     <Content Include="Content\Images\ui-bg_flat_10_000000_40x100.png" />
@@ -230,7 +247,7 @@
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
-    <Content Include="Content\tablesorter.css" />
+    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -243,13 +260,14 @@
     <None Include="Properties\PublishProfiles\fiscalcidadao - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\App\Index.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.metadata.js" />
-    <Content Include="Scripts\jquery.tablesorter.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -258,6 +276,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="APIUploadDB.svc" />
+    <Content Include="FiscalCidadaoWCF.svc" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -272,7 +292,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />

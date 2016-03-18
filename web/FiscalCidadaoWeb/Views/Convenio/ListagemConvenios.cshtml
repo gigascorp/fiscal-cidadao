@@ -34,12 +34,14 @@
     </div>
 </div>
 <br />
+<br />
 
 @Html.Partial("_ListagemPartial", Model)
 
 <link href="~/Content/App/ListagemConvenios.css" rel="stylesheet" />
 <link href="~/Content/tablesorter.css" rel="stylesheet" />
 
-<script src="~/Scripts/jquery.tablesorter.min.js"></script>
+@Scripts.Render("~/bundles/jqueryDataTable")
 @Scripts.Render("~/bundles/jqueryUi")
 @Styles.Render("~/Content/jqueryUi")
+@Styles.Render("~/Content/dataTable")

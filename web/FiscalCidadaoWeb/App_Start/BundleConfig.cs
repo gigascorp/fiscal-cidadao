@@ -14,6 +14,9 @@ namespace FiscalCidadaoWeb
             bundles.Add(new ScriptBundle("~/bundles/jqueryUi").Include(
                        "~/Scripts/jquery-ui.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryDataTable").Include(
+                       "~/Scripts/jquery.dataTables.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -34,6 +37,9 @@ namespace FiscalCidadaoWeb
                       "~/Content/jquery-ui.css",
                       "~/Content/jquery-ui.structure.css",
                       "~/Content/jquery-ui.theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/dataTable").Include(
+                      "~/Content/jquery.dataTables.min.css"));
         }
     }
 }

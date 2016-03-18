@@ -1,9 +1,12 @@
 ﻿
 $().ready(function () {
-    $('#conveniosTable').tablesorter({
-        headers: {
-            4: { sorter: false }
-        }
+    $('#conveniosTable').DataTable({
+        "order": [[2, "desc"]],
+        "columnDefs": [{
+            targets: "datatable-nosort",
+            orderable: false
+        }],
+        filter: false,
     });
 
 });

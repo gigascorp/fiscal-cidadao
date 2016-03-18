@@ -51,8 +51,8 @@
                 android:textColor="@color/colorText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_vertical_margin"
-                android:paddingBottom="@dimen/txt_vertical_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
                 />
 
             <!--Proponente-->
@@ -74,8 +74,8 @@
                 android:textColor="@color/colorText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_vertical_margin"
-                android:paddingBottom="@dimen/txt_vertical_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
                 />
 
 
@@ -98,8 +98,8 @@
                 android:textColor="@color/colorText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_vertical_margin"
-                android:paddingBottom="@dimen/txt_vertical_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
                 />
 
             <!--Telefone-->
@@ -121,8 +121,8 @@
                 android:textColor="@color/colorText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_vertical_margin"
-                android:paddingBottom="@dimen/txt_vertical_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
                 />
 
             <!--Período-->
@@ -144,8 +144,8 @@
                 android:textColor="@color/colorText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_vertical_margin"
-                android:paddingBottom="@dimen/txt_vertical_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
                 />
 
             <!--Situação-->
@@ -167,8 +167,8 @@
                 android:textColor="@color/colorText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_vertical_margin"
-                android:paddingBottom="@dimen/txt_vertical_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
                 />
 
             <!--Valor-->
@@ -190,8 +190,8 @@
                 android:textColor="@color/colorText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_vertical_margin"
-                android:paddingBottom="@dimen/txt_vertical_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
                 />
 
         </LinearLayout>

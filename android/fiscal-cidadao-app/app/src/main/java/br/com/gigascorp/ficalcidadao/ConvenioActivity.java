@@ -7,6 +7,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
@@ -49,15 +52,18 @@ public class ConvenioActivity extends AppCompatActivity {
 
     private void setaCamposNaTela(){
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        NumberFormat numberFormat = NumberFormat.getInstance();
+
+        numberFormat.setMinimumFractionDigits(2);
 
         txtObjeto.setText(convenio.getObjeto());
         txtProponente.setText(convenio.getProponente());
         txtResponsavel.setText(convenio.getResponsavel());
         txtTelefone.setText(convenio.getTelefone());
-        txtPeriodo.setText("De " + format.format(convenio.getDataInicio()) + " à " + format.format(convenio.getDataFim()));
+        txtPeriodo.setText("De " + dateFormat.format(convenio.getDataInicio()) + " à " + dateFormat.format(convenio.getDataFim()));
         txtSituacao.setText(convenio.getSituacao());
-        txtValor.setText(String.valueOf(convenio.getValor()));
+        txtValor.setText("R$ " + numberFormat.format(convenio.getValor()));
 
     }
 

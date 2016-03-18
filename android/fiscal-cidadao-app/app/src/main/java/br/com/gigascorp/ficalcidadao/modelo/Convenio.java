@@ -2,9 +2,10 @@ package br.com.gigascorp.ficalcidadao.modelo;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Convenio {
+public class Convenio implements Serializable{
 
     @SerializedName("Id")
     private int id;

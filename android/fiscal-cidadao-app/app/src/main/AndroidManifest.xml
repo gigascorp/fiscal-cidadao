@@ -39,6 +39,10 @@
             android:name=".MapaConveniosActivity"
             android:label="@string/title_activity_mapa_convenios" >
         </activity>
+        <activity
+            android:name=".ConvenioActivity"
+            android:label="@string/title_activity_convenio" >
+        </activity>
     </application>
 
 </manifest>

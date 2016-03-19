@@ -8,21 +8,24 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import br.com.gigascorp.ficalcidadao.DenunciaActivity;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.FotoHolderWrap;
 
 public class FotoDenunciaAdapter extends RecyclerView.Adapter<FotoDenunciaViewHolder> {
 
+    private DenunciaActivity activity;
     private List<FotoHolderWrap> fotos;
 
-    public FotoDenunciaAdapter(List<FotoHolderWrap> fotos){
+    public FotoDenunciaAdapter(List<FotoHolderWrap> fotos, DenunciaActivity activity){
         this.fotos = fotos;
+        this.activity = activity;
     }
 
     @Override
     public FotoDenunciaViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.foto_denuncia_card_view, parent, false);
-        return new FotoDenunciaViewHolder(itemView);
+        return new FotoDenunciaViewHolder(itemView, activity);
     }
 
     @Override

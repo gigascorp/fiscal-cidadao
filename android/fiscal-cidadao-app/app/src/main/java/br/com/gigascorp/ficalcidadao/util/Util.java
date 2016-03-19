@@ -4,10 +4,17 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ExifInterface;
+import android.os.Environment;
 
 import com.google.android.gms.maps.model.Marker;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -72,4 +79,28 @@ public class Util {
 
         return lista;
     }
+
+    public static int rotacaoNecessaria(File ff) {
+        try {
+
+            ExifInterface exif = new ExifInterface(ff.getAbsolutePath());
+            int orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_270)
+            { return 270; }
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_180)
+            { return 180; }
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_90)
+            { return 90; }
+            return 0;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

@@ -43,6 +43,10 @@
             android:name=".ConvenioActivity"
             android:label="@string/title_activity_convenio" >
         </activity>
+        <activity
+            android:name=".DenunciaActivity"
+            android:label="@string/title_activity_denuncia" >
+        </activity>
     </application>
 
 </manifest>

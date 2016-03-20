@@ -21,6 +21,7 @@ class LocationController : NSObject, CLLocationManagerDelegate
     static let sharedInstance = LocationController()
     var locationManager: CLLocationManager!
     
+    var currentLocation : CLLocation?
     var locationStatus = LocationStatus.NO_STATUS
     
     override init()
@@ -43,9 +44,13 @@ class LocationController : NSObject, CLLocationManagerDelegate
 
         }
         
-        if hasLocation()
+        if locationStatus == LocationStatus.LOCATION_ALLOWED
         {
             locationManager.startUpdatingLocation()
+            if locationManager.location != nil
+            {
+                currentLocation = locationManager.location
+            }
         }
         locationManager.delegate = self
         
@@ -53,12 +58,21 @@ class LocationController : NSObject, CLLocationManagerDelegate
     
     func hasLocation() -> Bool
     {
-        return locationStatus == LocationStatus.LOCATION_ALLOWED
+        
+        if locationStatus == LocationStatus.LOCATION_ALLOWED
+        {
+            if currentLocation != nil
+            {
+                return true
+            }
+        }
+        
+        return false
     }
     
     func getLocation() -> (Double, Double)
     {
-        let loc = locationManager.location!
+        let loc = currentLocation!
         let coord = loc.coordinate
         return (coord.latitude, coord.longitude)
     }
@@ -66,29 +80,14 @@ class LocationController : NSObject, CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
     {
         locationManager.stopUpdatingLocation()
-        
-//        if (error as! NSError)
-//        {
-//            if (seenError == false) {
-//                seenError = true
-//                print(error)
-//            }
-//        }
+        print(error)
     }
     
-//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: AnyObject[]!)
-//    {
-//        if (locationFixAchieved == false)
-//        {
-//            locationFixAchieved = true
-//            var locationArray = locations as NSArray
-//            var locationObj = locationArray.lastObject as CLLocation
-//            var coord = locationObj.coordinate
-//            
-//            println(coord.latitude)
-//            println(coord.longitude)
-//        }
-//    }
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        currentLocation =  locations.last
+        print("Last location : \(currentLocation)")
+    }
     
     func requestAuth()
     {
@@ -126,13 +125,10 @@ class LocationController : NSObject, CLLocationManagerDelegate
             switch status
             {
             case CLAuthorizationStatus.Restricted:
-//                locationStatus = "Restricted Access to location"
                 locationStatus = LocationStatus.LOCATION_RESTRICTED
             case CLAuthorizationStatus.Denied:
-//                locationStatus = "User denied access to location"
                 locationStatus = LocationStatus.LOCATION_DENIED
             case CLAuthorizationStatus.NotDetermined:
-//                locationStatus = "Status not determined"
                 locationStatus = LocationStatus.NO_STATUS
             case CLAuthorizationStatus.Authorized:
                 locationStatus = LocationStatus.LOCATION_ALLOWED
@@ -143,13 +139,16 @@ class LocationController : NSObject, CLLocationManagerDelegate
                 
                 
             }
-//            NSNotificationCenter.defaultCenter().postNotificationName("LabelHasbeenUpdated", object: nil)
             if (shouldIAllow)
             {
-                print("Location to Allowed")
-                // Start location services
+                print("Location Allowed")
                 locationManager.startUpdatingLocation()
-            } else {
+                
+                print(locationManager.location)
+                
+            }
+            else
+            {
                 print("Denied access: \(locationStatus)")
             }
     }

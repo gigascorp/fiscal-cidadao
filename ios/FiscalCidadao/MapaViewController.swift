@@ -16,7 +16,7 @@ class MapaViewController: UIViewController
     
     let regionRadius: CLLocationDistance = 3000
     
-    // São Luís UFMA: -2.554014, -44.307548
+    // São Luís UFMA: -2,554014, -44.307548
     override func viewDidLoad()
     {
         navigationController?.setNavigationBarHidden(false, animated: true)
@@ -58,7 +58,7 @@ class MapaViewController: UIViewController
         if(locationController.hasLocation())
         {
             mapView.showsUserLocation = true
-            centerMapOnLocation(locationController.locationManager.location!)
+            centerMapOnLocation(locationController.currentLocation!)
         }
     }
 }

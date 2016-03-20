@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D82E81F71C9F5450000DA2C2 /* ComplaintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E81F61C9F5450000DA2C2 /* ComplaintsViewController.swift */; };
 		D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */; };
 		D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */; };
 		D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8B91C8FA02D00AA8831 /* Main.storyboard */; };
@@ -25,24 +26,8 @@
 		D8F32BD91C9E032E00430F2E /* ConvenioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BD81C9E032E00430F2E /* ConvenioViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		D84CE8C71C8FA02D00AA8831 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D84CE8A81C8FA02D00AA8831 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D84CE8AF1C8FA02D00AA8831;
-			remoteInfo = FiscalCidadao;
-		};
-		D84CE8D21C8FA02D00AA8831 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D84CE8A81C8FA02D00AA8831 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D84CE8AF1C8FA02D00AA8831;
-			remoteInfo = FiscalCidadao;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		D82E81F61C9F5450000DA2C2 /* ComplaintsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintsViewController.swift; sourceTree = "<group>"; };
 		D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiscalCidadao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -50,8 +35,6 @@
 		D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D84CE8BF1C8FA02D00AA8831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D84CE8C11C8FA02D00AA8831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D84CE8C61C8FA02D00AA8831 /* FiscalCidadaoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiscalCidadaoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D84CE8D11C8FA02D00AA8831 /* FiscalCidadaoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiscalCidadaoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaAnnotation.swift; sourceTree = "<group>"; };
@@ -74,20 +57,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D84CE8C31C8FA02D00AA8831 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D84CE8CE1C8FA02D00AA8831 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -104,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */,
-				D84CE8C61C8FA02D00AA8831 /* FiscalCidadaoTests.xctest */,
-				D84CE8D11C8FA02D00AA8831 /* FiscalCidadaoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +126,7 @@
 				D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */,
 				D8F32BD61C9DF8CC00430F2E /* ConveniosListViewController.swift */,
 				D8F32BD81C9E032E00430F2E /* ConvenioViewController.swift */,
+				D82E81F61C9F5450000DA2C2 /* ComplaintsViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -209,42 +177,6 @@
 			productReference = D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D84CE8C51C8FA02D00AA8831 /* FiscalCidadaoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D84CE8DD1C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoTests" */;
-			buildPhases = (
-				D84CE8C21C8FA02D00AA8831 /* Sources */,
-				D84CE8C31C8FA02D00AA8831 /* Frameworks */,
-				D84CE8C41C8FA02D00AA8831 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D84CE8C81C8FA02D00AA8831 /* PBXTargetDependency */,
-			);
-			name = FiscalCidadaoTests;
-			productName = FiscalCidadaoTests;
-			productReference = D84CE8C61C8FA02D00AA8831 /* FiscalCidadaoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D84CE8D01C8FA02D00AA8831 /* FiscalCidadaoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D84CE8E01C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoUITests" */;
-			buildPhases = (
-				D84CE8CD1C8FA02D00AA8831 /* Sources */,
-				D84CE8CE1C8FA02D00AA8831 /* Frameworks */,
-				D84CE8CF1C8FA02D00AA8831 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D84CE8D31C8FA02D00AA8831 /* PBXTargetDependency */,
-			);
-			name = FiscalCidadaoUITests;
-			productName = FiscalCidadaoUITests;
-			productReference = D84CE8D11C8FA02D00AA8831 /* FiscalCidadaoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -257,14 +189,6 @@
 				TargetAttributes = {
 					D84CE8AF1C8FA02D00AA8831 = {
 						CreatedOnToolsVersion = 7.2.1;
-					};
-					D84CE8C51C8FA02D00AA8831 = {
-						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = D84CE8AF1C8FA02D00AA8831;
-					};
-					D84CE8D01C8FA02D00AA8831 = {
-						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = D84CE8AF1C8FA02D00AA8831;
 					};
 				};
 			};
@@ -282,8 +206,6 @@
 			projectRoot = "";
 			targets = (
 				D84CE8AF1C8FA02D00AA8831 /* FiscalCidadao */,
-				D84CE8C51C8FA02D00AA8831 /* FiscalCidadaoTests */,
-				D84CE8D01C8FA02D00AA8831 /* FiscalCidadaoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -296,20 +218,6 @@
 				D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */,
 				D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */,
 				D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D84CE8C41C8FA02D00AA8831 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D84CE8CF1C8FA02D00AA8831 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +234,7 @@
 				D8F32BD91C9E032E00430F2E /* ConvenioViewController.swift in Sources */,
 				D8F32BC11C9B88C600430F2E /* MapaAnnotation.swift in Sources */,
 				D8F32BBF1C9B869D00430F2E /* MapaViewController.swift in Sources */,
+				D82E81F71C9F5450000DA2C2 /* ComplaintsViewController.swift in Sources */,
 				D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */,
 				D8F32BC71C9CDA0800430F2E /* DataController.swift in Sources */,
 				D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */,
@@ -335,34 +244,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D84CE8C21C8FA02D00AA8831 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D84CE8CD1C8FA02D00AA8831 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D84CE8C81C8FA02D00AA8831 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D84CE8AF1C8FA02D00AA8831 /* FiscalCidadao */;
-			targetProxy = D84CE8C71C8FA02D00AA8831 /* PBXContainerItemProxy */;
-		};
-		D84CE8D31C8FA02D00AA8831 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D84CE8AF1C8FA02D00AA8831 /* FiscalCidadao */;
-			targetProxy = D84CE8D21C8FA02D00AA8831 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D84CE8B91C8FA02D00AA8831 /* Main.storyboard */ = {
@@ -420,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -459,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -495,54 +377,6 @@
 			};
 			name = Release;
 		};
-		D84CE8DE1C8FA02D00AA8831 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FiscalCidadaoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiscalCidadao.app/FiscalCidadao";
-			};
-			name = Debug;
-		};
-		D84CE8DF1C8FA02D00AA8831 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FiscalCidadaoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiscalCidadao.app/FiscalCidadao";
-			};
-			name = Release;
-		};
-		D84CE8E11C8FA02D00AA8831 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = FiscalCidadaoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = FiscalCidadao;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		D84CE8E21C8FA02D00AA8831 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = FiscalCidadaoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = FiscalCidadao;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -560,24 +394,6 @@
 			buildConfigurations = (
 				D84CE8DB1C8FA02D00AA8831 /* Debug */,
 				D84CE8DC1C8FA02D00AA8831 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D84CE8DD1C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D84CE8DE1C8FA02D00AA8831 /* Debug */,
-				D84CE8DF1C8FA02D00AA8831 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D84CE8E01C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D84CE8E11C8FA02D00AA8831 /* Debug */,
-				D84CE8E21C8FA02D00AA8831 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -33,7 +32,6 @@ import java.util.concurrent.TimeUnit;
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
-import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.FotoHolderWrap;
 import br.com.gigascorp.ficalcidadao.ui.DenunciaGridLayoutManager;
 import br.com.gigascorp.ficalcidadao.ui.FotoDenunciaAdapter;
@@ -60,7 +58,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
 
     private Convenio convenio;
 
-    private RecyclerView reciclerView;
+    private RecyclerView recyclerView;
     private DenunciaGridLayoutManager layoutManager;
     private TextView txtObjeto;
     private EditText edTexto;
@@ -93,16 +91,17 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
         btnEnviar = (Button) findViewById(R.id.btnEnviarDenuncia);
         btnEnviar.setOnClickListener(this);
 
-        reciclerView = (RecyclerView) findViewById(R.id.gridFotos);
-        reciclerView.setHasFixedSize(false);
+        recyclerView = (RecyclerView) findViewById(R.id.gridFotos);
+        recyclerView.setHasFixedSize(false);
         layoutManager = new DenunciaGridLayoutManager(this, 3);
-        reciclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
+
 
         //Inclui o botão de adicionar fotos
         listaFotosThumb.add(Util.criarBotaoAdicionarFoto(this));
 
         FotoDenunciaAdapter adapter = new FotoDenunciaAdapter(listaFotosThumb, this);
-        reciclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
 
         Gson gson = new GsonBuilder()
@@ -149,7 +148,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
                 listaFotosBase64.add(Base64.encodeToString(imageBytes, Base64.DEFAULT));
 
                 FotoDenunciaAdapter adapter = new FotoDenunciaAdapter(listaFotosThumb, this);
-                reciclerView.setAdapter(adapter);
+                recyclerView.setAdapter(adapter);
 
             } catch (IOException e) {
                 e.printStackTrace();

@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */; };
+		D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */; };
+		D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8B91C8FA02D00AA8831 /* Main.storyboard */; };
+		D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */; };
+		D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */; };
+		D8DAF2DD1C924CE50021B6E3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */; };
+		D8F32BBF1C9B869D00430F2E /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */; };
+		D8F32BC11C9B88C600430F2E /* MapaAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */; };
+		D8F32BC31C9B93D400430F2E /* MapaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC21C9B93D400430F2E /* MapaDelegate.swift */; };
+		D8F32BC51C9CD70000430F2E /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC41C9CD70000430F2E /* LocationController.swift */; };
+		D8F32BC71C9CDA0800430F2E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC61C9CDA0800430F2E /* DataController.swift */; };
+		D8F32BC91C9D7BC500430F2E /* ConvenioModelo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC81C9D7BC500430F2E /* ConvenioModelo.swift */; };
+		D8F32BCB1C9DD10800430F2E /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BCA1C9DD10800430F2E /* Observer.swift */; };
+		D8F32BD51C9DD6C600430F2E /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BD41C9DD6C600430F2E /* BaseController.swift */; };
+		D8F32BD71C9DF8CC00430F2E /* ConveniosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BD61C9DF8CC00430F2E /* ConveniosListViewController.swift */; };
+		D8F32BD91C9E032E00430F2E /* ConvenioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BD81C9E032E00430F2E /* ConvenioViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D84CE8C71C8FA02D00AA8831 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D84CE8A81C8FA02D00AA8831 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D84CE8AF1C8FA02D00AA8831;
+			remoteInfo = FiscalCidadao;
+		};
+		D84CE8D21C8FA02D00AA8831 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D84CE8A81C8FA02D00AA8831 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D84CE8AF1C8FA02D00AA8831;
+			remoteInfo = FiscalCidadao;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiscalCidadao.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D84CE8BA1C8FA02D00AA8831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D84CE8BF1C8FA02D00AA8831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D84CE8C11C8FA02D00AA8831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D84CE8C61C8FA02D00AA8831 /* FiscalCidadaoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiscalCidadaoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D84CE8D11C8FA02D00AA8831 /* FiscalCidadaoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiscalCidadaoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
+		D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaAnnotation.swift; sourceTree = "<group>"; };
+		D8F32BC21C9B93D400430F2E /* MapaDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaDelegate.swift; sourceTree = "<group>"; };
+		D8F32BC41C9CD70000430F2E /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		D8F32BC61C9CDA0800430F2E /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		D8F32BC81C9D7BC500430F2E /* ConvenioModelo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenioModelo.swift; sourceTree = "<group>"; };
+		D8F32BCA1C9DD10800430F2E /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		D8F32BD41C9DD6C600430F2E /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		D8F32BD61C9DF8CC00430F2E /* ConveniosListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConveniosListViewController.swift; sourceTree = "<group>"; };
+		D8F32BD81C9E032E00430F2E /* ConvenioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenioViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D84CE8AD1C8FA02D00AA8831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8DAF2DD1C924CE50021B6E3 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D84CE8C31C8FA02D00AA8831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D84CE8CE1C8FA02D00AA8831 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D84CE8A71C8FA02D00AA8831 = {
+			isa = PBXGroup;
+			children = (
+				D84CE8B21C8FA02D00AA8831 /* FiscalCidadao */,
+				D8DAF2DE1C924D120021B6E3 /* Frameworks */,
+				D84CE8B11C8FA02D00AA8831 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D84CE8B11C8FA02D00AA8831 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */,
+				D84CE8C61C8FA02D00AA8831 /* FiscalCidadaoTests.xctest */,
+				D84CE8D11C8FA02D00AA8831 /* FiscalCidadaoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D84CE8B21C8FA02D00AA8831 /* FiscalCidadao */ = {
+			isa = PBXGroup;
+			children = (
+				D8F32BD11C9DD43000430F2E /* View */,
+				D8F32BD01C9DD41F00430F2E /* App */,
+				D8F32BCF1C9DD41300430F2E /* Resources */,
+				D8F32BCE1C9DD40700430F2E /* ViewController */,
+				D8F32BCD1C9DD40300430F2E /* Model */,
+				D8F32BCC1C9DD3FB00430F2E /* Controller */,
+			);
+			path = FiscalCidadao;
+			sourceTree = "<group>";
+		};
+		D8DAF2DE1C924D120021B6E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8F32BCC1C9DD3FB00430F2E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8F32BC41C9CD70000430F2E /* LocationController.swift */,
+				D8F32BC61C9CDA0800430F2E /* DataController.swift */,
+				D8F32BD41C9DD6C600430F2E /* BaseController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D8F32BCD1C9DD40300430F2E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8F32BCA1C9DD10800430F2E /* Observer.swift */,
+				D8F32BC81C9D7BC500430F2E /* ConvenioModelo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D8F32BCE1C9DD40700430F2E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */,
+				D8F32BC21C9B93D400430F2E /* MapaDelegate.swift */,
+				D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */,
+				D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */,
+				D8F32BD61C9DF8CC00430F2E /* ConveniosListViewController.swift */,
+				D8F32BD81C9E032E00430F2E /* ConvenioViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D8F32BCF1C9DD41300430F2E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */,
+				D84CE8C11C8FA02D00AA8831 /* Info.plist */,
+				D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */,
+				D84CE8B91C8FA02D00AA8831 /* Main.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D8F32BD01C9DD41F00430F2E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		D8F32BD11C9DD43000430F2E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D84CE8AF1C8FA02D00AA8831 /* FiscalCidadao */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D84CE8DA1C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadao" */;
+			buildPhases = (
+				D84CE8AC1C8FA02D00AA8831 /* Sources */,
+				D84CE8AD1C8FA02D00AA8831 /* Frameworks */,
+				D84CE8AE1C8FA02D00AA8831 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FiscalCidadao;
+			productName = FiscalCidadao;
+			productReference = D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D84CE8C51C8FA02D00AA8831 /* FiscalCidadaoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D84CE8DD1C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoTests" */;
+			buildPhases = (
+				D84CE8C21C8FA02D00AA8831 /* Sources */,
+				D84CE8C31C8FA02D00AA8831 /* Frameworks */,
+				D84CE8C41C8FA02D00AA8831 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D84CE8C81C8FA02D00AA8831 /* PBXTargetDependency */,
+			);
+			name = FiscalCidadaoTests;
+			productName = FiscalCidadaoTests;
+			productReference = D84CE8C61C8FA02D00AA8831 /* FiscalCidadaoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D84CE8D01C8FA02D00AA8831 /* FiscalCidadaoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D84CE8E01C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoUITests" */;
+			buildPhases = (
+				D84CE8CD1C8FA02D00AA8831 /* Sources */,
+				D84CE8CE1C8FA02D00AA8831 /* Frameworks */,
+				D84CE8CF1C8FA02D00AA8831 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D84CE8D31C8FA02D00AA8831 /* PBXTargetDependency */,
+			);
+			name = FiscalCidadaoUITests;
+			productName = FiscalCidadaoUITests;
+			productReference = D84CE8D11C8FA02D00AA8831 /* FiscalCidadaoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D84CE8A81C8FA02D00AA8831 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Wallas Henrique Santos";
+				TargetAttributes = {
+					D84CE8AF1C8FA02D00AA8831 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					D84CE8C51C8FA02D00AA8831 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = D84CE8AF1C8FA02D00AA8831;
+					};
+					D84CE8D01C8FA02D00AA8831 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = D84CE8AF1C8FA02D00AA8831;
+					};
+				};
+			};
+			buildConfigurationList = D84CE8AB1C8FA02D00AA8831 /* Build configuration list for PBXProject "FiscalCidadao" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D84CE8A71C8FA02D00AA8831;
+			productRefGroup = D84CE8B11C8FA02D00AA8831 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D84CE8AF1C8FA02D00AA8831 /* FiscalCidadao */,
+				D84CE8C51C8FA02D00AA8831 /* FiscalCidadaoTests */,
+				D84CE8D01C8FA02D00AA8831 /* FiscalCidadaoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D84CE8AE1C8FA02D00AA8831 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */,
+				D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */,
+				D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D84CE8C41C8FA02D00AA8831 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D84CE8CF1C8FA02D00AA8831 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D84CE8AC1C8FA02D00AA8831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8F32BC91C9D7BC500430F2E /* ConvenioModelo.swift in Sources */,
+				D8F32BCB1C9DD10800430F2E /* Observer.swift in Sources */,
+				D8F32BC31C9B93D400430F2E /* MapaDelegate.swift in Sources */,
+				D8F32BD91C9E032E00430F2E /* ConvenioViewController.swift in Sources */,
+				D8F32BC11C9B88C600430F2E /* MapaAnnotation.swift in Sources */,
+				D8F32BBF1C9B869D00430F2E /* MapaViewController.swift in Sources */,
+				D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */,
+				D8F32BC71C9CDA0800430F2E /* DataController.swift in Sources */,
+				D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */,
+				D8F32BD71C9DF8CC00430F2E /* ConveniosListViewController.swift in Sources */,
+				D8F32BD51C9DD6C600430F2E /* BaseController.swift in Sources */,
+				D8F32BC51C9CD70000430F2E /* LocationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D84CE8C21C8FA02D00AA8831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D84CE8CD1C8FA02D00AA8831 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D84CE8C81C8FA02D00AA8831 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D84CE8AF1C8FA02D00AA8831 /* FiscalCidadao */;
+			targetProxy = D84CE8C71C8FA02D00AA8831 /* PBXContainerItemProxy */;
+		};
+		D84CE8D31C8FA02D00AA8831 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D84CE8AF1C8FA02D00AA8831 /* FiscalCidadao */;
+			targetProxy = D84CE8D21C8FA02D00AA8831 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D84CE8B91C8FA02D00AA8831 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D84CE8BA1C8FA02D00AA8831 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D84CE8BF1C8FA02D00AA8831 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D84CE8D81C8FA02D00AA8831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		D84CE8D91C8FA02D00AA8831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D84CE8DB1C8FA02D00AA8831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = FiscalCidadao/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadao";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D84CE8DC1C8FA02D00AA8831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = FiscalCidadao/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadao";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D84CE8DE1C8FA02D00AA8831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FiscalCidadaoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiscalCidadao.app/FiscalCidadao";
+			};
+			name = Debug;
+		};
+		D84CE8DF1C8FA02D00AA8831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FiscalCidadaoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FiscalCidadao.app/FiscalCidadao";
+			};
+			name = Release;
+		};
+		D84CE8E11C8FA02D00AA8831 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FiscalCidadaoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FiscalCidadao;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D84CE8E21C8FA02D00AA8831 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FiscalCidadaoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadaoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FiscalCidadao;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D84CE8AB1C8FA02D00AA8831 /* Build configuration list for PBXProject "FiscalCidadao" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D84CE8D81C8FA02D00AA8831 /* Debug */,
+				D84CE8D91C8FA02D00AA8831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D84CE8DA1C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadao" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D84CE8DB1C8FA02D00AA8831 /* Debug */,
+				D84CE8DC1C8FA02D00AA8831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D84CE8DD1C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D84CE8DE1C8FA02D00AA8831 /* Debug */,
+				D84CE8DF1C8FA02D00AA8831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D84CE8E01C8FA02D00AA8831 /* Build configuration list for PBXNativeTarget "FiscalCidadaoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D84CE8E11C8FA02D00AA8831 /* Debug */,
+				D84CE8E21C8FA02D00AA8831 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D84CE8A81C8FA02D00AA8831 /* Project object */;
+}

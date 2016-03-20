@@ -8,103 +8,119 @@
     android:background="@color/colorActivityBackground"
     tools:context="br.com.gigascorp.ficalcidadao.DenunciaActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
 
-        <!--Convênio-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/label_size"
-            android:text="Convênio"
-            android:textColor="@color/colorLabel"
-            />
-
-        <TextView
-            android:id="@+id/txtDenuciaConvenio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:textStyle="bold"
-            android:text="@string/texto_default_teste"
-            android:textColor="@color/colorText"
-            android:paddingLeft="@dimen/txt_horizontal_margin"
-            android:paddingRight="@dimen/txt_horizontal_margin"
-            android:paddingTop="@dimen/txt_margin_top"
-            android:paddingBottom="@dimen/txt_margin_bottom"
-            />
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
-            android:id="@+id/separator"
-            android:visibility="visible"
-            android:background="@android:color/black"/>
-
-
-        <!--Denúncia-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/txt_margin_bottom"
-            android:textSize="@dimen/label_size"
-            android:text="Deixe sua Denúncia"
-            android:textColor="@color/colorLabel"
-            />
-
-        <EditText
-            android:id="@+id/txtDenunciaTexto"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/colorText"
-            android:minLines="3"
-            android:lines="5"
-            android:gravity="top|left"
-            android:scrollbars="vertical"
-            android:paddingLeft="@dimen/txt_horizontal_margin"
-            android:paddingRight="@dimen/txt_horizontal_margin"
-            android:paddingTop="@dimen/txt_margin_top"
-            android:paddingBottom="@dimen/txt_margin_bottom"
-            />
-
-
-        <!--Fotos-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/label_size"
-            android:text="Adicione algumas fotos"
-            android:textColor="@color/colorLabel"
-            />
-
-        <!-- Fotos -->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/gridFotos"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="false"
-            android:orientation="vertical"
-            />
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+            <!--Convênio-->
+            <TextView
+                android:id="@+id/lblConvenio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Convênio"
+                android:textColor="@color/colorLabel"
+                />
+
+            <TextView
+                android:layout_below="@id/lblConvenio"
+                android:id="@+id/txtDenuciaConvenio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                android:text="@string/texto_default_teste"
+                android:textColor="@color/colorText"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                />
+
+            <View
+                android:layout_below="@id/txtDenuciaConvenio"
+                android:layout_width="fill_parent"
+                android:layout_height="0.2dp"
+                android:id="@+id/separator"
+                android:visibility="visible"
+                android:background="@android:color/black"/>
 
 
-    
-    <Button
-        android:id="@+id/btnEnviarDenuncia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
-        android:padding="4dp"
-        android:textSize="@dimen/text_size"
-        android:background="@color/colorAccent"
-        android:textStyle="bold"
-        android:textColor="#FFF"
-        android:text="@string/texto_btn_enviar_denuncia"/>
+            <!--Denúncia-->
+            <TextView
+                android:layout_below="@id/separator"
+                android:id="@+id/lblTexto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/txt_margin_bottom"
+                android:textSize="@dimen/label_size"
+                android:text="Deixe sua Denúncia"
+                android:textColor="@color/colorLabel"
+                />
+
+            <EditText
+                android:layout_below="@id/lblTexto"
+                android:id="@+id/txtDenunciaTexto"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/colorText"
+                android:minLines="3"
+                android:lines="5"
+                android:gravity="top|left"
+                android:scrollbars="vertical"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                />
+
+
+            <!--Fotos-->
+            <TextView
+                android:layout_below="@id/txtDenunciaTexto"
+                android:id="@+id/lblFotos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Adicione algumas fotos"
+                android:textColor="@color/colorLabel"
+                />
+
+            <!-- Fotos -->
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@id/lblFotos"
+                android:id="@+id/gridFotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="false"
+                android:orientation="vertical"
+                android:layout_marginBottom="60dp"
+                />
+
+            <Button
+                android:id="@+id/btnEnviarDenuncia"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                android:textSize="@dimen/text_size"
+                android:background="@color/colorAccent"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                android:text="@string/texto_btn_enviar_denuncia"/>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
 
 </RelativeLayout>

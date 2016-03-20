@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/foto_card_view"
+    card_view:cardCornerRadius="4dp"
+    android:layout_marginBottom="8dp"
+    android:layout_width="90dp"
+    android:layout_height="90dp">
+
+    <ImageView
+        android:id="@+id/imgFotoDenuncia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_add_a_photo_black_48dp"
+        android:background="@color/common_action_bar_splitter"
+        />
+
+</android.support.v7.widget.CardView>

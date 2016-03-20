@@ -23,11 +23,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.squareup.okhttp.OkHttpClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
@@ -93,9 +95,14 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
                 .create();
 
         //Inicializando o retrofit para a url da API
+        final OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.setReadTimeout(180, TimeUnit.SECONDS);
+        okHttpClient.setConnectTimeout(180, TimeUnit.SECONDS);
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_URI)
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
                 .build();
 
         fiscalApi = retrofit.create(FiscalCidadaoApi.class);

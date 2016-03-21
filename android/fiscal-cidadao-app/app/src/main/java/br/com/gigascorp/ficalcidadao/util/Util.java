@@ -103,4 +103,21 @@ public class Util {
         return 0;
     }
 
+    public static Bitmap redimensionar(Bitmap realImage) {
+        float maxImageSize = 800;
+        boolean filter = true;
+
+        float ratio = Math.min(
+                (float) maxImageSize / realImage.getWidth(),
+                (float) maxImageSize / realImage.getHeight());
+        int width = Math.round((float) ratio * realImage.getWidth());
+        int height = Math.round((float) ratio * realImage.getHeight());
+
+        Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width, height, filter);
+
+        realImage.recycle();
+
+        return newBitmap;
+    }
+
 }

@@ -128,7 +128,7 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
             super.onActivityResult(requestCode, resultCode, data);
 
             try {
-                Bitmap cameraBmp = MediaStore.Images.Media.getBitmap(getContentResolver(),imageUri );
+                Bitmap cameraBmp = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
 
                 Matrix m = new Matrix();
                 m.postRotate(Util.rotacaoNecessaria(new File(imageUri.getPath())));
@@ -141,11 +141,15 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
 
                 listaFotosThumb = Util.adicionarFoto(this, listaFotosThumb, new FotoHolderWrap(thumb));
 
+                cameraBmp = Util.redimensionar(cameraBmp);
+
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 cameraBmp.compress(Bitmap.CompressFormat.JPEG, 80, baos);
                 byte[] imageBytes = baos.toByteArray();
 
                 listaFotosBase64.add(Base64.encodeToString(imageBytes, Base64.DEFAULT));
+
+                cameraBmp.recycle();
 
                 FotoDenunciaAdapter adapter = new FotoDenunciaAdapter(listaFotosThumb, this);
                 recyclerView.setAdapter(adapter);

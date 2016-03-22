@@ -45,7 +45,7 @@ public class MapaConveniosActivity  extends ClienteApiActivity
                     GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener,
                     GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private List<Convenio> convenios;
+    private List<Convenio> convenios = null;
     private Map<Marker, List<Convenio>> marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
 
     private Call<ConveniosWrapper> conveniosProximosCall;
@@ -224,6 +224,12 @@ public class MapaConveniosActivity  extends ClienteApiActivity
     //Eventos do Google API Client
     @Override
     public void onConnected(Bundle bundle) {
+
+        //Se a lista já tiver sido carregada, não carrega novamente
+        if(convenios != null && convenios.size() > 0){
+            return;
+        }
+
         Location localizacao;
 
         localizacao = FusedLocationApi.getLastLocation(googleApiClient);

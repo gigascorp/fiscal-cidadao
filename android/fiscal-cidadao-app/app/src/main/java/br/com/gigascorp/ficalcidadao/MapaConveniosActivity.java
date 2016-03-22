@@ -45,25 +45,20 @@ import retrofit.Retrofit;
 
 import static com.google.android.gms.location.LocationServices.*;
 
-public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-
-    private static final String API_URI = "http://www.emilioweba.com/FiscalCidadaoWCF.svc/";
-    private static final String TAG = "FISCAL-CIDADAO";
+public class MapaConveniosActivity  extends ClienteApiActivity
+        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+                    GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener,
+                    GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private List<Convenio> convenios;
     private Map<Marker, List<Convenio>> marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
 
-    private Retrofit retrofit;
-    private FiscalCidadaoApi fiscalApi;
     private Call<ConveniosWrapper> conveniosProximosCall;
+    private GoogleApiClient googleApiClient = null;
 
     private RecyclerView reciclerViewConvenios;
     private ConvenioLinearLayoutManager layoutManager;
     private SlidingUpPanelLayout slidingLayout;
-
-    private GoogleApiClient googleApiClient = null;
-
-    private SlidingUpPanelLayout.PanelState ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,23 +84,6 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         layoutManager = new ConvenioLinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclerViewConvenios.setLayoutManager(layoutManager);
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat("dd/MM/yy")
-                .create();
-
-        //Inicializando o retrofit para a url da API
-        final OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.setReadTimeout(180, TimeUnit.SECONDS);
-        okHttpClient.setConnectTimeout(180, TimeUnit.SECONDS);
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(API_URI)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okHttpClient)
-                .build();
-
-        fiscalApi = retrofit.create(FiscalCidadaoApi.class);
 
     }
 
@@ -162,6 +140,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         ConvenioAdapter adapter = new ConvenioAdapter(selecionados);
         reciclerViewConvenios.setAdapter(adapter);
 
+        //Seta a altura do slidepanel
         int height = Util.dpToPx(80);
         height = height * selecionados.size();
 
@@ -182,7 +161,6 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     public void onMapClick(LatLng latLng) {
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
     }
-
 
     @Override
     public void onBackPressed() {
@@ -227,16 +205,6 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     public void onPanelStateChanged(View view, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
 
         Log.i(TAG, "OnPanelStateChanged " + previousState + "->" + newState);
-
-        if(ultimoEstado == SlidingUpPanelLayout.PanelState.COLLAPSED && newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
-            ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
-            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
-            return;
-        }
-
-        if(newState != SlidingUpPanelLayout.PanelState.DRAGGING){
-            ultimoEstado = newState;
-        }
 
         if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
             layoutManager.scrollToPositionWithOffset(0, 0);

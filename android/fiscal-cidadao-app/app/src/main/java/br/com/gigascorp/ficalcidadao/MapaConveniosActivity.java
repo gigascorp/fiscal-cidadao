@@ -53,6 +53,8 @@ public class MapaConveniosActivity  extends ClienteApiActivity
     private LinearLayoutManager layoutManager;
     private SlidingUpPanelLayout slidingLayout;
 
+    private SlidingUpPanelLayout.PanelState ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,7 @@ public class MapaConveniosActivity  extends ClienteApiActivity
         //Inicializando o slidingPanel e lista com cardviews
         slidingLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
-        //slidingLayout.addPanelSlideListener(this);
+        slidingLayout.addPanelSlideListener(this);
 
         reciclerViewConvenios = (RecyclerView) findViewById(R.id.cardList);
         reciclerViewConvenios.setHasFixedSize(false);
@@ -198,6 +200,16 @@ public class MapaConveniosActivity  extends ClienteApiActivity
     public void onPanelStateChanged(View view, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
 
         Log.i(TAG, "OnPanelStateChanged " + previousState + "->" + newState);
+
+        if(ultimoEstado == SlidingUpPanelLayout.PanelState.COLLAPSED && newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
+            ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+            return;
+        }
+
+        if(newState != SlidingUpPanelLayout.PanelState.DRAGGING){
+            ultimoEstado = newState;
+        }
 
     }
 

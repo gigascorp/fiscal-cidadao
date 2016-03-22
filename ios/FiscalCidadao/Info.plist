@@ -28,6 +28,8 @@
 	<string>Main</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Por favor autorize o app a usar o serviço de localização</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Por favor autorize o app a usar o serviço de localização</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

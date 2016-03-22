@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -53,6 +55,9 @@ public class MapaConveniosActivity  extends ClienteApiActivity
     private LinearLayoutManager layoutManager;
     private SlidingUpPanelLayout slidingLayout;
 
+    private RelativeLayout tela;
+    private ProgressBar progressBar;
+
     private SlidingUpPanelLayout.PanelState ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
 
     @Override
@@ -68,6 +73,9 @@ public class MapaConveniosActivity  extends ClienteApiActivity
                     .addApi(API)
                     .build();
         }
+
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        tela = (RelativeLayout) findViewById(R.id.tela);
 
         //Inicializando o slidingPanel e lista com cardviews
         slidingLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
@@ -225,6 +233,9 @@ public class MapaConveniosActivity  extends ClienteApiActivity
         }
 
         //Após recuperar a localização, chama a API para encontrar os convênios das proximidades
+        progressBar.setVisibility(View.VISIBLE);
+        tela.setVisibility(View.INVISIBLE);
+
         Log.d(TAG, "Vai enviar a requisição");
         conveniosProximosCall = fiscalApi.conveniosProximos(localizacao.getLatitude(), localizacao.getLongitude());
         Log.d(TAG, "Requisição enviada");
@@ -252,11 +263,16 @@ public class MapaConveniosActivity  extends ClienteApiActivity
                 } else {
                     Toast.makeText(MapaConveniosActivity.this, response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
                 }
+
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(Throwable t) {
                 Toast.makeText(MapaConveniosActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
                 t.printStackTrace();
             }
         });

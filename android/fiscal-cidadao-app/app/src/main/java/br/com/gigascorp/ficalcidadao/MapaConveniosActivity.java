@@ -2,7 +2,6 @@ package br.com.gigascorp.ficalcidadao;
 
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -20,30 +19,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-import com.squareup.okhttp.OkHttpClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
-import br.com.gigascorp.ficalcidadao.ui.ConvenioLinearLayoutManager;
 import br.com.gigascorp.ficalcidadao.util.Util;
 import retrofit.Call;
 import retrofit.Callback;
-import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-import static com.google.android.gms.location.LocationServices.*;
+import static com.google.android.gms.location.LocationServices.API;
+import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
 public class MapaConveniosActivity  extends ClienteApiActivity
         implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
@@ -57,7 +50,7 @@ public class MapaConveniosActivity  extends ClienteApiActivity
     private GoogleApiClient googleApiClient = null;
 
     private RecyclerView reciclerViewConvenios;
-    private ConvenioLinearLayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     private SlidingUpPanelLayout slidingLayout;
 
     @Override
@@ -77,11 +70,11 @@ public class MapaConveniosActivity  extends ClienteApiActivity
         //Inicializando o slidingPanel e lista com cardviews
         slidingLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
-        slidingLayout.addPanelSlideListener(this);
+        //slidingLayout.addPanelSlideListener(this);
 
         reciclerViewConvenios = (RecyclerView) findViewById(R.id.cardList);
         reciclerViewConvenios.setHasFixedSize(false);
-        layoutManager = new ConvenioLinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclerViewConvenios.setLayoutManager(layoutManager);
 
@@ -206,16 +199,6 @@ public class MapaConveniosActivity  extends ClienteApiActivity
 
         Log.i(TAG, "OnPanelStateChanged " + previousState + "->" + newState);
 
-        if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
-            layoutManager.scrollToPositionWithOffset(0, 0);
-            layoutManager.setScrool(false);
-            return;
-        }
-
-        if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
-            layoutManager.setScrool(true);
-            return;
-        }
     }
 
     //Eventos do Google API Client
@@ -230,11 +213,16 @@ public class MapaConveniosActivity  extends ClienteApiActivity
         }
 
         //Após recuperar a localização, chama a API para encontrar os convênios das proximidades
+        Log.d(TAG, "Vai enviar a requisição");
         conveniosProximosCall = fiscalApi.conveniosProximos(localizacao.getLatitude(), localizacao.getLongitude());
+        Log.d(TAG, "Requisição enviada");
 
         conveniosProximosCall.enqueue(new Callback<ConveniosWrapper>() {
             @Override
             public void onResponse(Response<ConveniosWrapper> response, Retrofit retrofit) {
+
+                Log.d(TAG, "Resposta recebida");
+
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
 
                     ConveniosWrapper conveniosWrapper = response.body();

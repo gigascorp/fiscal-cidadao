@@ -8,7 +8,16 @@
     android:background="@color/colorActivityBackground"
     tools:context="br.com.gigascorp.ficalcidadao.DenunciaActivity">
 
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
     <ScrollView
+        android:id="@+id/tela"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:fillViewport="true" >

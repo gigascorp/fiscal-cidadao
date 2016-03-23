@@ -14,6 +14,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +54,9 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
     private EditText edTexto;
     private Button btnEnviar;
 
+    private ScrollView tela;
+    private ProgressBar progressBar;
+
     private ArrayList<FotoHolderWrap> listaFotosThumb = new ArrayList<>();
     private ArrayList<String> listaFotosBase64 = new ArrayList<>();
 
@@ -71,6 +77,9 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
 
         File image=new File(Environment.getExternalStorageDirectory(),TEMP_IMAGE);
         imageUri=Uri.fromFile(image);
+
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        tela = (ScrollView) findViewById(R.id.tela);
 
         txtObjeto = (TextView) findViewById(R.id.txtDenuciaConvenio);
         txtObjeto.setText(convenio.getObjeto());
@@ -147,6 +156,9 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
         denuncia.setTexto(texto);
         denuncia.setFotos(listaFotosBase64);
 
+        progressBar.setVisibility(View.VISIBLE);
+        tela.setVisibility(View.INVISIBLE);
+
         Log.d(TAG, "Vai enviar a requisição");
         enviarDenunciaCall = fiscalApi.enviarDenuncia(denuncia);
         Log.d(TAG, "Requisição enviada");
@@ -166,12 +178,17 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
 
                     Toast.makeText(DenunciaActivity.this, response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
                 }
+
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(Throwable t) {
                 Toast.makeText(DenunciaActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
             }
         });
 

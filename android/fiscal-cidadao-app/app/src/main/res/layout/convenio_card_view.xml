@@ -1,52 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/card_view"
-    card_view:cardCornerRadius="4dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    >
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/txtCardObjeto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorPrimaryText"
+        android:text="@string/texto_default_teste"
+        android:paddingBottom="4dp"
+        />
 
-        <TextView
-            android:id="@+id/txtCardObjeto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/text_size"
-            android:padding="8dp"
-            android:textColor="@color/colorText"
-            android:textStyle="bold"
-            />
+    <TextView
+        android:id="@+id/txtCardDataFim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:textSize="@dimen/text_size"
+        android:layout_below="@id/txtCardObjeto"
+        android:textColor="@color/colorSecondaryText"
+        android:text="@string/texto_default_teste"
+        />
 
-        <TextView
-            android:id="@+id/txtCardDataFim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textSize="@dimen/label_size"
-            android:layout_below="@id/txtCardObjeto"
-            android:paddingBottom="4dp"
-            android:paddingLeft="14dp"
-            android:textColor="@color/colorLabel"
-            />
+    <TextView
+        android:id="@+id/txtCardSituacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:textSize="@dimen/text_size"
+        android:layout_below="@id/txtCardDataFim"
+        android:textColor="@color/colorSecondaryText"
+        android:text="@string/texto_default_teste"
+        />
 
-        <TextView
-            android:id="@+id/txtCardSituacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:textSize="12dp"
-            android:layout_below="@id/txtCardDataFim"
-            android:paddingBottom="8dp"
-            android:paddingLeft="14dp"
-            android:textColor="#666"
-            />
-
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+</RelativeLayout>

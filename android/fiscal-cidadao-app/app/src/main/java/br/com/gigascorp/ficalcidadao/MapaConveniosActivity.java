@@ -1,5 +1,6 @@
 package br.com.gigascorp.ficalcidadao;
 
+import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ import java.util.Map;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
+import br.com.gigascorp.ficalcidadao.ui.DividerItemDecoration;
 import br.com.gigascorp.ficalcidadao.util.Util;
 import retrofit.Call;
 import retrofit.Callback;
@@ -84,10 +86,10 @@ public class MapaConveniosActivity  extends ClienteApiActivity
 
         reciclerViewConvenios = (RecyclerView) findViewById(R.id.cardList);
         reciclerViewConvenios.setHasFixedSize(false);
+        reciclerViewConvenios.addItemDecoration(new DividerItemDecoration(getResources().getDrawable(R.drawable.divisor, getTheme())));
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclerViewConvenios.setLayoutManager(layoutManager);
-
     }
 
     @Override

@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Objeto"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -46,9 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:textStyle="bold"
                 android:text="@string/texto_default_teste"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"
@@ -61,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Promonente"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -70,8 +69,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
                 android:text="@string/texto_default_teste"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"
@@ -85,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Reponsável"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -94,8 +92,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
                 android:text="@string/texto_default_teste"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"
@@ -108,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Telefone"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -117,8 +114,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
                 android:text="@string/texto_default_teste"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"
@@ -131,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Período"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -140,8 +136,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
                 android:text="@string/texto_default_teste"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"
@@ -154,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Situação"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -163,8 +158,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
                 android:text="@string/texto_default_teste"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"
@@ -177,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Valor"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -186,8 +180,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
                 android:text="@string/texto_default_teste"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"

@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Convênio"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <TextView
@@ -42,9 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:textStyle="bold"
                 android:text="@string/texto_default_teste"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:paddingLeft="@dimen/txt_horizontal_margin"
                 android:paddingRight="@dimen/txt_horizontal_margin"
                 android:paddingTop="@dimen/txt_margin_top"
@@ -69,7 +68,7 @@
                 android:paddingTop="@dimen/txt_margin_bottom"
                 android:textSize="@dimen/label_size"
                 android:text="Deixe sua Denúncia"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <EditText
@@ -78,7 +77,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorPrimaryText"
                 android:minLines="3"
                 android:lines="5"
                 android:gravity="top|left"
@@ -98,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
                 android:text="Adicione algumas fotos"
-                android:textColor="@color/colorLabel"
+                android:textColor="@color/colorTextHint"
                 />
 
             <!-- Fotos -->

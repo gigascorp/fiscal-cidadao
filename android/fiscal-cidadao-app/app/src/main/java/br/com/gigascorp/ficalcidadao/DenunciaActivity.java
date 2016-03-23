@@ -42,14 +42,8 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class DenunciaActivity extends AppCompatActivity implements View.OnClickListener {
+public class DenunciaActivity extends ClienteApiActivity implements View.OnClickListener {
 
-    /* Remover daqui as coisas do retrofit e botar numa superclasse */
-    private static final String API_URI = "http://www.fiscalcidadao.site/FiscalCidadaoWCF.svc/";
-    private static final String TAG = "FISCAL-CIDADAO";
-
-    private Retrofit retrofit;
-    private FiscalCidadaoApi fiscalApi;
     private Call<ResponseBody> enviarDenunciaCall;
 
 
@@ -102,24 +96,6 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
 
         FotoDenunciaAdapter adapter = new FotoDenunciaAdapter(listaFotosThumb, this);
         recyclerView.setAdapter(adapter);
-
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat("dd/MM/yy")
-                .create();
-
-        //Inicializando o retrofit para a url da API
-        final OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.setReadTimeout(180, TimeUnit.SECONDS);
-        okHttpClient.setConnectTimeout(180, TimeUnit.SECONDS);
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(API_URI)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okHttpClient)
-                .build();
-
-        fiscalApi = retrofit.create(FiscalCidadaoApi.class);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -178,12 +154,16 @@ public class DenunciaActivity extends AppCompatActivity implements View.OnClickL
         denuncia.setTexto(texto);
         denuncia.setFotos(listaFotosBase64);
 
-
+        Log.d(TAG, "Vai enviar a requisição");
         enviarDenunciaCall = fiscalApi.enviarDenuncia(denuncia);
+        Log.d(TAG, "Requisição enviada");
 
         enviarDenunciaCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Response<ResponseBody> response, Retrofit retrofit) {
+
+                Log.d(TAG, "Resposta recebida");
+
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
                     ResponseBody body = response.body();
 

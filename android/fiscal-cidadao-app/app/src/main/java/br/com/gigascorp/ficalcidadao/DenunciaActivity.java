@@ -170,12 +170,14 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
                 Log.d(TAG, "Resposta recebida");
 
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
-                    ResponseBody body = response.body();
 
-                    Log.d(TAG, body.toString());
+                    Toast.makeText(DenunciaActivity.this, "Denúncia enviada com sucesso", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(DenunciaActivity.this, MapaConveniosActivity.class);
+                    intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
+                    startActivity(intent);
 
                 } else {
-
                     Toast.makeText(DenunciaActivity.this, response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
                 }
 

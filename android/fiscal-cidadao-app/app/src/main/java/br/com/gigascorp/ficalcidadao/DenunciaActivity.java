@@ -178,7 +178,7 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(DenunciaActivity.this, response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(DenunciaActivity.this, "Erro ao realizara a denúncia.\n" + response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
@@ -187,7 +187,7 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(DenunciaActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(DenunciaActivity.this, "Erro ao realizara a denúncia.", Toast.LENGTH_LONG).show();
                 t.printStackTrace();
                 progressBar.setVisibility(View.GONE);
                 tela.setVisibility(View.VISIBLE);

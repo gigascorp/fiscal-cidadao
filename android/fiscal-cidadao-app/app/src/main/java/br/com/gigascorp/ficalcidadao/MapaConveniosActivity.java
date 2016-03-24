@@ -269,7 +269,7 @@ public class MapaConveniosActivity  extends ClienteApiActivity
                     mapFragment.getMapAsync(MapaConveniosActivity.this);
 
                 } else {
-                    Toast.makeText(MapaConveniosActivity.this, response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MapaConveniosActivity.this, "Erro ao recuperar os convênios da sua região\n" + response.code() + "" + response.message(), Toast.LENGTH_LONG).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
@@ -278,7 +278,7 @@ public class MapaConveniosActivity  extends ClienteApiActivity
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(MapaConveniosActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MapaConveniosActivity.this, "Erro ao recuperar os convênios da sua região", Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
                 tela.setVisibility(View.VISIBLE);
                 t.printStackTrace();

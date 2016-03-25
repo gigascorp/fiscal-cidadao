@@ -6,19 +6,14 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.IOException;
 
 import br.com.gigascorp.ficalcidadao.DenunciaActivity;
-import br.com.gigascorp.ficalcidadao.MainActivity;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.FotoHolderWrap;
-import br.com.gigascorp.ficalcidadao.util.Util;
 
 
 public class FotoDenunciaViewHolder extends RecyclerView.ViewHolder {

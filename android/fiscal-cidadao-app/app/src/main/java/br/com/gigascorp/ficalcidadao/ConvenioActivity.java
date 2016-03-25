@@ -1,23 +1,18 @@
 package br.com.gigascorp.ficalcidadao;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 
-public class ConvenioActivity extends AppCompatActivity implements View.OnClickListener {
+public class ConvenioActivity extends GenericActivity implements View.OnClickListener {
 
     private Convenio convenio;
 

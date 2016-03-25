@@ -69,6 +69,20 @@
     <br />
     <h3 class="bold">Denúncias (@(Model.Denuncias == null ? 0 : Model.Denuncias.Count))</h3>
     <br />
+    @*<img src="~/ImagensDenuncias/55_1.jpg" data-toggle="modal" data-target="#myModal" alt="Alternate Text" />
+    <img src="~/ImagensDenuncias/55_2.jpg" data-toggle="modal" data-target="#myModal" alt="Alternate Text" />*@
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img class="img-responsive" src="" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <table id="convenioTable" class="tablesorter" style="width:100%">
         <thead>
             <tr>
@@ -83,10 +97,11 @@
                 foreach (var denuncia in Model.Denuncias)
                 {
                     <tr>
+                        @Html.Hidden("denunciaId", denuncia.Id)
                         <td>@denuncia.Comentarios</td>
                         <td class="tdData">@String.Format("{0:dd/MM/yy}", denuncia.Data)</td>
                         <td class="tdFuncoes">
-                            <a>@Html.ActionLink("Ver Fotos", "ListagemConvenios", "Convenio")</a>
+                            <a class="verFotos">Ver Fotos</a>
                         </td>
                     </tr>
                 }

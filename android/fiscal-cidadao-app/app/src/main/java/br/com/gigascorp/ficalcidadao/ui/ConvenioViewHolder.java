@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 
 import br.com.gigascorp.ficalcidadao.ConvenioActivity;
-import br.com.gigascorp.ficalcidadao.MapaConveniosActivity;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 

@@ -1,13 +1,15 @@
 package br.com.gigascorp.ficalcidadao;
 
+import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -20,8 +22,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
@@ -29,37 +29,36 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
-import br.com.gigascorp.ficalcidadao.ui.ConvenioLinearLayoutManager;
+import br.com.gigascorp.ficalcidadao.ui.DividerItemDecoration;
 import br.com.gigascorp.ficalcidadao.util.Util;
 import retrofit.Call;
 import retrofit.Callback;
-import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-import static com.google.android.gms.location.LocationServices.*;
+import static com.google.android.gms.location.LocationServices.API;
+import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
-public class MapaConveniosActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class MapaConveniosActivity  extends ClienteApiActivity
+        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+                    GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener,
+                    GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static final String API_URI = "http://www.emilioweba.com/FiscalCidadaoWCF.svc/";
-    private static final String TAG = "FISCAL-CIDADAO";
-
-    private List<Convenio> convenios;
+    private List<Convenio> convenios = null;
     private Map<Marker, List<Convenio>> marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
 
-    private Retrofit retrofit;
-    private FiscalCidadaoApi fiscalApi;
     private Call<ConveniosWrapper> conveniosProximosCall;
+    private GoogleApiClient googleApiClient = null;
 
     private RecyclerView reciclerViewConvenios;
-    private ConvenioLinearLayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     private SlidingUpPanelLayout slidingLayout;
 
-    private GoogleApiClient googleApiClient = null;
+    private RelativeLayout tela;
+    private ProgressBar progressBar;
 
     private SlidingUpPanelLayout.PanelState ultimoEstado = SlidingUpPanelLayout.PanelState.HIDDEN;
 
@@ -77,6 +76,9 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
                     .build();
         }
 
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        tela = (RelativeLayout) findViewById(R.id.tela);
+
         //Inicializando o slidingPanel e lista com cardviews
         slidingLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
@@ -84,22 +86,10 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
 
         reciclerViewConvenios = (RecyclerView) findViewById(R.id.cardList);
         reciclerViewConvenios.setHasFixedSize(false);
-        layoutManager = new ConvenioLinearLayoutManager(this);
+        reciclerViewConvenios.addItemDecoration(new DividerItemDecoration(getResources().getDrawable(R.drawable.divisor, getTheme())));
+        layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         reciclerViewConvenios.setLayoutManager(layoutManager);
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat("dd/MM/yy")
-                .create();
-
-        //Inicializando o retrofit para a url da API
-        retrofit = new Retrofit.Builder()
-                .baseUrl(API_URI)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        fiscalApi = retrofit.create(FiscalCidadaoApi.class);
-
     }
 
     @Override
@@ -155,6 +145,7 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         ConvenioAdapter adapter = new ConvenioAdapter(selecionados);
         reciclerViewConvenios.setAdapter(adapter);
 
+        //Seta a altura do slidepanel
         int height = Util.dpToPx(80);
         height = height * selecionados.size();
 
@@ -175,7 +166,6 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
     public void onMapClick(LatLng latLng) {
         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
     }
-
 
     @Override
     public void onBackPressed() {
@@ -231,21 +221,17 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
             ultimoEstado = newState;
         }
 
-        if (newState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
-            layoutManager.scrollToPositionWithOffset(0, 0);
-            layoutManager.setScrool(false);
-            return;
-        }
-
-        if (newState == SlidingUpPanelLayout.PanelState.EXPANDED) {
-            layoutManager.setScrool(true);
-            return;
-        }
     }
 
     //Eventos do Google API Client
     @Override
     public void onConnected(Bundle bundle) {
+
+        //Se a lista já tiver sido carregada, não carrega novamente
+        if(convenios != null && convenios.size() > 0){
+            return;
+        }
+
         Location localizacao;
 
         localizacao = FusedLocationApi.getLastLocation(googleApiClient);
@@ -255,11 +241,19 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
         }
 
         //Após recuperar a localização, chama a API para encontrar os convênios das proximidades
+        progressBar.setVisibility(View.VISIBLE);
+        tela.setVisibility(View.INVISIBLE);
+
+        Log.d(TAG, "Vai enviar a requisição");
         conveniosProximosCall = fiscalApi.conveniosProximos(localizacao.getLatitude(), localizacao.getLongitude());
+        Log.d(TAG, "Requisição enviada");
 
         conveniosProximosCall.enqueue(new Callback<ConveniosWrapper>() {
             @Override
             public void onResponse(Response<ConveniosWrapper> response, Retrofit retrofit) {
+
+                Log.d(TAG, "Resposta recebida");
+
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
 
                     ConveniosWrapper conveniosWrapper = response.body();
@@ -275,13 +269,18 @@ public class MapaConveniosActivity extends AppCompatActivity implements OnMapRea
                     mapFragment.getMapAsync(MapaConveniosActivity.this);
 
                 } else {
-                    Toast.makeText(MapaConveniosActivity.this, response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MapaConveniosActivity.this, "Erro ao recuperar os convênios da sua região\n" + response.code() + "" + response.message(), Toast.LENGTH_LONG).show();
                 }
+
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(MapaConveniosActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MapaConveniosActivity.this, "Erro ao recuperar os convênios da sua região", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
                 t.printStackTrace();
             }
         });

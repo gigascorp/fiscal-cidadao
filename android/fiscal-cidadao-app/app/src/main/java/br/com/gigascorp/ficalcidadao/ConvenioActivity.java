@@ -1,20 +1,18 @@
 package br.com.gigascorp.ficalcidadao;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 
-public class ConvenioActivity extends AppCompatActivity {
+public class ConvenioActivity extends GenericActivity implements View.OnClickListener {
 
     private Convenio convenio;
 
@@ -25,6 +23,7 @@ public class ConvenioActivity extends AppCompatActivity {
     private TextView txtPeriodo;
     private TextView txtSituacao;
     private TextView txtValor;
+    private Button btnDenunciar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,8 @@ public class ConvenioActivity extends AppCompatActivity {
         txtPeriodo = (TextView) findViewById(R.id.txtConvenioPeriodo);
         txtSituacao = (TextView) findViewById(R.id.txtConvenioSituacao);
         txtValor = (TextView) findViewById(R.id.txtConvenioValor);
+        btnDenunciar = (Button) findViewById(R.id.btnDenunciar);
+        btnDenunciar.setOnClickListener(this);
 
         setaCamposNaTela();
     }
@@ -67,4 +68,10 @@ public class ConvenioActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(ConvenioActivity.this, DenunciaActivity.class);
+        intent.putExtra("convenio", convenio);
+        startActivity(intent);
+    }
 }

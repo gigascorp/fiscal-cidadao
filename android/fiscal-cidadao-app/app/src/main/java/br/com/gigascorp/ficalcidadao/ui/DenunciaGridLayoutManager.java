@@ -1,17 +1,18 @@
 package br.com.gigascorp.ficalcidadao.ui;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 
 /**
- * Classe criada exclusivamente para controlar se a lista de convênios do SlidePanel pode scroolar
+ * Classe criada exclusivamente para controlar se as fotos podem scroolar
  */
-public class ConvenioLinearLayoutManager extends LinearLayoutManager{
+public class DenunciaGridLayoutManager extends GridLayoutManager {
 
     private boolean scrool = false;
 
-    public ConvenioLinearLayoutManager(Context context) {
-        super(context);
+    public DenunciaGridLayoutManager(Context context, int columns) {
+        super(context, columns, LinearLayoutManager.VERTICAL, false);
     }
 
     @Override

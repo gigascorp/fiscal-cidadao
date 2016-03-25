@@ -9,9 +9,15 @@ using System.Text;
 using System.Data.Entity;
 using Newtonsoft.Json;
 using FiscalCidadaoWCF.Models;
+using System.ServiceModel.Web;
+using System.IO;
+using System.Web;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace FiscalCidadaoWCF
 {
+    [ServiceBehavior(MaxItemsInObjectGraph = 2147483647)]
     public class FiscalCidadaoWCF : IFiscalCidadaoWCF
     {
         public TelaInicialEnvioViewModel GetConveniosByCoordinate(string latitude, string longitude) // -2.510954 -44.285454
@@ -63,19 +69,63 @@ namespace FiscalCidadaoWCF
             return retorno;
         }
 
-        public string FazerDenuncia(string model)
+        public void GetOptions()
         {
-            string retorno = "entrou";
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
+        }
+
+        public string FazerDenuncia(FazerDenunciaViewModel model)
+        {
             try
             {
-                //FazerDenunciaViewModel denunciaCliente = JsonConvert.DeserializeObject<FazerDenunciaViewModel>(model);
+                using (var context = new ApplicationDBContext())
+                {
+                    Denuncia denuncia = new Denuncia
+                    {
+                        Comentarios = model.Comentarios,
+                        ConvenioId = model.ConvenioId,
+                        Data = DateTime.Now,
+                        Usuario = (model.UsuarioId != null ? context.Usuario.FirstOrDefault(x => x.FacebookId == model.UsuarioId) : null)
+                    };
+
+                    context.Denuncia.Add(denuncia);
+
+                    context.SaveChanges();
+
+                    int count = 1;
+
+                    foreach (var foto in model.ListaFotos)
+                    {
+                        var array = System.Convert.FromBase64String(foto.Replace("\n", string.Empty));
+                        var fileName = denuncia.Id.ToString() + "_" + count++ + ".jpg";
+
+                        string path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/ImagensDenuncias/"),
+                            fileName); // nome do arquivo
+
+                        using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                        {
+                            fileStream.Write(array, 0, array.Length);
+                        }
+
+                        context.DenunciaFoto.Add(new DenunciaFoto
+                        {
+                            DenunciaId = denuncia.Id,
+                            Arquivo = fileName
+                        });
+
+                    }
+
+                    context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
-                retorno = ex.Message;
+                return "Erro: " + ex.Message;
             }
 
-            return retorno;
+            return "OK";
         }
 
         public List<DenunciaEnvioViewModel> GetDenunciaByUsuario(string usuarioId)

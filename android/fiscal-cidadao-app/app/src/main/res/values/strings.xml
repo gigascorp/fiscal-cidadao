@@ -9,4 +9,5 @@
     <string name="texto_default_teste">Texto padrão para teste</string>
     <string name="texto_btn_denunciar_convenio">Denunciar Convênio</string>
     <string name="texto_btn_enviar_denuncia">Enviar</string>
+    <string name="facebook_app_id">1239658566047776</string>
 </resources>

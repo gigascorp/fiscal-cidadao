@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 
 namespace FiscalCidadaoWeb.Controllers
 {
@@ -203,6 +204,37 @@ namespace FiscalCidadaoWeb.Controllers
             }
 
             return selectList;
+        }
+
+        [HttpGet]
+        public JsonResult GetImageBase64(string id)
+        {
+            int denunciaId;
+
+            if (string.IsNullOrEmpty(id) || !int.TryParse(id, out denunciaId))
+            {
+                return null;
+            }
+
+            List<string> listImages = new List<string>();
+
+            using (var context = new ApplicationDBContext())
+            {
+                var result = context.DenunciaFoto.Where(x => x.DenunciaId == denunciaId).ToList();
+
+                foreach (var foto in result)
+                {
+                    if (result != null)
+                    {
+                        listImages.Add(System.Convert.ToBase64String // converte para 64 e add na lista
+                            (System.IO.File.ReadAllBytes // le os bytes
+                                (Directory.GetFiles // pega o arquivo
+                                    (Server.MapPath("~/ImagensDenuncias/"), foto.Arquivo).FirstOrDefault()))); // procura no path pelo nome do arquivo
+                    }
+                }
+            }
+
+            return Json(listImages, JsonRequestBehavior.AllowGet);
         }
 
     }

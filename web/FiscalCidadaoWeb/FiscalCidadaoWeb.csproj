@@ -248,16 +248,24 @@
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\tablesorter.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImagensDenuncias\60_1.jpg" />
+    <Content Include="ImagensDenuncias\57_1.jpg" />
+    <Content Include="ImagensDenuncias\60_2.jpg" />
+    <Content Include="ImagensDenuncias\57_2.jpg" />
     <Content Include="Scripts\App\DetalhesConvenio.js" />
     <Content Include="Scripts\App\ListagemConvenios.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\fiscalcidadao - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fiscalcidadao - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\fiscalcidadao - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fiscalcidadao - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\smarterASPNET.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\App\Index.js" />
     <Content Include="Scripts\jquery-2.2.1.js" />
@@ -268,6 +276,8 @@
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.metadata.js" />
+    <Content Include="Scripts\jquery.tablesorter.min.js" />
+    <Content Include="Scripts\jquery.tablesorter.pager.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -278,7 +288,9 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="APIUploadDB.svc" />
     <Content Include="FiscalCidadaoWCF.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

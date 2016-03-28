@@ -23,8 +23,7 @@ namespace FiscalCidadaoWCF.Models
         public int? UsuarioId { get; set; }
 
         [DataMember]
-        public string ListaFotos { get; set; }
-        //        public List<byte[]> ListaFotos { get; set; }
+        public List<string> ListaFotos { get; set; }
     }
 
 }

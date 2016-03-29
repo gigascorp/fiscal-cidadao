@@ -16,6 +16,7 @@ import com.facebook.login.widget.LoginButton;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import java.util.Arrays;
 
@@ -123,5 +124,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void onClickBtnPassarDireto(View view) {
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }

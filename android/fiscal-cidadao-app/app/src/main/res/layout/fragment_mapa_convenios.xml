@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapaConveniosActivity">
+
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        sothree:umanoDragView="@+id/dragView"
+        sothree:umanoScrollableView="@+id/cardList"
+        sothree:umanoOverlay="true"
+        sothree:umanoPanelHeight="80dp"
+        sothree:umanoParallaxOffset="100dp"
+        sothree:umanoShadowHeight="4dp">
+
+        <!-- MAPA -->
+        <RelativeLayout
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <RelativeLayout
+                android:id="@+id/tela"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--<fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/map"
+                    tools:context="br.com.gigascorp.ficalcidadao.MapaConveniosActivity"
+                    android:name="com.google.android.gms.maps.SupportMapFragment" />-->
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <!-- SLIDING PANEL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="false"
+            android:id="@+id/dragView">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cardList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorActivityBackground"
+                android:orientation="vertical"
+                />
+        </LinearLayout>
+
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+</RelativeLayout>

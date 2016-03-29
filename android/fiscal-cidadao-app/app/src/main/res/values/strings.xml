@@ -12,4 +12,5 @@
     <string name="facebook_app_id">1239658566047776</string>
     <string name="title_activity_perfil">PerfilActivity</string>
     <string name="title_activity_lista_denuncias">ListaDenunciasActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

@@ -35,6 +35,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onMenuTabSelected(@IdRes int menuItemId) {
 
                 if(menuItemId == R.id.bottomBarMapa){
+
+                    setTitle("Fiscal Cidadão");
+
                     MapaConveniosFragment fragment = new MapaConveniosFragment();
 
                     getSupportFragmentManager()
@@ -47,6 +50,9 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 if(menuItemId == R.id.bottomBarDenuncias){
+
+                    setTitle("Suas Denúncias");
+
                     ListaDenunciasFragment fragment = new ListaDenunciasFragment();
 
                     getSupportFragmentManager()
@@ -59,6 +65,9 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 if(menuItemId == R.id.bottomBarPerfil){
+
+                    setTitle("Perfil");
+        
                     PerfilFragment fragment = new PerfilFragment();
 
                     getSupportFragmentManager()

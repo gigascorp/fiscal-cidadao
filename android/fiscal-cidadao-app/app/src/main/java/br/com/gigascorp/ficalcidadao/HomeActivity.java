@@ -1,6 +1,7 @@
 package br.com.gigascorp.ficalcidadao;
 
 import android.support.annotation.IdRes;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,7 +12,7 @@ import br.com.gigascorp.ficalcidadao.fragment.ListaDenunciasFragment;
 import br.com.gigascorp.ficalcidadao.fragment.MapaConveniosFragment;
 import br.com.gigascorp.ficalcidadao.fragment.PerfilFragment;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
     private BottomBar mBottomBar;
 
@@ -20,12 +21,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
+        mostrarBotaoVoltar();
+
         MapaConveniosFragment fragment = new MapaConveniosFragment();
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.telaHome, fragment)
-                .addToBackStack(null)
                 .commit();
 
 
@@ -43,7 +46,6 @@ public class HomeActivity extends AppCompatActivity {
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.telaHome, fragment)
-                            .addToBackStack(null)
                             .commit();
 
                     return;
@@ -58,7 +60,6 @@ public class HomeActivity extends AppCompatActivity {
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.telaHome, fragment)
-                            .addToBackStack(null)
                             .commit();
 
                     return;
@@ -73,7 +74,6 @@ public class HomeActivity extends AppCompatActivity {
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.telaHome, fragment)
-                            .addToBackStack(null)
                             .commit();
 
                     return;
@@ -88,6 +88,22 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        getSupportFragmentManager().popBackStack();
+        return true;
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        mostrarBotaoVoltar();
+    }
+
+    public void mostrarBotaoVoltar(){
+        boolean mostrar = getSupportFragmentManager().getBackStackEntryCount()>0;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mostrar);
     }
 
 }

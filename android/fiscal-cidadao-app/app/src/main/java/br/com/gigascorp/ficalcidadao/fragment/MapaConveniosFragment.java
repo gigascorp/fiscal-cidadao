@@ -289,6 +289,9 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
         if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
             slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
         }
+
+        layoutManager.scrollToPositionWithOffset(0, 0);
+
         super.onResume();
     }
 

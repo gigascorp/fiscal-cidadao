@@ -2,6 +2,7 @@ package br.com.gigascorp.ficalcidadao.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,8 @@ public class ConvenioFragment extends GenericFragment implements View.OnClickLis
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        getActivity().setTitle("Convênio");
 
         RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_convenio, container, false);
 

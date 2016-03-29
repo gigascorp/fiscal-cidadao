@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
                 if(menuItemId == R.id.bottomBarPerfil){
 
                     setTitle("Perfil");
-        
+
                     PerfilFragment fragment = new PerfilFragment();
 
                     getSupportFragmentManager()

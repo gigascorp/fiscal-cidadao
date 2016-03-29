@@ -118,7 +118,7 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
         case 10:
             cell?.textLabel?.text = "Valor"
         case 11:
-            cell?.textLabel?.text = formarter.stringFromNumber(NSNumber(float: (convenio?.value)!))!
+            cell?.textLabel?.text = "R$" + formarter.stringFromNumber(NSNumber(float: (convenio?.value)!))!
         default:
             cell?.textLabel?.text = " "
         }

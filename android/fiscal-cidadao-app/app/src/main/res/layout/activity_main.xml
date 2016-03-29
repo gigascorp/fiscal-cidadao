@@ -8,4 +8,24 @@
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/btnPassarDireto"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorAccent"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:text="Passar Direto"
+        android:onClick="onClickBtnPassarDireto" />
+
+    
 </RelativeLayout>

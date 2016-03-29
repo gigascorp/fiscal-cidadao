@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottomBarMapa"
+        android:icon="@drawable/ic_place_white_36dp"
+        android:title="Convênios" />
+
+    <item
+        android:id="@+id/bottomBarDenuncias"
+        android:icon="@drawable/ic_view_list_white_36dp"
+        android:title="Denúncias" />
+
+    <item
+        android:id="@+id/bottomBarPerfil"
+        android:icon="@drawable/ic_person_white_36dp"
+        android:title="Perfil" />
+
+</menu>

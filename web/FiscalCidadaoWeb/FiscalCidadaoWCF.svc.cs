@@ -14,6 +14,9 @@ using System.IO;
 using System.Web;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Facebook;
+using System.Web.Mvc;
+using System.Net;
 
 namespace FiscalCidadaoWCF
 {
@@ -122,10 +125,10 @@ namespace FiscalCidadaoWCF
             }
             catch (Exception ex)
             {
-                return "Erro: " + ex.Message;
+                return "500";
             }
 
-            return "OK";
+            return "200";
         }
 
         public List<DenunciaEnvioViewModel> GetDenunciaByUsuario(string usuarioId)
@@ -134,9 +137,7 @@ namespace FiscalCidadaoWCF
 
             try
             {
-                int id;
-
-                if (string.IsNullOrEmpty(usuarioId) || !int.TryParse(usuarioId, out id))
+                if (string.IsNullOrEmpty(usuarioId))
                 {
                     return retorno;
                 }
@@ -148,7 +149,7 @@ namespace FiscalCidadaoWCF
                         .Include(x => x.Convenio.ParecerGoverno)
                         .Include(x => x.Convenio.Situacao)
                         .Include(x => x.Convenio.Proponente)
-                        .Where(x => x.Usuario.FacebookId == id)
+                        .Where(x => x.Usuario.FacebookId == usuarioId)
                         .ToList();
 
                     foreach (var denuncia in listaDenuncia)
@@ -227,6 +228,53 @@ namespace FiscalCidadaoWCF
             catch (Exception ex)
             {
                 var a = 1;
+            }
+
+            return retorno;
+        }
+
+        public RetornoLogin Login(FazerLoginViewModel data)
+        {
+            RetornoLogin retorno = new RetornoLogin();
+
+            try
+            {
+                using (var context = new ApplicationDBContext())
+                {
+                    var usuario = context.Usuario.FirstOrDefault(x => x.FacebookId.Equals(data.Id));
+
+                    var fb = new FacebookClient(data.AccessToken);
+
+                    dynamic result = fb.Get("me?fields=name,picture{url},email");
+
+                    if (result.email != null && result.name != null && result.picture != null)
+                    {
+                        retorno.Nome = result.name;
+                        retorno.FotoPerfil = result.picture.data.url;
+                        retorno.HttpStatus = 200;
+                        retorno.Message = "OK";
+
+                        if (usuario == null) // caso for primeiro acesso, grava no banco
+                        {
+                            context.Usuario.Add(new Usuario
+                            {
+                                FacebookId = data.Id,
+                                Pontuacao = 0,
+                                Nome = result.name,
+                                Email = result.email
+                            });
+
+                            context.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                retorno.HttpStatus = 500;
+                retorno.Message = "Error: " + ex.Message;
+
+                return retorno;
             }
 
             return retorno;

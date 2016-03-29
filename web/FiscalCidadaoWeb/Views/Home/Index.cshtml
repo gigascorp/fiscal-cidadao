@@ -10,38 +10,39 @@
     Convênios com maiores números de denúncias
 </h3>
 <br />
-@foreach (var top3 in Model.MaisDenunciados)
+@if (Model != null)
 {
-    //using (Html.BeginForm("DetalhesConvenio", "Convenio", FormMethod.Get, new { id = top3.Id }))
-    //{
-    <div>
-        <div class="displayInline divDenunciados">
-            @Html.Hidden("convenioId", top3.Id)
-            <label class="alignLabel detailsDenunciados">@top3.Objeto</label>
+    foreach (var top3 in Model.MaisDenunciados)
+    {
+        <div>
+            <div class="displayInline divDenunciados">
+                @Html.Hidden("convenioId", top3.Id)
+                <label class="alignLabel detailsDenunciados">@top3.Objeto</label>
+            </div>
+            <div class="displayInline divCountDenunciados">
+                <label class="alignLabel">@top3.Count</label>
+            </div>
         </div>
-        <div class="displayInline divCountDenunciados">
-            <label class="alignLabel">@top3.Count</label>
-        </div>
-    </div>
+        <br />
+        //}
+    }
     <br />
-    //}
-}
-<br />
-<div>
-    <div class="displayInline divDown">
-        <h3>
-            Convênios denunciados não analisados
-        </h3>
-        <label class="alignLabel labelWithBorder">@Model.CountDenunciasNaoAnalisadas</label>
-    </div>
+    <div>
+        <div class="displayInline divDown">
+            <h3>
+                Convênios denunciados não analisados
+            </h3>
+            <label class="alignLabel labelWithBorder">@Model.CountDenunciasNaoAnalisadas</label>
+        </div>
 
-    <div class="displayInline divDown">
-        <h3>
-            Atualizações de endereço de convênio
-        </h3>
-        <label class="alignLabel labelWithBorder">@Model.CountAtualizacoesEndereco</label>
+        <div class="displayInline divDown">
+            <h3>
+                Atualizações de endereço de convênio
+            </h3>
+            <label class="alignLabel labelWithBorder">@Model.CountAtualizacoesEndereco</label>
+        </div>
     </div>
-</div>
+}
 
 <link href="~/Content/App/Home.css" rel="stylesheet" />
 <script src="~/Scripts/App/Index.js"></script>

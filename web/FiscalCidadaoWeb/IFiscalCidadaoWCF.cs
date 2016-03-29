@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web.Mvc;
 
 namespace FiscalCidadaoWCF
 {
@@ -33,5 +34,9 @@ namespace FiscalCidadaoWCF
         [OperationContract]
         [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetDenunciaByUsuario/{usuarioId}")]
         List<DenunciaEnvioViewModel> GetDenunciaByUsuario(string usuarioId);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Login")]
+        RetornoLogin Login(FazerLoginViewModel data);
     }
 }

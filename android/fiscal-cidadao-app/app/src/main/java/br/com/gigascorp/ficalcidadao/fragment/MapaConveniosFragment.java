@@ -4,7 +4,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -33,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
@@ -47,7 +47,7 @@ import retrofit.Retrofit;
 import static com.google.android.gms.location.LocationServices.API;
 import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
-public class MapaConveniosFragment extends ClienteApiFragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+public class MapaConveniosFragment extends GenericFragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
         GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
@@ -120,15 +120,15 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
         progressBar.setVisibility(View.VISIBLE);
         tela.setVisibility(View.INVISIBLE);
 
-        Log.d(TAG, "Vai enviar a requisição");
-        conveniosProximosCall = fiscalApi.conveniosProximos(localizacao.getLatitude(), localizacao.getLongitude());
-        Log.d(TAG, "Requisição enviada");
+        Log.d(FiscalCidadaoApp.TAG, "Vai enviar a requisição");
+        conveniosProximosCall = getFiscalCidadaoApi().conveniosProximos(localizacao.getLatitude(), localizacao.getLongitude());
+        Log.d(FiscalCidadaoApp.TAG, "Requisição enviada");
 
         conveniosProximosCall.enqueue(new Callback<ConveniosWrapper>() {
             @Override
             public void onResponse(Response<ConveniosWrapper> response, Retrofit retrofit) {
 
-                Log.d(TAG, "Resposta recebida");
+                Log.d(FiscalCidadaoApp.TAG, "Resposta recebida");
 
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
 

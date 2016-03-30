@@ -19,11 +19,19 @@ namespace FiscalCidadaoWCF
         TelaInicialEnvioViewModel GetConveniosByCoordinate(string latitude, string longitude);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         string FazerDenuncia(string model);
 
         [OperationContract]
         [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetConvenioById/{convenioId}")]
         ConvenioEnvioViewModel GetConvenioById(string convenioId);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetDenunciaByUsuario/{usuarioId}")]
+        List<DenunciaEnvioViewModel> GetDenunciaByUsuario(string usuarioId);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "Login")]
+        string Login(string id, string accessToken);
     }
 }

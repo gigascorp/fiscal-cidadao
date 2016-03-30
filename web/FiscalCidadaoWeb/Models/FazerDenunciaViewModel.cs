@@ -20,7 +20,7 @@ namespace FiscalCidadaoWCF.Models
         public string Coordenadas { get; set; }
 
         [DataMember]
-        public int? UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
 
         [DataMember]
         public List<string> ListaFotos { get; set; }

@@ -50,7 +50,9 @@ namespace FiscalCidadaoWCF
                     foreach (var situacao in arraySituacao)
                     {
                         // convenios de Sao Luis - MA
-                        urlTodosConvenios = "http://api.convenios.gov.br/siconv/v1/consulta/convenios.json?id_proponente=6307102000130&id_situacao=" + situacao;
+                        urlTodosConvenios = "http://api.convenios.gov.br/siconv/v1/consulta/convenios.json?id_proponente=29138369000147&id_situacao=" + situacao;
+                        //29138369000147 -> teresopolis // "POINT(-42.9658788 -22.4133074)"
+                        //6307102000130 -> prefeitura slz // "POINT(-44.2691611 -2.6258591)"
 
                         var ReadData = new System.Net.WebClient().DownloadString(urlTodosConvenios);
 
@@ -75,10 +77,10 @@ namespace FiscalCidadaoWCF
                                 ValorTotal = convenio.valor_global,
                                 DescricaoObjeto = convenioJson.convenios.FirstOrDefault().objeto,
                                 SincovId = convenio.id,
-                                Coordenadas = DbGeography.FromText("POINT(-44.2691611 -2.6258591)"), // mudar
+                                Coordenadas = DbGeography.FromText("POINT(-42.9658788 -22.4133074)"), // mudar
                                 SituacaoId = context.Situacao.Where(x => x.SincovId == tempSitId).FirstOrDefault().Id,
-                                ProponenteId = 2, // mudar
-                                ParecerGovernoId = 1, // mudar,
+                                ProponenteId = 3, // mudar
+                                ParecerGovernoId = 1,
                                 ConcedenteSincovId = convenio.orgao_concedente.orgao.id,
                                 ConcedenteNome = concedenteJson.orgaos.FirstOrDefault().nome
                             });

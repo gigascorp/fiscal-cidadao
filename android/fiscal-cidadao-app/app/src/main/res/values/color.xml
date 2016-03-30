@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorAccent">#03A9F4</color>
     <color name="colorActivityBackground">#FAFAFA</color>
+    <color name="colorGeneralBackground">#FAFAFA</color>
     <color name="colorTextHint">#61000000</color>
     <color name="colorPrimaryText">#DE000000</color>
     <color name="colorSecondaryText">#8A000000</color>

@@ -11,10 +11,12 @@ import com.squareup.okhttp.OkHttpClient;
 import java.util.concurrent.TimeUnit;
 
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
+import br.com.gigascorp.ficalcidadao.modelo.Usuario;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
-public class FiscalCidadaoApp extends Application{
+public class FiscalCidadaoApp extends Application
+{
 
     public static final String TAG = "FISCAL_CIDADAO_APP";
     public static final String API_URI = "http://www.fiscalcidadao.site/FiscalCidadaoWCF.svc/";
@@ -24,6 +26,8 @@ public class FiscalCidadaoApp extends Application{
 
     private Gson gson = null;
     private OkHttpClient okHttpClient = null;
+
+    private Usuario currentUsuario;
 
     @Override
     public void onCreate() {
@@ -58,6 +62,16 @@ public class FiscalCidadaoApp extends Application{
 
     public FiscalCidadaoApi getFiscalCidadaoApi() {
         return fiscalCidadaoApi;
+    }
+
+    public Usuario getCurrentUsuario()
+    {
+        return currentUsuario;
+    }
+
+    public void setCurrentUsuario(Usuario usuario)
+    {
+        this.currentUsuario = usuario;
     }
 
 }

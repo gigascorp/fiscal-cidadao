@@ -3,6 +3,8 @@ package br.com.gigascorp.ficalcidadao.api;
 import com.squareup.okhttp.ResponseBody;
 
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
+import br.com.gigascorp.ficalcidadao.modelo.FacebookLogin;
+import br.com.gigascorp.ficalcidadao.modelo.LoginResponse;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import retrofit.Call;
 import retrofit.http.Body;
@@ -17,5 +19,8 @@ public interface FiscalCidadaoApi {
 
     @POST("FazerDenuncia")
     public Call<ResponseBody> enviarDenuncia(@Body Denuncia denuncia);
+
+    @POST("Login")
+    public Call<LoginResponse> login(@Body FacebookLogin loginData);
 
 }

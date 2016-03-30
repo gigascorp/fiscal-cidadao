@@ -12,6 +12,9 @@ public class Denuncia {
     @SerializedName("ConvenioId")
     private int convenioId;
 
+    @SerializedName("UsuarioId")
+    private String usuarioId;
+
     @SerializedName("ListaFotos")
     private List<String> fotos;
 
@@ -31,6 +34,16 @@ public class Denuncia {
         this.convenioId = convenioId;
     }
 
+    public void setUsuarioId(String usuarioId)
+    {
+        this.usuarioId = usuarioId;
+    }
+
+    public String getUsuarioId()
+    {
+        return usuarioId;
+    }
+
     public List<String> getFotos() {
         return fotos;
     }
@@ -38,4 +51,5 @@ public class Denuncia {
     public void setFotos(List<String> fotos) {
         this.fotos = fotos;
     }
+
 }

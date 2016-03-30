@@ -69,11 +69,12 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
 
         convenio = (Convenio) getIntent().getExtras().get("convenio");
 
-        if(convenio == null){
-            Toast.makeText(this, "Erro ao recuperar o convênio", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
+        // Debug
+//        if(convenio == null){
+//            convenio = new Convenio();
+//            convenio.setId(61);
+//            convenio.setObjeto("Teste");
+//        }
 
         File image=new File(Environment.getExternalStorageDirectory(),TEMP_IMAGE);
         imageUri=Uri.fromFile(image);
@@ -155,6 +156,14 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
         denuncia.setConvenioId(convenio.getId());
         denuncia.setTexto(texto);
         denuncia.setFotos(listaFotosBase64);
+
+        // Add current User if any.
+        FiscalCidadaoApp app = (FiscalCidadaoApp) this.getApplication();
+
+        if(app.getCurrentUsuario() != null)
+        {
+            denuncia.setUsuarioId(app.getCurrentUsuario().getId());
+        }
 
         progressBar.setVisibility(View.VISIBLE);
         tela.setVisibility(View.INVISIBLE);

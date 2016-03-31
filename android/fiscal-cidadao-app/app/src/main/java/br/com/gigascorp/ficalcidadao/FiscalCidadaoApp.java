@@ -15,8 +15,7 @@ import br.com.gigascorp.ficalcidadao.modelo.Usuario;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
-public class FiscalCidadaoApp extends Application
-{
+public class FiscalCidadaoApp extends Application {
 
     public static final String TAG = "FISCAL_CIDADAO_APP";
     public static final String API_URI = "http://www.fiscalcidadao.site/FiscalCidadaoWCF.svc/";
@@ -64,13 +63,11 @@ public class FiscalCidadaoApp extends Application
         return fiscalCidadaoApi;
     }
 
-    public Usuario getCurrentUsuario()
-    {
+    public Usuario getCurrentUsuario() {
         return currentUsuario;
     }
 
-    public void setCurrentUsuario(Usuario usuario)
-    {
+    public void setCurrentUsuario(Usuario usuario) {
         this.currentUsuario = usuario;
     }
 

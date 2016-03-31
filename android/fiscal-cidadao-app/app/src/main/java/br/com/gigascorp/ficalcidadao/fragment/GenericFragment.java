@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
+import br.com.gigascorp.ficalcidadao.modelo.Usuario;
 
 public class GenericFragment extends Fragment {
 
@@ -19,5 +20,9 @@ public class GenericFragment extends Fragment {
 
     protected FiscalCidadaoApi getFiscalCidadaoApi(){
         return this.app.getFiscalCidadaoApi();
+    }
+
+    protected Usuario getUsuarioLogado(){
+        return this.app.getCurrentUsuario();
     }
 }

@@ -86,5 +86,12 @@ public class ConvenioFragment extends GenericFragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
+        DenunciarFragment fragment = DenunciarFragment.getNewIntance(convenio);
+
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.telaHome, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

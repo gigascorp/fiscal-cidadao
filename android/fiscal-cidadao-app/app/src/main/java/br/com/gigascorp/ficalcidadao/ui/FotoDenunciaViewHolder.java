@@ -1,5 +1,6 @@
 package br.com.gigascorp.ficalcidadao.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
@@ -13,20 +14,21 @@ import java.io.File;
 
 import br.com.gigascorp.ficalcidadao.DenunciaActivity;
 import br.com.gigascorp.ficalcidadao.R;
+import br.com.gigascorp.ficalcidadao.fragment.DenunciarFragment;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.FotoHolderWrap;
 
 
 public class FotoDenunciaViewHolder extends RecyclerView.ViewHolder {
 
     private View view;
-    private DenunciaActivity activity;
+    private DenunciarFragment fragment;
     private FotoHolderWrap fotoWrap;
     protected ImageView imgFoto;
 
-    public FotoDenunciaViewHolder(View v, DenunciaActivity activity) {
+    public FotoDenunciaViewHolder(View v, DenunciarFragment fragment) {
         super(v);
         this.view = v;
-        this.activity = activity;
+        this.fragment = fragment;
         imgFoto = (ImageView) v.findViewById(R.id.imgFotoDenuncia);
     }
 
@@ -38,11 +40,11 @@ public class FotoDenunciaViewHolder extends RecyclerView.ViewHolder {
             this.view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    File img = new File(Environment.getExternalStorageDirectory(),activity.TEMP_IMAGE);
+                    File img = new File(Environment.getExternalStorageDirectory(), DenunciarFragment.TEMP_IMAGE);
 
                     Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(img));
-                    activity.startActivityForResult(intent, DenunciaActivity.CAMERA_RESULT);
+                    fragment.startActivityForResult(intent, DenunciaActivity.CAMERA_RESULT);
                 }
             });
         } else {

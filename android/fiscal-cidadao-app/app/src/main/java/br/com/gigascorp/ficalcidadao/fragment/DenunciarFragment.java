@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.okhttp.ResponseBody;
@@ -34,7 +33,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import br.com.gigascorp.ficalcidadao.DenunciaActivity;
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
@@ -233,7 +231,7 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
                 Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(img));
-                startActivityForResult(intent, DenunciaActivity.CAMERA_RESULT);
+                startActivityForResult(intent, CAMERA_RESULT);
 
                 return true;
 

@@ -1,6 +1,5 @@
 package br.com.gigascorp.ficalcidadao.ui;
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import br.com.gigascorp.ficalcidadao.DenunciaActivity;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.fragment.DenunciarFragment;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.FotoHolderWrap;

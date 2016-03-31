@@ -43,25 +43,6 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".MapaConveniosActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_mapa_convenios"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".ConvenioActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_convenio"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".DenunciaActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_denuncia"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
-        <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"

@@ -1,7 +1,5 @@
 package br.com.gigascorp.ficalcidadao.ui;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +9,6 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
-import br.com.gigascorp.ficalcidadao.ConvenioActivity;
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.fragment.ConvenioFragment;

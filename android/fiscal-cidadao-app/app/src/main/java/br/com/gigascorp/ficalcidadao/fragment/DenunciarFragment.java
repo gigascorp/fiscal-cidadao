@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
+import br.com.gigascorp.ficalcidadao.HomeActivity;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
@@ -152,10 +153,9 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
                     Toast.makeText(DenunciarFragment.this.getActivity(), "Denúncia enviada com sucesso", Toast.LENGTH_LONG).show();
 
-                    /*Intent intent = new Intent(DenunciaActivity.this, MapaConveniosActivity.class);
-                    intent.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
-                    startActivity(intent);*/
-
+                    HomeActivity activity = (HomeActivity) getActivity();
+                    activity.selecionarAba(1);
+                    
                 } else {
                     Toast.makeText(DenunciarFragment.this.getActivity(), "Erro ao realizara a denúncia.\n" + response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
                 }

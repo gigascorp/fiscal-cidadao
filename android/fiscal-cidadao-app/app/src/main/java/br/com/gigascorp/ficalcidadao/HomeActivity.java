@@ -38,6 +38,8 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
 
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                 if(menuItemId == R.id.bottomBarMapa){
 
                     setTitle("Fiscal Cidadão");
@@ -105,6 +107,10 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
     public void mostrarBotaoVoltar(){
         boolean mostrar = getSupportFragmentManager().getBackStackEntryCount()>0;
         getSupportActionBar().setDisplayHomeAsUpEnabled(mostrar);
+    }
+
+    public void selecionarAba(int pos){
+        mBottomBar.selectTabAtPosition(pos, true);
     }
 
 }

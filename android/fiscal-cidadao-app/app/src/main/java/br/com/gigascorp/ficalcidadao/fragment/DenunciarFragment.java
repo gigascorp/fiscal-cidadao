@@ -31,7 +31,6 @@ import com.squareup.okhttp.ResponseBody;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
@@ -209,7 +208,7 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
                 Bitmap thumb = ThumbnailUtils.extractThumbnail(cameraBmp, 1024, 1024);
 
-                listaFotosThumb = Util.adicionarFoto(listaFotosThumb, new FotoHolderWrap(thumb));
+                listaFotosThumb = Util.adicionarFoto(listaFotosThumb, new FotoHolderWrap(thumb, listaFotosThumb.size()));
 
                 cameraBmp = Util.redimensionar(cameraBmp);
 
@@ -266,5 +265,19 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    public void excluirFoto(int posicao){
+
+        listaFotosThumb.remove(posicao);
+        listaFotosBase64.remove(posicao);
+
+        //Atualiza as posições das fotos na tela
+        for(int i=0; i<listaFotosThumb.size(); i++){
+            listaFotosThumb.get(i).setPosicao(i);
+        }
+
+        FotoDenunciaAdapter adapter = new FotoDenunciaAdapter(listaFotosThumb, this);
+        recyclerView.setAdapter(adapter);
     }
 }

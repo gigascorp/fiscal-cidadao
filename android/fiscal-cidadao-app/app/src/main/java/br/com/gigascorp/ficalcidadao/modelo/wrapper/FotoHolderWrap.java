@@ -6,8 +6,11 @@ public class FotoHolderWrap {
 
     private Bitmap img;
 
-    public FotoHolderWrap(Bitmap img) {
+    private int posicao;
+
+    public FotoHolderWrap(Bitmap img, int pos) {
         this.img = img;
+        this.posicao = pos;
     }
 
     public Bitmap getImg() {
@@ -18,4 +21,11 @@ public class FotoHolderWrap {
         this.img = img;
     }
 
+    public int getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(int posicao) {
+        this.posicao = posicao;
+    }
 }

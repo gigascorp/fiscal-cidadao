@@ -95,7 +95,7 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
 
 
         //Inclui o botão de adicionar fotos
-        listaFotosThumb.add(Util.criarBotaoAdicionarFoto(this));
+        //listaFotosThumb.add(Util.criarBotaoAdicionarFoto(this));
 
         FotoDenunciaAdapter adapter = null;//new FotoDenunciaAdapter(listaFotosThumb, this);
         recyclerView.setAdapter(adapter);
@@ -118,7 +118,7 @@ public class DenunciaActivity extends ClienteApiActivity implements View.OnClick
 
                 Bitmap thumb = ThumbnailUtils.extractThumbnail(cameraBmp, 1024, 1024);
 
-                listaFotosThumb = Util.adicionarFoto(this, listaFotosThumb, new FotoHolderWrap(thumb));
+                listaFotosThumb = Util.adicionarFoto( listaFotosThumb, new FotoHolderWrap(thumb));
 
                 cameraBmp = Util.redimensionar(cameraBmp);
 

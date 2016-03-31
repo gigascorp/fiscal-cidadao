@@ -14,6 +14,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,6 +34,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import br.com.gigascorp.ficalcidadao.DenunciaActivity;
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
@@ -57,7 +61,6 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
     private RecyclerView recyclerView;
     private DenunciaGridLayoutManager layoutManager;
-    private TextView txtObjeto;
     private EditText edTexto;
     private Button btnEnviar;
 
@@ -83,7 +86,8 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        getActivity().setTitle("Convênio");
+        getActivity().setTitle("Denunciar");
+        setHasOptionsMenu(true);
 
         RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_denunciar, container, false);
 
@@ -100,8 +104,6 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
         progressBar = (ProgressBar) layout.findViewById(R.id.progress_bar);
         tela = (ScrollView) layout.findViewById(R.id.tela);
 
-        txtObjeto = (TextView) layout.findViewById(R.id.txtDenuciaConvenio);
-        txtObjeto.setText(convenio.getObjeto());
         edTexto = (EditText) layout.findViewById(R.id.txtDenunciaTexto);
         btnEnviar = (Button) layout.findViewById(R.id.btnEnviarDenuncia);
         btnEnviar.setOnClickListener(this);
@@ -110,13 +112,6 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
         recyclerView.setHasFixedSize(false);
         layoutManager = new DenunciaGridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(layoutManager);
-
-
-        //Inclui o botão de adicionar fotos
-        listaFotosThumb.add(Util.criarBotaoAdicionarFoto(getActivity()));
-
-        FotoDenunciaAdapter adapter = new FotoDenunciaAdapter(listaFotosThumb, this);
-        recyclerView.setAdapter(adapter);
 
         return layout;
     }
@@ -200,7 +195,7 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
                 Bitmap thumb = ThumbnailUtils.extractThumbnail(cameraBmp, 1024, 1024);
 
-                listaFotosThumb = Util.adicionarFoto(getActivity(), listaFotosThumb, new FotoHolderWrap(thumb));
+                listaFotosThumb = Util.adicionarFoto(listaFotosThumb, new FotoHolderWrap(thumb));
 
                 cameraBmp = Util.redimensionar(cameraBmp);
 
@@ -221,6 +216,33 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
             }
 
             return;
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.denunciar_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.btnActionCamera:
+
+                File img = new File(Environment.getExternalStorageDirectory(), TEMP_IMAGE);
+
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(img));
+                startActivityForResult(intent, DenunciaActivity.CAMERA_RESULT);
+
+                return true;
+
+            case R.id.btnActionGaleria:
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
     }
 }

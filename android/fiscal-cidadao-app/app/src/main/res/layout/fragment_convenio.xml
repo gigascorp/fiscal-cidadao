@@ -15,6 +15,7 @@
         android:layout_marginTop="8dp"
         android:padding="4dp"
         android:textSize="@dimen/text_size"
+        android:textStyle="bold"
         android:background="@color/colorAccent"
         android:textColor="#FFF"
         android:text="@string/texto_btn_denunciar_convenio"/>

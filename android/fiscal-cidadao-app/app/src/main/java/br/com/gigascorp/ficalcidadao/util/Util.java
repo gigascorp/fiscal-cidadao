@@ -49,33 +49,13 @@ public class Util {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
-    public static FotoHolderWrap criarBotaoAdicionarFoto(Context context){
-        Bitmap icam = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_add_a_photo_black_48dp);
-        return new FotoHolderWrap(icam, true);
-    }
-
-    public static ArrayList<FotoHolderWrap> adicionarFoto(Context context, ArrayList<FotoHolderWrap> lista, FotoHolderWrap nova){
+    public static ArrayList<FotoHolderWrap> adicionarFoto(ArrayList<FotoHolderWrap> lista, FotoHolderWrap nova){
 
         if(lista == null){
             lista = new ArrayList<>();
         }
 
-        if(lista.size() == 0){
-            lista.add(nova);
-            lista.add(criarBotaoAdicionarFoto(context));
-            return lista;
-        }
-
-        FotoHolderWrap cam = lista.get(lista.size()-1);
-
-        if(cam.isBotao()){
-            lista.add(lista.size()-1, nova);
-            return lista;
-        }
-
-        //Se chegar até aqui, a lista não possui nenhum botão.
         lista.add(nova);
-        lista.add(criarBotaoAdicionarFoto(context));
 
         return lista;
     }

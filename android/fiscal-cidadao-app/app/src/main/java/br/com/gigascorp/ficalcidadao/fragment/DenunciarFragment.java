@@ -31,6 +31,7 @@ import com.squareup.okhttp.ResponseBody;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
@@ -52,6 +53,7 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
     private static final String CONVENIO_KEY = "convenio";
     private static final int CAMERA_RESULT = 1;
+    private static final int GALERIA_RESULT = 2;
     public static final String TEMP_IMAGE = "fiscal-cidadao-temp.jpg";
 
     private Call<ResponseBody> enviarDenunciaCall;
@@ -155,7 +157,7 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
                     HomeActivity activity = (HomeActivity) getActivity();
                     activity.selecionarAba(1);
-                    
+
                 } else {
                     Toast.makeText(DenunciarFragment.this.getActivity(), "Erro ao realizara a denúncia.\n" + response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
                 }
@@ -177,19 +179,33 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == CAMERA_RESULT && resultCode == Activity.RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK) {
 
             super.onActivityResult(requestCode, resultCode, data);
 
             try {
-                Bitmap cameraBmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
 
-                Matrix m = new Matrix();
-                m.postRotate(Util.rotacaoNecessaria(new File(imageUri.getPath())));
+                Bitmap cameraBmp = null;
 
-                cameraBmp = Bitmap.createBitmap(cameraBmp,
-                        0, 0, cameraBmp.getWidth(), cameraBmp.getHeight(),
-                        m, true);
+                if( requestCode == CAMERA_RESULT ){
+                    cameraBmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
+                    Matrix m = new Matrix();
+                    m.postRotate(Util.rotacaoNecessaria(new File(imageUri.getPath())));
+
+                    cameraBmp = Bitmap.createBitmap(cameraBmp,
+                            0, 0, cameraBmp.getWidth(), cameraBmp.getHeight(),
+                            m, true);
+                }
+
+                if( requestCode == GALERIA_RESULT ){
+                    Uri selectedImage = data.getData();
+                    cameraBmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                }
+
+                if(cameraBmp == null){
+                    Toast.makeText(getActivity(), "Erro ao recuperar a imagem", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Bitmap thumb = ThumbnailUtils.extractThumbnail(cameraBmp, 1024, 1024);
 
@@ -224,18 +240,26 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent intent = null;
+
         switch (item.getItemId()) {
             case R.id.btnActionCamera:
 
                 File img = new File(Environment.getExternalStorageDirectory(), TEMP_IMAGE);
 
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(img));
                 startActivityForResult(intent, CAMERA_RESULT);
 
                 return true;
 
             case R.id.btnActionGaleria:
+
+                intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, GALERIA_RESULT);
+
                 return true;
 
             default:

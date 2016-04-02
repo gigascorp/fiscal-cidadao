@@ -53,7 +53,7 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     private List<Convenio> convenios = null;
-    private Map<Marker, List<Convenio>> marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
+    private Map<Marker, List<Convenio>> marcadoresConvenio;
 
     private Call<ConveniosWrapper> conveniosProximosCall;
     private GoogleApiClient googleApiClient = null;
@@ -76,6 +76,8 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
         Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onCreateView");
 
         RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_mapa_convenios, container, false);
+
+        marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
 
         progressBar = (ProgressBar) layout.findViewById(R.id.progress_bar);
         tela = (RelativeLayout) layout.findViewById(R.id.tela);
@@ -208,6 +210,7 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
 
         map.setOnMarkerClickListener(this);
         map.setOnMapClickListener(this);
+        map.clear();
 
         for (Convenio convenio : convenios) {
 
@@ -252,6 +255,9 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onMarkerClick");
+
         List<Convenio> selecionados = marcadoresConvenio.get(marker);
 
         ConvenioAdapter adapter = new ConvenioAdapter(selecionados);

@@ -1,24 +1,18 @@
 package br.com.gigascorp.ficalcidadao.util;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
-import android.os.Environment;
 
 import com.google.android.gms.maps.model.Marker;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.FotoHolderWrap;
 
@@ -27,7 +21,6 @@ public class Util {
     public static Marker getConvenioNaMesmaLocalizacao(Map<Marker, List<Convenio>> lista, Convenio convenio){
 
         for (Map.Entry<Marker, List<Convenio>> entry : lista.entrySet()){
-            System.out.println(entry.getKey() + "/" + entry.getValue());
 
             List<Convenio> convenios = entry.getValue();
 

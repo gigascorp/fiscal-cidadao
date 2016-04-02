@@ -264,7 +264,7 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
         reciclerViewConvenios.setAdapter(adapter);
 
         //Seta a altura do slidepanel
-        int height = Util.dpToPx(80);
+        int height = Util.dpToPx(100);
         height = height * selecionados.size();
 
         DisplayMetrics dm = new DisplayMetrics();

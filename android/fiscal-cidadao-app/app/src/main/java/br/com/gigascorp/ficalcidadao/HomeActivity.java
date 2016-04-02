@@ -1,10 +1,9 @@
 package br.com.gigascorp.ficalcidadao;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
@@ -24,14 +23,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
 
         getSupportFragmentManager().addOnBackStackChangedListener(this);
         mostrarBotaoVoltar();
-
-        MapaConveniosFragment fragment = new MapaConveniosFragment();
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.telaHome, fragment)
-                .commit();
-
 
         mBottomBar = BottomBar.attach(this, savedInstanceState);
         mBottomBar.setItemsFromMenu(R.menu.bottombar_menu, new OnMenuTabClickListener() {

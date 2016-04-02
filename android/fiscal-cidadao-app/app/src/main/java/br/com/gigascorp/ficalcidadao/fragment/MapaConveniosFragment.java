@@ -29,6 +29,7 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -72,15 +73,9 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
 
         super.onCreateView(inflater, container, savedInstanceState);
 
-        RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_mapa_convenios, container, false);
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onCreateView");
 
-        if (googleApiClient == null) {
-            googleApiClient = new GoogleApiClient.Builder(super.getActivity())
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(API)
-                    .build();
-        }
+        RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_mapa_convenios, container, false);
 
         progressBar = (ProgressBar) layout.findViewById(R.id.progress_bar);
         tela = (RelativeLayout) layout.findViewById(R.id.tela);
@@ -101,7 +96,25 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onActivityCreated");
+
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(super.getActivity())
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(API)
+                    .build();
+        }
+    }
+
+    @Override
     public void onConnected(@Nullable Bundle bundle) {
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onConnected");
 
         //Se a lista já tiver sido carregada, não carrega novamente
         if(convenios != null && convenios.size() > 0){
@@ -190,10 +203,11 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
 
     @Override
     public void onMapReady(GoogleMap map) {
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onMapReady");
+
         map.setOnMarkerClickListener(this);
         map.setOnMapClickListener(this);
-
-        LatLngBounds.Builder builder = LatLngBounds.builder();
 
         for (Convenio convenio : convenios) {
 
@@ -203,7 +217,6 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
             //Se não houver (ainda) nenhum convênio para esta mesma localização, cria o marcador
             if (marcador == null) {
                 LatLng coord = new LatLng(convenio.getLat(), convenio.getLng());
-                builder.include(coord);
                 marcador = map.addMarker(new MarkerOptions().position(coord));
 
                 conveniosDoMarcador = new ArrayList<>();
@@ -227,6 +240,10 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
                 }
             } else {
                 //Se houver mais de um marcador, dá um zoom considerando todos os pontos (bound)
+                LatLngBounds.Builder builder = LatLngBounds.builder();
+                for (Marker m : marcadoresConvenio.keySet()) {
+                    builder.include(m.getPosition());
+                }
                 LatLngBounds bounds = builder.build();
                 map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
             }

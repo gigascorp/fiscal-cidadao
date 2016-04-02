@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
-                android:text="Objeto"
+                android:text="Descrição"
                 android:textColor="@color/colorTextHint"
                 />
 
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
-                android:text="Promonente"
+                android:text="Proponente"
                 android:textColor="@color/colorTextHint"
                 />
 

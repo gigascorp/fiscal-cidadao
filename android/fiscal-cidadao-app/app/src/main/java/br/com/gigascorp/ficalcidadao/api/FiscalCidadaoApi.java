@@ -6,6 +6,7 @@ import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
 import br.com.gigascorp.ficalcidadao.modelo.FacebookLogin;
 import br.com.gigascorp.ficalcidadao.modelo.LoginResponse;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.DenunciasWrapper;
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -22,5 +23,8 @@ public interface FiscalCidadaoApi {
 
     @POST("Login")
     public Call<LoginResponse> login(@Body FacebookLogin loginData);
+
+    @GET("GetDenunciaByUsuario/{usuarioid}")
+    public Call<DenunciasWrapper> getDenuncias(@Path("usuarioid") String id);
 
 }

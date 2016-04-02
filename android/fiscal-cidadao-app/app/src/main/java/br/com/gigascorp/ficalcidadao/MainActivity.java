@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         FiscalCidadaoApp app = (FiscalCidadaoApp) this.getApplication();
 
         Usuario usuario = new Usuario(androidId);
+        Log.d(FiscalCidadaoApp.TAG, "Android_Id: " + usuario.getId());
         app.setCurrentUsuario(usuario);
 
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);

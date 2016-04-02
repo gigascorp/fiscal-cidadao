@@ -208,6 +208,7 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
 
         Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onMapReady");
 
+        map.setMyLocationEnabled(true);
         map.setOnMarkerClickListener(this);
         map.setOnMapClickListener(this);
         map.clear();

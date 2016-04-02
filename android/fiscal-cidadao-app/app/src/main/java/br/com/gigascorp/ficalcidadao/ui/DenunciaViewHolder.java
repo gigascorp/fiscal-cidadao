@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.fragment.ConvenioFragment;
+import br.com.gigascorp.ficalcidadao.fragment.DenunciaFragment;
+import br.com.gigascorp.ficalcidadao.fragment.DenunciarFragment;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
 
@@ -41,14 +43,14 @@ public class DenunciaViewHolder extends RecyclerView.ViewHolder implements View.
     @Override
     public void onClick(View v) {
         try {
-            /*FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
 
-            ConvenioFragment fragment = ConvenioFragment.getNewIntance(convenio);
+            DenunciaFragment fragment = DenunciaFragment.getNewIntance(denuncia);
 
             fragmentManager.beginTransaction()
                     .replace(R.id.telaHome, fragment)
                     .addToBackStack(null)
-                    .commit();*/
+                    .commit();
 
         } catch (ClassCastException e) {
             Log.e(FiscalCidadaoApp.TAG, "Can't get fragment manager");

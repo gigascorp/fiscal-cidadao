@@ -2,10 +2,12 @@ package br.com.gigascorp.ficalcidadao.modelo;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.io.SerializablePermission;
 import java.util.Date;
 import java.util.List;
 
-public class Denuncia {
+public class Denuncia implements Serializable {
 
     @SerializedName("Comentarios")
     private String texto;

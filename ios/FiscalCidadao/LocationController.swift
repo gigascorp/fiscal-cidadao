@@ -86,7 +86,7 @@ class LocationController : NSObject, CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         currentLocation =  locations.last
-        print("Last location : \(currentLocation)")
+//        print("Last location : \(currentLocation)")
     }
     
     func requestAuth()

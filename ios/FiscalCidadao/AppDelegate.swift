@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             locationController.requestAuth()
         }
         
+        UINavigationBar.appearance().tintColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0);
+        UITabBar.appearance().tintColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0);
+        
         return true
     }
 

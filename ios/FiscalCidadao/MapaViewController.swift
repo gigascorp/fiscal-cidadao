@@ -45,7 +45,7 @@ class MapaViewController: UIViewController
         mapView.delegate = self
     }
     
-    func loadAnnotation(convenio : ConvenioModelo)
+    func loadAnnotation(convenio : Convenio)
     {
         let (lat, lng) = convenio.location
         let loc =  CLLocationCoordinate2DMake(lat, lng)

@@ -1,20 +1,33 @@
 //
-//  ConveniosListViewController.swift
+//  DenunciasTableViewController.swift
 //  FiscalCidadao
 //
-//  Created by Wallas Henrique Santos on 19/03/16.
+//  Created by Wallas Henrique Santos on 04/04/16.
 //  Copyright © 2016 Wallas Henrique Santos. All rights reserved.
 //
 
 import UIKit
 
-class ConveniosListViewController: UITableViewController
+class DenunciasTableViewController: UITableViewController
 {
     
+    var denuncias = [Denuncia]()
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        let data = DataController.sharedInstance
+        
+        let id =  UIDevice.currentDevice().identifierForVendor?.UUIDString
+        data.getDenuncias(id!, onCompletion: {denuncias in
+            
+            self.denuncias = denuncias
+            self.tableView.reloadData()
+        
+        })
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,52 +35,40 @@ class ConveniosListViewController: UITableViewController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewDidAppear(animated: Bool)
-    {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let data = DataController.sharedInstance
-        return data.allConvenios.count
+        return denuncias.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellId", forIndexPath: indexPath)
+
+        let denuncia = denuncias[indexPath.row]
         
-        let data = DataController.sharedInstance
-        let convenio = data.allConvenios[indexPath.row]
-        
-        cell.textLabel?.text = convenio.desc
-        
-        if convenio.startDate != nil && convenio.endDate != nil
-        {
-            cell.detailTextLabel?.text = convenio.responsible + " " + convenio.startDate! + " - " + convenio.endDate!
-        }
-        else
-        {
-            cell.detailTextLabel?.text = convenio.responsible
-        }
-        
-        // Configure the cell...
+        cell.textLabel?.text = denuncia.convenio?.desc
+        cell.detailTextLabel?.text = "\"" + denuncia.comments + "\""
 
         return cell
     }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -104,32 +105,14 @@ class ConveniosListViewController: UITableViewController
     }
     */
 
-    
-//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
-//    {
-//        selectedIdx = indexPath.row
-//    }
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        if(segue.identifier == "DetailSegue")
-        {
-            if let cell = sender as? UITableViewCell
-            {
-                let idx = tableView.indexPathForCell(cell)
-                if let row = idx?.row
-                {
-                    let destination : ConvenioViewController = segue.destinationViewController as! ConvenioViewController
-                    let data  = DataController.sharedInstance
-                    destination.convenio = data.allConvenios[row]
-                }
-            }
-        }
     }
+    */
 
 }

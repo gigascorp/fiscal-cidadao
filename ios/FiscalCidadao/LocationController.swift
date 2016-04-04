@@ -103,7 +103,7 @@ class LocationController : NSObject, CLLocationManagerDelegate
             {
                 locationManager.startUpdatingLocation()
             }
-            else if self.locationManager.respondsToSelector(Selector("requestAlwaysAuthorization"))
+            else if self.locationManager.respondsToSelector(#selector(CLLocationManager.requestAlwaysAuthorization))
             {
                 self.locationManager.requestWhenInUseAuthorization()
             }

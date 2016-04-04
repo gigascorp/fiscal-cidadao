@@ -20,7 +20,7 @@ class DataController: BaseController
     
     static let sharedInstance = DataController()
     
-    let baseUrl = "http://www.emilioweba.com/FiscalCidadaoWCF.svc/"
+    let baseUrl = "http://www.fiscalcidadao.site/FiscalCidadaoWCF.svc/"
     let getConveniosPath = "GetConveniosByCoordinate"
     
     var allConvenios : [ConvenioModelo] = []
@@ -41,7 +41,11 @@ class DataController: BaseController
     {
         do{
             var jsonData : AnyObject!
+            
+            let strData = String(data: data, encoding: NSUTF8StringEncoding)
+            print(strData)
             try jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
+            
             
             if(jsonData == nil)
             {
@@ -161,6 +165,7 @@ class DataController: BaseController
         {
             data, err in
             let convenios  = self.parseConvenios(data)
+            self.allConvenios = convenios;
             onCompletion(convenios)
             
         })

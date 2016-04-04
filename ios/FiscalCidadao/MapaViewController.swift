@@ -16,21 +16,42 @@ class MapaViewController: UIViewController
     
     let regionRadius: CLLocationDistance = 3000
     
-    // São Luís UFMA: -2,554014, -44.307548
+    // São Luís UFMA: -2,554014, -44,307548
     override func viewDidLoad()
     {
         navigationController?.setNavigationBarHidden(false, animated: true)
         
         let dataController = DataController.sharedInstance
         
+        if(dataController.allConvenios.isEmpty && LocationController.sharedInstance.hasLocation())
+        {
+            let locationController = LocationController.sharedInstance;
+            
+            dataController.getConvenios(locationController.getLocation(), onCompletion: {convenios in
+                
+                for c in convenios
+                {
+                    self.loadAnnotation(c)
+                }
+                
+            })
+            
+        }
+        
         for convenio in dataController.allConvenios
         {
-            let (lat, lng) = convenio.location
-            let loc =  CLLocationCoordinate2DMake(lat, lng)
-            
-            mapView.addAnnotation(MapaAnnotation(id: convenio.id, title: convenio.desc, locationName: convenio.responsible, coordinate: loc))
+            loadAnnotation(convenio)
         }
         mapView.delegate = self
+    }
+    
+    func loadAnnotation(convenio : ConvenioModelo)
+    {
+        let (lat, lng) = convenio.location
+        let loc =  CLLocationCoordinate2DMake(lat, lng)
+        
+        mapView.addAnnotation(MapaAnnotation(id: convenio.id, title: convenio.desc, locationName: convenio.responsible, coordinate: loc))
+        
     }
     
     override func viewDidAppear(animated: Bool)

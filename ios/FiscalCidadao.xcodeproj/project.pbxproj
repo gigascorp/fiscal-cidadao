@@ -13,6 +13,7 @@
 		D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8B91C8FA02D00AA8831 /* Main.storyboard */; };
 		D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */; };
 		D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */; };
+		D85FF9CB1CAF579A00DC0E35 /* slz.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D85FF9CA1CAF579A00DC0E35 /* slz.gpx */; };
 		D8DAF2DD1C924CE50021B6E3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */; };
 		D8F32BBF1C9B869D00430F2E /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */; };
 		D8F32BC11C9B88C600430F2E /* MapaAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */; };
@@ -35,6 +36,7 @@
 		D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D84CE8BF1C8FA02D00AA8831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D84CE8C11C8FA02D00AA8831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D85FF9CA1CAF579A00DC0E35 /* slz.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = slz.gpx; path = ../slz.gpx; sourceTree = "<group>"; };
 		D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaAnnotation.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		D8F32BCF1C9DD41300430F2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D85FF9CA1CAF579A00DC0E35 /* slz.gpx */,
 				D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */,
 				D84CE8C11C8FA02D00AA8831 /* Info.plist */,
 				D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */,
@@ -217,6 +220,7 @@
 			files = (
 				D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */,
 				D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */,
+				D85FF9CB1CAF579A00DC0E35 /* slz.gpx in Resources */,
 				D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

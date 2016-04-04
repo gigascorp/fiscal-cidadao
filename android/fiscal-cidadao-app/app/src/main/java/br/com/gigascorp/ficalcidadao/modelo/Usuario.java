@@ -10,6 +10,10 @@ public class Usuario
     private String token;
     private String imageUrl;
 
+    public Usuario(String id){
+        this.id = id;
+    }
+
     public Usuario(String name, String id, String token, String imageUrl)
     {
         this.name = name;

@@ -17,6 +17,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -44,7 +45,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
+        FiscalCidadaoApp app = (FiscalCidadaoApp) this.getApplication();
+
+        Usuario usuario = new Usuario(androidId);
+        Log.d(FiscalCidadaoApp.TAG, "Android_Id: " + usuario.getId());
+        app.setCurrentUsuario(usuario);
+
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        startActivity(intent);
+
+        finish();
+
+        /*FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_main);
 
         callbackManager = CallbackManager.Factory.create();
@@ -94,10 +108,10 @@ public class MainActivity extends AppCompatActivity {
         }
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();*/
     }
 
-    private void doLogin(final String accessToken, final String fbUserId) {
+    /*private void doLogin(final String accessToken, final String fbUserId) {
 
         if (accessToken != null && fbUserId != null)
         {
@@ -230,5 +244,5 @@ public class MainActivity extends AppCompatActivity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
-    }
+    }*/
 }

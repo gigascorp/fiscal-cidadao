@@ -51,6 +51,8 @@
                 android:paddingTop="@dimen/txt_margin_top"
                 android:paddingBottom="@dimen/txt_margin_bottom"
                 android:background="@color/colorTransparent"
+                android:inputType="text"
+                android:imeOptions="actionDone"
                 />
 
             <!-- Fotos -->

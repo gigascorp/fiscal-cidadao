@@ -7,19 +7,6 @@
     android:background="@color/colorActivityBackground"
     tools:context="br.com.gigascorp.ficalcidadao.fragment.PerfilFragment">
 
-    <Button
-        android:id="@+id/btnDenunciar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
-        android:padding="4dp"
-        android:textSize="@dimen/text_size"
-        android:textStyle="bold"
-        android:background="@color/colorAccent"
-        android:textColor="#FFF"
-        android:text="@string/texto_btn_denunciar_convenio"/>
-
     <ScrollView
         android:layout_above="@id/btnDenunciar"
         android:layout_width="fill_parent"
@@ -175,6 +162,69 @@
 
             <TextView
                 android:id="@+id/txtConvenioValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:text="@string/texto_default_teste"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Denúncia"
+                android:textColor="@color/colorTextHint"
+                />
+
+            <TextView
+                android:id="@+id/txtDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:text="@string/texto_default_teste"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Data da Denúncia"
+                android:textColor="@color/colorTextHint"
+                />
+
+            <TextView
+                android:id="@+id/txtDataDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:text="@string/texto_default_teste"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Parecer do Governo"
+                android:textColor="@color/colorTextHint"
+                />
+
+            <TextView
+                android:id="@+id/txtParecerDenuncia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size"

@@ -157,12 +157,13 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
                     HomeActivity activity = (HomeActivity) getActivity();
                     activity.selecionarAba(1);
 
+
                 } else {
                     Toast.makeText(DenunciarFragment.this.getActivity(), "Erro ao realizara a denúncia.\n" + response.code() + " " + response.message(), Toast.LENGTH_LONG).show();
                 }
 
-                progressBar.setVisibility(View.GONE);
-                tela.setVisibility(View.VISIBLE);
+                /*progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);*/
             }
 
             @Override

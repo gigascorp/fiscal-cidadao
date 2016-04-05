@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate
 {
     @IBOutlet weak var descLabel: UILabel!
     
@@ -19,6 +19,8 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     var convenio : Convenio?
     
     var images = [UIImage]()
+    
+    var denunciaSent = false
     
     let loadingView = LoadingView()
     
@@ -93,17 +95,19 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                 {
                     print("ok")
                     let alert = UIAlertView(title: "Denúncia", message: "Denúncia enviada com sucesso!", delegate: self, cancelButtonTitle: "OK")
+                    self.denunciaSent = true
+                    alert.delegate = self
                     alert.show()
                     
-                    self.enableView();
-                    self.navigationController?.popViewControllerAnimated(true)
+                    
+                    
                 }
                 else
                 {
                     print("not ok")
                     let alert = UIAlertView(title: "Erro!", message: ("Erro ao enviar denúncia, por favor tente mais tarde!"), delegate: self, cancelButtonTitle: "OK")
+                    alert.delegate = self
                     alert.show()
-                    self.enableView()
                 }
                     
             });
@@ -172,6 +176,28 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             tab.enabled = true
         }
         loadingView.dismissView()
+    }
+    
+    
+    func alertViewCancel(alertView: UIAlertView)
+    {
+        self.enableView();
+        if(denunciaSent)
+        {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        denunciaSent = false
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
+    {
+        self.enableView();
+        if(denunciaSent)
+        {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        denunciaSent = false
+        
     }
     /*
     // MARK: - Navigation

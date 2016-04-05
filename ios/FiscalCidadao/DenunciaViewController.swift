@@ -20,6 +20,8 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     var images = [UIImage]()
     
+    let loadingView = LoadingView()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -92,15 +94,21 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                     print("ok")
                     let alert = UIAlertView(title: "Denúncia", message: "Denúncia enviada com sucesso!", delegate: self, cancelButtonTitle: "OK")
                     alert.show()
+                    
+                    self.enableView();
+                    self.navigationController?.popViewControllerAnimated(true)
                 }
                 else
                 {
                     print("not ok")
                     let alert = UIAlertView(title: "Erro!", message: ("Erro ao enviar denúncia, por favor tente mais tarde!"), delegate: self, cancelButtonTitle: "OK")
                     alert.show()
+                    self.enableView()
                 }
                     
             });
+            
+            self.disableView();
         }
     }
 
@@ -144,9 +152,26 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         }
     }
     
-    @IBAction func TestView(sender: AnyObject)
+    func disableView()
     {
-        
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.rightBarButtonItem?.enabled = false
+        for tab in (self.tabBarController?.tabBar.items)!
+        {
+            tab.enabled = false
+        }
+        loadingView.showLoadView(self);
+    }
+    
+    func enableView()
+    {
+        self.navigationItem.hidesBackButton = false
+        self.navigationItem.rightBarButtonItem?.enabled = true
+        for tab in (self.tabBarController?.tabBar.items)!
+        {
+            tab.enabled = true
+        }
+        loadingView.dismissView()
     }
     /*
     // MARK: - Navigation

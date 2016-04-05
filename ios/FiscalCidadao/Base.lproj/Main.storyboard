@@ -398,13 +398,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdY-OE-EG9">
-                                <rect key="frame" x="428" y="513" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="TestView:" destination="CNC-eM-e4v" eventType="touchUpInside" id="34t-lW-t3C"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fotos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q55-Qf-Xw3">
                                 <rect key="frame" x="20" y="295" width="43" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -414,14 +407,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LdY-OE-EG9" firstAttribute="baseline" secondItem="PE7-Ty-mpF" secondAttribute="baseline" id="4YC-Hd-uuc"/>
                             <constraint firstItem="cbA-KF-OqO" firstAttribute="top" secondItem="LmY-Vs-8zg" secondAttribute="bottom" constant="8" symbolic="YES" id="9cV-aK-OFq"/>
                             <constraint firstItem="8ny-Df-seD" firstAttribute="centerX" secondItem="PE7-Ty-mpF" secondAttribute="centerX" id="Eie-oh-pQv"/>
                             <constraint firstItem="8ny-Df-seD" firstAttribute="top" secondItem="sYo-oo-yKf" secondAttribute="bottom" constant="8" symbolic="YES" id="G8B-xZ-3kW"/>
                             <constraint firstItem="GYC-cg-5BM" firstAttribute="top" secondItem="cbA-KF-OqO" secondAttribute="bottom" constant="8" symbolic="YES" id="HGh-4r-ZIR"/>
                             <constraint firstItem="8ny-Df-seD" firstAttribute="leading" secondItem="sYo-oo-yKf" secondAttribute="leading" id="UN0-Kj-l1w"/>
                             <constraint firstItem="uvO-6U-Kxo" firstAttribute="top" secondItem="PE7-Ty-mpF" secondAttribute="bottom" constant="57" id="UgC-b5-YjN"/>
-                            <constraint firstItem="LdY-OE-EG9" firstAttribute="leading" secondItem="PE7-Ty-mpF" secondAttribute="trailing" constant="68" id="V0K-HZ-ZQP"/>
                             <constraint firstItem="cbA-KF-OqO" firstAttribute="leading" secondItem="AEh-hr-ldZ" secondAttribute="leadingMargin" id="XRJ-JQ-0xY"/>
                             <constraint firstItem="q55-Qf-Xw3" firstAttribute="top" secondItem="8ny-Df-seD" secondAttribute="bottom" constant="3" id="bbx-KX-eXQ"/>
                             <constraint firstItem="cbA-KF-OqO" firstAttribute="leading" secondItem="GYC-cg-5BM" secondAttribute="leading" id="cjH-Xp-G5J"/>
@@ -441,7 +432,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descLabel" destination="GYC-cg-5BM" id="eqT-11-83X"/>
-                        <outlet property="testView" destination="LdY-OE-EG9" id="D2o-uA-VNt"/>
                         <outlet property="textView" destination="8ny-Df-seD" id="03H-tv-vce"/>
                     </connections>
                 </viewController>

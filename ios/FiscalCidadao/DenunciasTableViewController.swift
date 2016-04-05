@@ -17,16 +17,7 @@ class DenunciasTableViewController: UITableViewController
     {
         super.viewDidLoad()
 
-        let data = DataController.sharedInstance
-        
-        let id =  UIDevice.currentDevice().identifierForVendor?.UUIDString
-        data.getDenuncias(id!, onCompletion: {denuncias in
-            
-            self.denuncias = denuncias
-            self.tableView.reloadData()
-        
-        })
-        
+        self.loadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,9 +26,24 @@ class DenunciasTableViewController: UITableViewController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func loadData()
+    {
+        let data = DataController.sharedInstance
+        
+        let id =  UIDevice.currentDevice().identifierForVendor?.UUIDString
+        data.getDenuncias(id!, onCompletion: {denuncias in
+            
+            self.denuncias = denuncias
+            self.tableView.reloadData()
+            
+        })
+
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {

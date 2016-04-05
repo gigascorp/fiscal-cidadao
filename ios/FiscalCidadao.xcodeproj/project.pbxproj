@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D812A90E1CB319C000F8E871 /* DenunciasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A90D1CB319C000F8E871 /* DenunciasTableViewController.swift */; };
+		D812A9101CB32ED600F8E871 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A90F1CB32ED600F8E871 /* LoadingView.swift */; };
 		D82E81F71C9F5450000DA2C2 /* DenunciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */; };
 		D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */; };
 		D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		D812A90D1CB319C000F8E871 /* DenunciasTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenunciasTableViewController.swift; sourceTree = "<group>"; };
+		D812A90F1CB32ED600F8E871 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenunciaViewController.swift; sourceTree = "<group>"; };
 		D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiscalCidadao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		D8F32BD11C9DD43000430F2E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D812A90F1CB32ED600F8E871 /* LoadingView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				D8F32BC91C9D7BC500430F2E /* Convenio.swift in Sources */,
 				D8F32BCB1C9DD10800430F2E /* Observer.swift in Sources */,
 				D8F32BC31C9B93D400430F2E /* MapaDelegate.swift in Sources */,
+				D812A9101CB32ED600F8E871 /* LoadingView.swift in Sources */,
 				D8F32BD91C9E032E00430F2E /* ConvenioViewController.swift in Sources */,
 				D85FF9D01CB3017300DC0E35 /* XmlParser.swift in Sources */,
 				D812A90E1CB319C000F8E871 /* DenunciasTableViewController.swift in Sources */,

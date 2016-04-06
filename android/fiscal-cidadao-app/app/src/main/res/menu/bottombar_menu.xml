@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bottomBarMapa"
-        android:icon="@drawable/ic_place_white_36dp"
+        android:icon="@drawable/ic_map_white_36dp"
         android:title="Convênios" />
 
     <item

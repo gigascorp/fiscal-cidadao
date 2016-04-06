@@ -5,16 +5,12 @@ import android.graphics.Bitmap;
 public class FotoHolderWrap {
 
     private Bitmap img;
-    private boolean botao;
 
-    public FotoHolderWrap(Bitmap img) {
-        this.img = img;
-        botao = false;
-    }
+    private int posicao;
 
-    public FotoHolderWrap(Bitmap img, boolean botao) {
+    public FotoHolderWrap(Bitmap img, int pos) {
         this.img = img;
-        this.botao = botao;
+        this.posicao = pos;
     }
 
     public Bitmap getImg() {
@@ -25,11 +21,11 @@ public class FotoHolderWrap {
         this.img = img;
     }
 
-    public boolean isBotao() {
-        return botao;
+    public int getPosicao() {
+        return posicao;
     }
 
-    public void setBotao(boolean botao) {
-        this.botao = botao;
+    public void setPosicao(int posicao) {
+        this.posicao = posicao;
     }
 }

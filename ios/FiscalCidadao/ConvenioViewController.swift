@@ -11,7 +11,7 @@ import UIKit
 class ConvenioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     
-    var convenio : ConvenioModelo?
+    var convenio : Convenio?
 
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var proponentLabel: UILabel!
@@ -118,7 +118,7 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
         case 10:
             cell?.textLabel?.text = "Valor"
         case 11:
-            cell?.textLabel?.text = "R$" + formarter.stringFromNumber(NSNumber(float: (convenio?.value)!))!
+            cell?.textLabel?.text = "R$ " + formarter.stringFromNumber(NSNumber(float: (convenio?.value)!))!
         default:
             cell?.textLabel?.text = " "
         }
@@ -142,7 +142,7 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
         
         if segue.identifier == "ComplaintSegue"
         {
-            if let cvc = segue.destinationViewController as? ComplaintsViewController
+            if let cvc = segue.destinationViewController as? DenunciaViewController
             {
                 cvc.convenio = convenio
             }

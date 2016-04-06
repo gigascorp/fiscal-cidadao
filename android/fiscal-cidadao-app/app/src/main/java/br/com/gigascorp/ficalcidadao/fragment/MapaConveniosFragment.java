@@ -4,7 +4,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -30,9 +29,11 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
@@ -47,12 +48,12 @@ import retrofit.Retrofit;
 import static com.google.android.gms.location.LocationServices.API;
 import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
-public class MapaConveniosFragment extends ClienteApiFragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+public class MapaConveniosFragment extends GenericFragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
         GoogleMap.OnMapClickListener, SlidingUpPanelLayout.PanelSlideListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     private List<Convenio> convenios = null;
-    private Map<Marker, List<Convenio>> marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
+    private Map<Marker, List<Convenio>> marcadoresConvenio;
 
     private Call<ConveniosWrapper> conveniosProximosCall;
     private GoogleApiClient googleApiClient = null;
@@ -72,15 +73,11 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
 
         super.onCreateView(inflater, container, savedInstanceState);
 
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onCreateView");
+
         RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_mapa_convenios, container, false);
 
-        if (googleApiClient == null) {
-            googleApiClient = new GoogleApiClient.Builder(super.getActivity())
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(API)
-                    .build();
-        }
+        marcadoresConvenio = new HashMap<Marker, List<Convenio>>();
 
         progressBar = (ProgressBar) layout.findViewById(R.id.progress_bar);
         tela = (RelativeLayout) layout.findViewById(R.id.tela);
@@ -101,7 +98,25 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onActivityCreated");
+
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(super.getActivity())
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(API)
+                    .build();
+        }
+    }
+
+    @Override
     public void onConnected(@Nullable Bundle bundle) {
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onConnected");
 
         //Se a lista já tiver sido carregada, não carrega novamente
         if(convenios != null && convenios.size() > 0){
@@ -120,15 +135,15 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
         progressBar.setVisibility(View.VISIBLE);
         tela.setVisibility(View.INVISIBLE);
 
-        Log.d(TAG, "Vai enviar a requisição");
-        conveniosProximosCall = fiscalApi.conveniosProximos(localizacao.getLatitude(), localizacao.getLongitude());
-        Log.d(TAG, "Requisição enviada");
+        Log.d(FiscalCidadaoApp.TAG, "Vai enviar a requisição");
+        conveniosProximosCall = getFiscalCidadaoApi().conveniosProximos(localizacao.getLatitude(), localizacao.getLongitude());
+        Log.d(FiscalCidadaoApp.TAG, "Requisição enviada");
 
         conveniosProximosCall.enqueue(new Callback<ConveniosWrapper>() {
             @Override
             public void onResponse(Response<ConveniosWrapper> response, Retrofit retrofit) {
 
-                Log.d(TAG, "Resposta recebida");
+                Log.d(FiscalCidadaoApp.TAG, "Resposta recebida");
 
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
 
@@ -190,10 +205,13 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
 
     @Override
     public void onMapReady(GoogleMap map) {
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onMapReady");
+
+        map.setMyLocationEnabled(true);
         map.setOnMarkerClickListener(this);
         map.setOnMapClickListener(this);
-
-        LatLngBounds.Builder builder = LatLngBounds.builder();
+        map.clear();
 
         for (Convenio convenio : convenios) {
 
@@ -203,7 +221,6 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
             //Se não houver (ainda) nenhum convênio para esta mesma localização, cria o marcador
             if (marcador == null) {
                 LatLng coord = new LatLng(convenio.getLat(), convenio.getLng());
-                builder.include(coord);
                 marcador = map.addMarker(new MarkerOptions().position(coord));
 
                 conveniosDoMarcador = new ArrayList<>();
@@ -220,28 +237,35 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
 
             if (marcadoresConvenio.size() == 1) {
                 //Se tiver somente um marcador, dá um Zoom num nível da cidade
-                //Obs.: Como só há um marcador, todos os convênios apontam para a mesma locaçlização
+                //Obs.: Como só há um marcador, todos os convênios apontam para a mesma localização
                 if (convenios.get(0) != null) {
                     Convenio c = convenios.get(0);
                     map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(c.getLat(), c.getLng()), 10F));
-                } else {
-                    //Se houver mais de um marcador, dá um zoom considerando todos os pontos (bound)
-                    LatLngBounds bounds = builder.build();
-                    map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
                 }
+            } else {
+                //Se houver mais de um marcador, dá um zoom considerando todos os pontos (bound)
+                LatLngBounds.Builder builder = LatLngBounds.builder();
+                for (Marker m : marcadoresConvenio.keySet()) {
+                    builder.include(m.getPosition());
+                }
+                LatLngBounds bounds = builder.build();
+                map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
             }
         }
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+
+        Log.d(FiscalCidadaoApp.TAG, "MapaFragment: onMarkerClick");
+
         List<Convenio> selecionados = marcadoresConvenio.get(marker);
 
         ConvenioAdapter adapter = new ConvenioAdapter(selecionados);
         reciclerViewConvenios.setAdapter(adapter);
 
         //Seta a altura do slidepanel
-        int height = Util.dpToPx(80);
+        int height = Util.dpToPx(100);
         height = height * selecionados.size();
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -282,6 +306,17 @@ public class MapaConveniosFragment extends ClienteApiFragment implements OnMapRe
         if (googleApiClient != null)
             googleApiClient.connect();
         super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        if (slidingLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+        }
+
+        layoutManager.scrollToPositionWithOffset(0, 0);
+
+        super.onResume();
     }
 
     @Override

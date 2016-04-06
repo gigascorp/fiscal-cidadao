@@ -18,13 +18,16 @@ class BaseController : NSObject
     }
     func removeObserver(observer : Observer)
     {
-        var i = 0
-        for  ; i < observers.count ; i++
+        var i = 0;
+        for o in observers
         {
-            if observers[i].equals(observer)
+            if o.equals(observer)
             {
+                i += 1
                 break;
             }
+            i += 1
+            
         }
         if i < observers.count
         {

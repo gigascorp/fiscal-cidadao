@@ -1,8 +1,9 @@
 package br.com.gigascorp.ficalcidadao;
 
-import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
@@ -11,7 +12,7 @@ import br.com.gigascorp.ficalcidadao.fragment.ListaDenunciasFragment;
 import br.com.gigascorp.ficalcidadao.fragment.MapaConveniosFragment;
 import br.com.gigascorp.ficalcidadao.fragment.PerfilFragment;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
     private BottomBar mBottomBar;
 
@@ -20,51 +21,53 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        MapaConveniosFragment fragment = new MapaConveniosFragment();
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.telaHome, fragment)
-                .addToBackStack(null)
-                .commit();
-
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
+        mostrarBotaoVoltar();
 
         mBottomBar = BottomBar.attach(this, savedInstanceState);
         mBottomBar.setItemsFromMenu(R.menu.bottombar_menu, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
 
+                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                 if(menuItemId == R.id.bottomBarMapa){
+
+                    setTitle("Fiscal Cidadão");
+
                     MapaConveniosFragment fragment = new MapaConveniosFragment();
 
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.telaHome, fragment)
-                            .addToBackStack(null)
                             .commit();
 
                     return;
                 }
 
                 if(menuItemId == R.id.bottomBarDenuncias){
+
+                    setTitle("Suas Denúncias");
+
                     ListaDenunciasFragment fragment = new ListaDenunciasFragment();
 
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.telaHome, fragment)
-                            .addToBackStack(null)
                             .commit();
 
                     return;
                 }
 
                 if(menuItemId == R.id.bottomBarPerfil){
+
+                    setTitle("Perfil");
+
                     PerfilFragment fragment = new PerfilFragment();
 
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.telaHome, fragment)
-                            .addToBackStack(null)
                             .commit();
 
                     return;
@@ -79,6 +82,26 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        getSupportFragmentManager().popBackStack();
+        return true;
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        mostrarBotaoVoltar();
+    }
+
+    public void mostrarBotaoVoltar(){
+        boolean mostrar = getSupportFragmentManager().getBackStackEntryCount()>0;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mostrar);
+    }
+
+    public void selecionarAba(int pos){
+        mBottomBar.selectTabAtPosition(pos, true);
     }
 
 }

@@ -1,14 +1,17 @@
 package br.com.gigascorp.ficalcidadao.ui;
 
-import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
-import br.com.gigascorp.ficalcidadao.ConvenioActivity;
+import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
+import br.com.gigascorp.ficalcidadao.fragment.ConvenioFragment;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 
 public class ConvenioViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -36,8 +39,20 @@ public class ConvenioViewHolder extends RecyclerView.ViewHolder implements View.
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(v.getContext(), ConvenioActivity.class);
-        intent.putExtra("convenio", convenio);
-        v.getContext().startActivity(intent);
+        try {
+            FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager();
+
+            ConvenioFragment fragment = ConvenioFragment.getNewIntance(convenio);
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.telaHome, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
+        } catch (ClassCastException e) {
+            Log.e(FiscalCidadaoApp.TAG, "Can't get fragment manager");
+            e.printStackTrace();
+            return;
+        }
     }
 }

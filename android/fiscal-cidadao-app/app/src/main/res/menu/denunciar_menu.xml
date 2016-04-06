@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btnActionCamera"
+        android:icon="@drawable/ic_action_camera"
+        app:showAsAction="always"
+        android:title="Adicionar Foto da Câmera" />
+
+    <item
+        android:id="@+id/btnActionGaleria"
+        android:icon="@drawable/ic_action_picture"
+        app:showAsAction="always"
+        android:title="Adicionar Foto" />
+
+</menu>

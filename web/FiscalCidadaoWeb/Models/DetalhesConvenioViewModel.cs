@@ -26,10 +26,22 @@ namespace FiscalCidadaoWeb.Models
 
         public string ProponenteNome { get; set; }
 
-        public List<Denuncia> Denuncias { get; set; }
+        public List<DenunciaViewModel> Denuncias { get; set; }
 
         public ParecerGoverno Parecer { get; set; }
 
         public IEnumerable<SelectListItem> ListaParecer { get; set; }
     }
+
+    public class DenunciaViewModel
+    {
+        public int Id { get; set; }
+
+        public string Comentarios { get; set; }
+
+        public DateTime Data { get; set; }
+
+        public bool TemFoto { get; set; }
+    }
+
 }

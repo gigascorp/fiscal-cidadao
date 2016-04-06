@@ -62,7 +62,8 @@
 
             <div class="displayInline">
                 <h3 class="bold">Localização</h3>
-                @Html.ActionLink("Ver mapa", "", "") / @Html.ActionLink("Editar", "", "")
+                Ver mapa / Editar
+@*                @Html.ActionLink("Ver mapa", "", "") / @Html.ActionLink("Editar", "", "")*@
             </div>
         </div>
     </div>
@@ -70,7 +71,7 @@
     <h3 class="bold">Denúncias (@(Model.Denuncias == null ? 0 : Model.Denuncias.Count))</h3>
     <br />
     @*<img src="~/ImagensDenuncias/55_1.jpg" data-toggle="modal" data-target="#myModal" alt="Alternate Text" />
-    <img src="~/ImagensDenuncias/55_2.jpg" data-toggle="modal" data-target="#myModal" alt="Alternate Text" />*@
+        <img src="~/ImagensDenuncias/55_2.jpg" data-toggle="modal" data-target="#myModal" alt="Alternate Text" />*@
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -101,7 +102,14 @@
                         <td>@denuncia.Comentarios</td>
                         <td class="tdData">@String.Format("{0:dd/MM/yy}", denuncia.Data)</td>
                         <td class="tdFuncoes">
-                            <a class="verFotos">Ver Fotos</a>
+                            @if (denuncia.TemFoto)
+                            {
+                                <a class="verFotos">Ver Fotos</a>
+                            }
+                            else
+                            {
+                                <span>Sem fotos</span>
+                            }
                         </td>
                     </tr>
                 }

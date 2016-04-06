@@ -12,12 +12,12 @@ namespace FiscalCidadaoWCF
     public interface IAPIUploadDB
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "BySituacao/{situacaoId}")]
-        string BySituacao(string situacaoId);
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "BySituacao/{situacaoId}/{id}")]
+        string BySituacao(string situacaoId, string id);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "BySituacao")]
-        string AllSituacao();
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "BySituacao/{id}")]
+        string AllSituacao(string id);
     }
 
 

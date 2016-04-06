@@ -17,7 +17,7 @@ namespace FiscalCidadaoWCF.Models
 
         public string Parecer { get; set; }
 
-        public string Fotos { get; set; }
+        public List<string> Fotos { get; set; }
 
         public string DataDenuncia { get; set; }
     }

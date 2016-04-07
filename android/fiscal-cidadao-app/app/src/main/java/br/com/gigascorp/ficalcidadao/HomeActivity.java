@@ -97,11 +97,42 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
 
     public void mostrarBotaoVoltar(){
         boolean mostrar = getSupportFragmentManager().getBackStackEntryCount()>0;
+
+        if(!mostrar){
+            setarTitulo();
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(mostrar);
     }
 
     public void selecionarAba(int pos){
         mBottomBar.selectTabAtPosition(pos, true);
+    }
+
+    private void setarTitulo(){
+
+        if(mBottomBar == null)
+            return;
+
+        if(mBottomBar.getCurrentTabPosition() < 0)
+            return;
+
+        int pos = mBottomBar.getCurrentTabPosition();
+
+        if(pos == 0){
+            setTitle("Fiscal Cidadão");
+            return;
+        }
+
+        if(pos == 1){
+            setTitle("Suas Denúncias");
+            return;
+        }
+
+        if(pos == 2){
+            setTitle("Perfil");
+            return;
+        }
     }
 
 }

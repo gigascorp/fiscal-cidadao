@@ -73,7 +73,7 @@ namespace FiscalCidadaoWeb.Controllers
                 using (var context = new ApplicationDBContext())
                 {
                     var convenio = context.Convenio
-                        .Include(x => x.Denuncias)
+                        .Include(x => x.Denuncias.Select(y => y.Fotos))
                         .Include(x => x.Proponente)
                         .Include(x => x.Situacao)
                         .Include(x => x.ParecerGoverno)
@@ -87,7 +87,20 @@ namespace FiscalCidadaoWeb.Controllers
                     retorno.ProponenteNome = convenio.Proponente.Nome;
                     retorno.SincovId = convenio.SincovId;
                     retorno.Situacao = convenio.Situacao.Descricao;
-                    retorno.Denuncias = convenio.Denuncias;
+
+                    retorno.Denuncias = new List<DenunciaViewModel>();
+
+                    foreach (var denuncia in convenio.Denuncias)
+                    {
+                        retorno.Denuncias.Add(new DenunciaViewModel
+                        {
+                            Id = denuncia.Id,
+                            Comentarios = denuncia.Comentarios,
+                            Data = denuncia.Data,
+                            TemFoto = (denuncia.Fotos.Count > 0 ? true : false)
+                        });
+                    }
+
                     retorno.Parecer = convenio.ParecerGoverno;
 
                     retorno.Valor = convenio.ValorTotal.ToString("C2", new CultureInfo("pt-BR").NumberFormat);

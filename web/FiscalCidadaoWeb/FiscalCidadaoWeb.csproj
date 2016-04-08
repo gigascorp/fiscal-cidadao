@@ -195,6 +195,7 @@
     <Compile Include="Models\PedidoAtualizacaoLocalizacao.cs" />
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Proponente.cs" />
+    <Compile Include="Models\RetornoGetUsuario.cs" />
     <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConvenioModelo: NSObject
+class Convenio: NSObject
 {
     var id : Int
     var startDate : String?
@@ -34,6 +34,7 @@ class ConvenioModelo: NSObject
         self.status = status
         self.value = value
     }
+    
     override var description : String
     {
         return "Convenio {id: \(id)" + ", description \(desc), proponente : \(responsible) location(\(location))}"

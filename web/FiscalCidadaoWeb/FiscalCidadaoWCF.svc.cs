@@ -89,11 +89,44 @@ namespace FiscalCidadaoWCF
                     {
                         Comentarios = model.Comentarios,
                         ConvenioId = model.ConvenioId,
-                        Data = DateTime.Now,
-                        Usuario = (model.UsuarioId != null ? context.Usuario.FirstOrDefault(x => x.FacebookId == model.UsuarioId) : null)
+                        Data = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time")),
+                        UsuarioId = model.UsuarioId
                     };
 
                     context.Denuncia.Add(denuncia);
+
+                    if (!string.IsNullOrEmpty(model.UsuarioId))
+                    {
+                        Usuario usuario = context.Usuario.Include(x => x.Denuncias)
+                            .FirstOrDefault(x => x.FacebookId == model.UsuarioId);
+
+                        if (usuario != null)
+                        {
+                            usuario.Pontuacao += 10;
+
+                            if (usuario.Denuncias == null)
+                            {
+                                usuario.Denuncias = new List<Denuncia>();
+                            }
+
+                            usuario.Denuncias.Add(denuncia);
+                        }
+                        else
+                        {
+                            var denunciasList = new List<Denuncia>();
+                            denunciasList.Add(denuncia);
+
+                            context.Usuario.Add(new Usuario
+                            {
+                                FacebookId = model.UsuarioId,
+                                Pontuacao = 10,
+                                Nome = "Usuario Teste",
+                                Email = "Email Teste",
+                                Denuncias = denunciasList
+                            });
+                        }
+
+                    }
 
                     context.SaveChanges();
 
@@ -145,21 +178,28 @@ namespace FiscalCidadaoWCF
                 using (var context = new ApplicationDBContext())
                 {
                     var listaDenuncia = context.Denuncia
-                        .Include(x => x.Usuario)
                         .Include(x => x.Convenio.ParecerGoverno)
                         .Include(x => x.Convenio.Situacao)
                         .Include(x => x.Convenio.Proponente)
-                        .Where(x => x.Usuario.FacebookId == usuarioId)
+                        .Include(x => x.Fotos)
+                        .Where(x => x.UsuarioId == usuarioId)
                         .ToList();
 
                     foreach (var denuncia in listaDenuncia)
                     {
+                        var fotos = new List<string>();
+
+                        foreach (var foto in denuncia.Fotos)
+                        {
+                            fotos.Add("http://www.fiscalcidadao.site/ImagensDenuncias/" + foto.Arquivo);
+                        }
+
                         retorno.Add(new DenunciaEnvioViewModel
                         {
                             Id = denuncia.Id,
                             Comentarios = denuncia.Comentarios,
                             DataDenuncia = String.Format("{0:dd/MM/yy}", denuncia.Data),
-                            Usuario = denuncia.Usuario.Nome,
+                            Fotos = fotos,
                             Convenio = new ConvenioEnvioViewModel
                             {
                                 Id = denuncia.Convenio.Id,
@@ -177,7 +217,6 @@ namespace FiscalCidadaoWCF
                             Parecer = denuncia.Convenio.ParecerGoverno.Parecer
                         });
                     }
-
                 }
             }
             catch (Exception ex)
@@ -275,6 +314,38 @@ namespace FiscalCidadaoWCF
                 retorno.Message = "Error: " + ex.Message;
 
                 return retorno;
+            }
+
+            return retorno;
+        }
+
+        public RetornoGetUsuario GetUsuario(string usuarioId)
+        {
+            RetornoGetUsuario retorno = new RetornoGetUsuario();
+
+            try
+            {
+                using (var context = new ApplicationDBContext())
+                {
+                    var user = context.Usuario.Include(x => x.Denuncias)
+                        .FirstOrDefault(x => x.FacebookId == usuarioId);
+
+                    retorno.Id = user.FacebookId;
+                    retorno.Nome = user.Nome;
+                    retorno.Email = user.Email;
+                    retorno.Pontuacao = user.Pontuacao;
+                    if (user.Denuncias != null)
+                    {
+                        retorno.CountDenuncias = user.Denuncias.Count;
+                    }
+                    retorno.Message = "OK";
+                    retorno.HttpStatus = 200;
+                }
+            }
+            catch (Exception ex)
+            {
+                retorno.Message = "Error: " + ex.Message;
+                retorno.HttpStatus = 500;
             }
 
             return retorno;

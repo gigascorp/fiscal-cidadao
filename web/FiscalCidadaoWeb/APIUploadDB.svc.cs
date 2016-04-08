@@ -16,16 +16,16 @@ namespace FiscalCidadaoWCF
 {
     public class APIUploadDB : IAPIUploadDB
     {
-        public string BySituacao(string situacaoId)
+        public string BySituacao(string situacaoId, string id)
         {
             List<string> arraySituacao = new List<string>(); ;
 
             arraySituacao.Add(situacaoId);
 
-            return InsertConveniosDB(arraySituacao);
+            return InsertConveniosDB(arraySituacao, id);
         }
 
-        public string AllSituacao()
+        public string AllSituacao(string id)
         {
             List<string> arraySituacao = new List<string>(); ;
 
@@ -37,10 +37,10 @@ namespace FiscalCidadaoWCF
             arraySituacao.Add("33");
             arraySituacao.Add("35");
 
-            return InsertConveniosDB(arraySituacao);
+            return InsertConveniosDB(arraySituacao, id);
         }
 
-        private string InsertConveniosDB(List<string> arraySituacao)
+        private string InsertConveniosDB(List<string> arraySituacao, string id)
         {
             string urlTodosConvenios = "";
 
@@ -50,14 +50,15 @@ namespace FiscalCidadaoWCF
                 {
                     foreach (var situacao in arraySituacao)
                     {
-                        // convenios de Sao Luis - MA
-                        urlTodosConvenios = "http://api.convenios.gov.br/siconv/v1/consulta/convenios.json?id_proponente=29138369000147&id_situacao=" + situacao;
+                        urlTodosConvenios = "http://api.convenios.gov.br/siconv/v1/consulta/convenios.json?id_proponente=" + id + "&id_situacao=" + situacao;
+
                         //29138369000147 -> teresopolis // "POINT(-42.9658788 -22.4133074)"
                         //6307102000130 -> prefeitura slz // "POINT(-44.2691611 -2.6258591)"
 
                         var ReadData = new System.Net.WebClient().DownloadString(urlTodosConvenios);
 
                         ListaConvenios listaConvenios = JsonConvert.DeserializeObject<ListaConvenios>(ReadData);
+                        List<string> listProponentes = new List<string>();
 
                         foreach (var convenio in listaConvenios.convenios)
                         {
@@ -68,6 +69,42 @@ namespace FiscalCidadaoWCF
                             string urlConcedenteId = convenio.orgao_concedente.orgao.href + ".json";
                             ReadData = new System.Net.WebClient().DownloadString(urlConcedenteId);
                             Concedente concedenteJson = JsonConvert.DeserializeObject<Concedente>(ReadData);
+
+                            string proponenteId = convenio.proponente.Proponente.href + ".json";
+                            ReadData = new System.Net.WebClient().DownloadString(proponenteId);
+                            Proponentes proponenteJson = JsonConvert.DeserializeObject<Proponentes>(ReadData);
+
+                            string municipioId = proponenteJson.proponentes[0].municipio.Municipio.href + ".json";
+                            ReadData = new System.Net.WebClient().DownloadString(municipioId);
+                            Municipio municipioJson = JsonConvert.DeserializeObject<Municipio>(ReadData);
+
+                            var propId = proponenteJson.proponentes[0].id;
+                            var prop = context.Proponente.FirstOrDefault(x => x.SincovId == propId);
+                            bool contaisProp = true;
+
+                            Proponente temp = null;
+
+                            if (prop == null && !listProponentes.Contains(propId))
+                            {
+                                temp = new Proponente
+                                {
+                                    CEP = proponenteJson.proponentes[0].cep,
+                                    Cidade = municipioJson.municipios[0].nome,
+                                    Endereco = proponenteJson.proponentes[0].endereco,
+                                    Estado = municipioJson.municipios[0].uf.sigla,
+                                    Nome = proponenteJson.proponentes[0].nome,
+                                    ResponsavelNome = proponenteJson.proponentes[0].nome_responsavel,
+                                    ResponsavelSincovId = proponenteJson.proponentes[0].pessoa_responsavel.PessoaResponsavel.id,
+                                    ResponsavelTelefone = proponenteJson.proponentes[0].telefone,
+                                    SincovId = propId
+                                };
+
+                                context.Proponente.Add(temp);
+                                context.SaveChanges();
+
+                                listProponentes.Add(propId);
+                                contaisProp = false;
+                            }
 
                             var tempSitId = int.Parse(situacao);
 
@@ -80,7 +117,7 @@ namespace FiscalCidadaoWCF
                                 SincovId = convenio.id,
                                 Coordenadas = DbGeography.FromText("POINT(-42.9658788 -22.4133074)"), // mudar
                                 SituacaoId = context.Situacao.Where(x => x.SincovId == tempSitId).FirstOrDefault().Id,
-                                ProponenteId = 3, // mudar
+                                ProponenteId = (!contaisProp ? temp.Id : prop.Id), // caso nao exista no BD, add o criado anteriormente. Caso exista, add o consultado do banco
                                 ParecerGovernoId = 1,
                                 ConcedenteSincovId = convenio.orgao_concedente.orgao.id,
                                 ConcedenteNome = concedenteJson.orgaos.FirstOrDefault().nome

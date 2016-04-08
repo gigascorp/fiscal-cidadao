@@ -86,7 +86,7 @@ class LocationController : NSObject, CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         currentLocation =  locations.last
-        print("Last location : \(currentLocation)")
+//        print("Last location : \(currentLocation)")
     }
     
     func requestAuth()
@@ -103,7 +103,7 @@ class LocationController : NSObject, CLLocationManagerDelegate
             {
                 locationManager.startUpdatingLocation()
             }
-            else if self.locationManager.respondsToSelector(Selector("requestAlwaysAuthorization"))
+            else if self.locationManager.respondsToSelector(#selector(CLLocationManager.requestAlwaysAuthorization))
             {
                 self.locationManager.requestWhenInUseAuthorization()
             }

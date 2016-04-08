@@ -26,6 +26,19 @@ namespace FiscalCidadaoWCF.Models
 
         public OrgaoConcedente orgao_concedente { get; set; }
 
+        public OrgaoProponente proponente { get; set; }
+    }
+
+    public class OrgaoProponente
+    {
+        public ProponenteDetalhes Proponente { get; set; }
+    }
+
+    public class ProponenteDetalhes
+    {
+        public string href { get; set; }
+
+        public string id { get; set; }
     }
 
     public class OrgaoConcedente
@@ -39,7 +52,7 @@ namespace FiscalCidadaoWCF.Models
 
         public int id { get; set; }
     }
-    
+
     public class Convenios
     {
         public List<ConvenioJSON> convenios { get; set; }
@@ -57,7 +70,68 @@ namespace FiscalCidadaoWCF.Models
 
     public class ConcedenteJSON
     {
-        public int MyProperty { get; set; }
         public string nome { get; set; }
     }
+
+    public class Proponentes
+    {
+        public List<ProponenteJSON> proponentes { get; set; }
+    }
+
+    public class ProponenteJSON
+    {
+        public string nome { get; set; }
+
+        public string endereco { get; set; }
+
+        public string cep { get; set; }
+
+        public string id { get; set; }
+
+        public string telefone { get; set; }
+
+        public string nome_responsavel { get; set; }
+
+        public Municipios municipio { get; set; }
+
+        public Pessoa_Responsavel pessoa_responsavel { get; set; }
+    }
+
+    public class Pessoa_Responsavel
+    {
+        public Pessoas_Responsavel PessoaResponsavel { get; set; }
+    }
+
+    public class Pessoas_Responsavel
+    {
+        public string id { get; set; }
+    }
+
+    public class Municipios
+    {
+        public MunicipioLink Municipio { get; set; }
+    }
+
+    public class MunicipioLink
+    {
+        public string href { get; set; }
+    }
+
+    public class Municipio
+    {
+        public List<MunicipioJSON> municipios { get; set; }
+    }
+
+    public class MunicipioJSON
+    {
+        public string nome { get; set; }
+
+        public Uf uf { get; set; }
+    }
+
+    public class Uf
+    {
+        public string sigla { get; set; }
+    }
+
 }

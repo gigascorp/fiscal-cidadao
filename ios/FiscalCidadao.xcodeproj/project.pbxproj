@@ -7,19 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D82E81F71C9F5450000DA2C2 /* ComplaintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E81F61C9F5450000DA2C2 /* ComplaintsViewController.swift */; };
+		D812A90E1CB319C000F8E871 /* DenunciasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A90D1CB319C000F8E871 /* DenunciasTableViewController.swift */; };
+		D812A9101CB32ED600F8E871 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A90F1CB32ED600F8E871 /* LoadingView.swift */; };
+		D812A9121CB497D200F8E871 /* PhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9111CB497D200F8E871 /* PhotoGalleryView.swift */; };
+		D812A9141CB497FE00F8E871 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9131CB497FE00F8E871 /* PhotoView.swift */; };
+		D812A9161CB5F95000F8E871 /* ModalmageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9151CB5F95000F8E871 /* ModalmageView.swift */; };
+		D82E81F71C9F5450000DA2C2 /* DenunciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */; };
 		D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */; };
 		D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */; };
 		D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8B91C8FA02D00AA8831 /* Main.storyboard */; };
 		D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */; };
 		D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */; };
+		D85FF9CB1CAF579A00DC0E35 /* slz.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D85FF9CA1CAF579A00DC0E35 /* slz.gpx */; };
+		D85FF9CE1CB1F31300DC0E35 /* Denuncia.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FF9CD1CB1F31300DC0E35 /* Denuncia.swift */; };
+		D85FF9D01CB3017300DC0E35 /* XmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FF9CF1CB3017300DC0E35 /* XmlParser.swift */; };
 		D8DAF2DD1C924CE50021B6E3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */; };
 		D8F32BBF1C9B869D00430F2E /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */; };
 		D8F32BC11C9B88C600430F2E /* MapaAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */; };
 		D8F32BC31C9B93D400430F2E /* MapaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC21C9B93D400430F2E /* MapaDelegate.swift */; };
 		D8F32BC51C9CD70000430F2E /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC41C9CD70000430F2E /* LocationController.swift */; };
 		D8F32BC71C9CDA0800430F2E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC61C9CDA0800430F2E /* DataController.swift */; };
-		D8F32BC91C9D7BC500430F2E /* ConvenioModelo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC81C9D7BC500430F2E /* ConvenioModelo.swift */; };
+		D8F32BC91C9D7BC500430F2E /* Convenio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC81C9D7BC500430F2E /* Convenio.swift */; };
 		D8F32BCB1C9DD10800430F2E /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BCA1C9DD10800430F2E /* Observer.swift */; };
 		D8F32BD51C9DD6C600430F2E /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BD41C9DD6C600430F2E /* BaseController.swift */; };
 		D8F32BD71C9DF8CC00430F2E /* ConveniosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BD61C9DF8CC00430F2E /* ConveniosListViewController.swift */; };
@@ -27,7 +35,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D82E81F61C9F5450000DA2C2 /* ComplaintsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintsViewController.swift; sourceTree = "<group>"; };
+		D812A90D1CB319C000F8E871 /* DenunciasTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenunciasTableViewController.swift; sourceTree = "<group>"; };
+		D812A90F1CB32ED600F8E871 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D812A9111CB497D200F8E871 /* PhotoGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGalleryView.swift; sourceTree = "<group>"; };
+		D812A9131CB497FE00F8E871 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		D812A9151CB5F95000F8E871 /* ModalmageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalmageView.swift; sourceTree = "<group>"; };
+		D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenunciaViewController.swift; sourceTree = "<group>"; };
 		D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiscalCidadao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -35,13 +48,16 @@
 		D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D84CE8BF1C8FA02D00AA8831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D84CE8C11C8FA02D00AA8831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D85FF9CA1CAF579A00DC0E35 /* slz.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = slz.gpx; path = ../slz.gpx; sourceTree = "<group>"; };
+		D85FF9CD1CB1F31300DC0E35 /* Denuncia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Denuncia.swift; sourceTree = "<group>"; };
+		D85FF9CF1CB3017300DC0E35 /* XmlParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlParser.swift; sourceTree = "<group>"; };
 		D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaAnnotation.swift; sourceTree = "<group>"; };
 		D8F32BC21C9B93D400430F2E /* MapaDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaDelegate.swift; sourceTree = "<group>"; };
 		D8F32BC41C9CD70000430F2E /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		D8F32BC61C9CDA0800430F2E /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		D8F32BC81C9D7BC500430F2E /* ConvenioModelo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenioModelo.swift; sourceTree = "<group>"; };
+		D8F32BC81C9D7BC500430F2E /* Convenio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convenio.swift; sourceTree = "<group>"; };
 		D8F32BCA1C9DD10800430F2E /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		D8F32BD41C9DD6C600430F2E /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		D8F32BD61C9DF8CC00430F2E /* ConveniosListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConveniosListViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +120,7 @@
 				D8F32BC41C9CD70000430F2E /* LocationController.swift */,
 				D8F32BC61C9CDA0800430F2E /* DataController.swift */,
 				D8F32BD41C9DD6C600430F2E /* BaseController.swift */,
+				D85FF9CF1CB3017300DC0E35 /* XmlParser.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -112,7 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				D8F32BCA1C9DD10800430F2E /* Observer.swift */,
-				D8F32BC81C9D7BC500430F2E /* ConvenioModelo.swift */,
+				D8F32BC81C9D7BC500430F2E /* Convenio.swift */,
+				D85FF9CD1CB1F31300DC0E35 /* Denuncia.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -126,7 +144,8 @@
 				D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */,
 				D8F32BD61C9DF8CC00430F2E /* ConveniosListViewController.swift */,
 				D8F32BD81C9E032E00430F2E /* ConvenioViewController.swift */,
-				D82E81F61C9F5450000DA2C2 /* ComplaintsViewController.swift */,
+				D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */,
+				D812A90D1CB319C000F8E871 /* DenunciasTableViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -134,6 +153,7 @@
 		D8F32BCF1C9DD41300430F2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D85FF9CA1CAF579A00DC0E35 /* slz.gpx */,
 				D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */,
 				D84CE8C11C8FA02D00AA8831 /* Info.plist */,
 				D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */,
@@ -153,6 +173,10 @@
 		D8F32BD11C9DD43000430F2E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D812A90F1CB32ED600F8E871 /* LoadingView.swift */,
+				D812A9111CB497D200F8E871 /* PhotoGalleryView.swift */,
+				D812A9131CB497FE00F8E871 /* PhotoView.swift */,
+				D812A9151CB5F95000F8E871 /* ModalmageView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -189,6 +213,7 @@
 				TargetAttributes = {
 					D84CE8AF1C8FA02D00AA8831 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = V9VTB9RZZD;
 					};
 				};
 			};
@@ -217,6 +242,7 @@
 			files = (
 				D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */,
 				D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */,
+				D85FF9CB1CAF579A00DC0E35 /* slz.gpx in Resources */,
 				D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,14 +254,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8F32BC91C9D7BC500430F2E /* ConvenioModelo.swift in Sources */,
+				D85FF9CE1CB1F31300DC0E35 /* Denuncia.swift in Sources */,
+				D8F32BC91C9D7BC500430F2E /* Convenio.swift in Sources */,
 				D8F32BCB1C9DD10800430F2E /* Observer.swift in Sources */,
 				D8F32BC31C9B93D400430F2E /* MapaDelegate.swift in Sources */,
+				D812A9161CB5F95000F8E871 /* ModalmageView.swift in Sources */,
+				D812A9101CB32ED600F8E871 /* LoadingView.swift in Sources */,
 				D8F32BD91C9E032E00430F2E /* ConvenioViewController.swift in Sources */,
+				D85FF9D01CB3017300DC0E35 /* XmlParser.swift in Sources */,
+				D812A9141CB497FE00F8E871 /* PhotoView.swift in Sources */,
+				D812A90E1CB319C000F8E871 /* DenunciasTableViewController.swift in Sources */,
 				D8F32BC11C9B88C600430F2E /* MapaAnnotation.swift in Sources */,
 				D8F32BBF1C9B869D00430F2E /* MapaViewController.swift in Sources */,
-				D82E81F71C9F5450000DA2C2 /* ComplaintsViewController.swift in Sources */,
+				D82E81F71C9F5450000DA2C2 /* DenunciaViewController.swift in Sources */,
 				D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */,
+				D812A9121CB497D200F8E871 /* PhotoGalleryView.swift in Sources */,
 				D8F32BC71C9CDA0800430F2E /* DataController.swift in Sources */,
 				D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */,
 				D8F32BD71C9DF8CC00430F2E /* ConveniosListViewController.swift in Sources */,
@@ -354,11 +387,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FiscalCidadao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadao";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -368,11 +404,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FiscalCidadao/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.puc-rio.tecgraf.FiscalCidadao";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -5,11 +5,6 @@ $().ready(function () {
             2: { sorter: false }
         }
     });
-
-    //$('#myModal').on('show.bs.modal', function (e) {
-    //    var image = $(e.relatedTarget).attr('src');
-    //    $(".img-responsive").attr("src", image);
-    //});
 });
 
 $('.verFotos').on('click', function () {

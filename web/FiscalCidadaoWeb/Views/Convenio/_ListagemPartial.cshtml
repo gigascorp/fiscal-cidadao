@@ -22,7 +22,8 @@
                     <td class="tdParecer">@convenio.ParecerGoverno.Parecer</td>
                     <td class="tdFuncoes">
                         <a>@Html.ActionLink("Ver", "DetalhesConvenio", "Convenio", new { id = convenio.Id }, null) / </a>
-                        <a>@Html.ActionLink("Editar Local", "Index", "Home") / </a>
+                        <span>Editar Local / </span>
+                        @*<a>@Html.ActionLink("Editar Local", "Index", "Home") / </a>*@
                         <a class="editarParecer">Parecer</a>
 
                     </td>

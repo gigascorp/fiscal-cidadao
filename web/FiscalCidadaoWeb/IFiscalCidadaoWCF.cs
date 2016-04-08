@@ -38,5 +38,9 @@ namespace FiscalCidadaoWCF
         [OperationContract]
         [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Login")]
         RetornoLogin Login(FazerLoginViewModel data);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetUsuario/{usuarioId}")]
+        RetornoGetUsuario GetUsuario(string usuarioId);
     }
 }

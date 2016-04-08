@@ -1,4 +1,4 @@
-//
+    //
 //  ComplaintsViewController.swift
 //  FiscalCidadao
 //
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate
+class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, PhotoGalleryDelegate
 {
     @IBOutlet weak var descLabel: UILabel!
     
     @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var convenio : Convenio?
     
@@ -23,6 +25,8 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     var denunciaSent = false
     
     let loadingView = LoadingView()
+    
+    let photoGalleryView = PhotoGalleryView()
     
     override func viewDidLoad()
     {
@@ -42,9 +46,19 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         textView.layer.borderWidth = 2
         textView.layer.borderColor = UIColor.grayColor().CGColor
         
+        photoGalleryView.galleryDelegate = self
+        
+        photoGalleryView.addToScrollView(scrollView)
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
 //        view.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -98,9 +112,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                     self.denunciaSent = true
                     alert.delegate = self
                     alert.show()
-                    
-                    
-                    
                 }
                 else
                 {
@@ -153,6 +164,7 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             images.append(image)
+            photoGalleryView.addPhoto(image, removable: true)
         }
     }
     
@@ -164,7 +176,7 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         {
             tab.enabled = false
         }
-        loadingView.showLoadView(self);
+        loadingView.showLoadView(self.view);
     }
     
     func enableView()
@@ -198,6 +210,11 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         }
         denunciaSent = false
         
+    }
+    
+    func onPhotoRemoved(index : Int)
+    {
+        images.removeAtIndex(index)
     }
     /*
     // MARK: - Navigation

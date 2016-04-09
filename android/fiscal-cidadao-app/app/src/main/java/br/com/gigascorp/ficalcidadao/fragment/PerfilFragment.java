@@ -4,14 +4,41 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
+import br.com.gigascorp.ficalcidadao.modelo.Perfil;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.DenunciasWrapper;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.PerfilWrapper;
+import br.com.gigascorp.ficalcidadao.ui.DenunciaAdapter;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
-public class PerfilFragment extends Fragment {
+public class PerfilFragment extends GenericFragment {
+
+    private Perfil perfil;
+
+    private ImageView imgFotoPerfil;
+    private TextView txtNome;
+    private TextView txtDesde;
+    private TextView txtDenunciasRealizadas;
+    private TextView txtPontosSomados;
+
+    private RelativeLayout tela;
+    private ProgressBar progressBar;
+
+    private Call<PerfilWrapper> perfilCall;
 
     @Nullable
     @Override
@@ -19,6 +46,68 @@ public class PerfilFragment extends Fragment {
 
         RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_perfil, container, false);
 
+        progressBar = (ProgressBar) layout.findViewById(R.id.progress_bar);
+        tela = (RelativeLayout) layout.findViewById(R.id.tela);
+
+        imgFotoPerfil = (ImageView) layout.findViewById(R.id.imgFotoPerfil);
+        txtNome = (TextView) layout.findViewById(R.id.txtNome);
+        txtDesde = (TextView) layout.findViewById(R.id.txtDesde);
+        txtDenunciasRealizadas = (TextView) layout.findViewById(R.id.txtDenunciasRealizadas);
+        txtPontosSomados = (TextView) layout.findViewById(R.id.txtPontosSomados);
+
         return layout;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        progressBar.setVisibility(View.VISIBLE);
+        tela.setVisibility(View.INVISIBLE);
+
+        Log.d(FiscalCidadaoApp.TAG, "Vai enviar a requisição");
+        Log.d(FiscalCidadaoApp.TAG, "Perfil id: " + getUsuarioLogado().getId());
+        perfilCall = getFiscalCidadaoApi().getPerfil(getUsuarioLogado().getId());
+        Log.d(FiscalCidadaoApp.TAG, "Requisição enviada");
+
+        perfilCall.enqueue(new Callback<PerfilWrapper>() {
+            @Override
+            public void onResponse(Response<PerfilWrapper> response, Retrofit retrofit) {
+
+                Log.d(FiscalCidadaoApp.TAG, "Resposta recebida");
+
+                if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
+
+                    PerfilWrapper wrapper = response.body();
+
+                    if (wrapper == null || wrapper.getGetUsuarioResult() == null) {
+                        Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar o seu perfil", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    perfil = wrapper.getGetUsuarioResult();
+
+                    txtNome.setText(perfil.getNome());
+                    txtDesde.setText("Fiscal Cidadão desde dd/MM/yyyy");
+                    txtDenunciasRealizadas.setText("Realizou " + perfil.getTotalDenuncias() + " denúncias!");
+                    txtPontosSomados.setText("Somou " + perfil.getPontuacao() + " pontos até agora!");
+
+                } else {
+                    Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar as suas denúncias\n" + response.code() + "" + response.message(), Toast.LENGTH_LONG).show();
+                }
+
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar o seu perfil", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+                tela.setVisibility(View.VISIBLE);
+                t.printStackTrace();
+            }
+        });
+
     }
 }

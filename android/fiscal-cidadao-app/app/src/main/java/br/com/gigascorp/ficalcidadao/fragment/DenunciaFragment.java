@@ -2,13 +2,18 @@ package br.com.gigascorp.ficalcidadao.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -16,6 +21,9 @@ import java.text.SimpleDateFormat;
 import br.com.gigascorp.ficalcidadao.R;
 import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
+import br.com.gigascorp.ficalcidadao.ui.DenunciaGridLayoutManager;
+import br.com.gigascorp.ficalcidadao.ui.FotoDenunciaAdapter;
+import br.com.gigascorp.ficalcidadao.ui.FotoDenunciaResponseAdapter;
 
 public class DenunciaFragment extends GenericFragment {
 
@@ -33,6 +41,9 @@ public class DenunciaFragment extends GenericFragment {
     private TextView txtDenuncia;
     private TextView txtDataDenuncia;
     private TextView txtParecerDenuncia;
+
+    private RecyclerView recyclerView;
+    private DenunciaGridLayoutManager layoutManager;
 
     public static DenunciaFragment getNewIntance(Denuncia denuncia){
 
@@ -70,6 +81,11 @@ public class DenunciaFragment extends GenericFragment {
         txtDataDenuncia = (TextView) layout.findViewById(R.id.txtDataDenuncia);
         txtParecerDenuncia = (TextView) layout.findViewById(R.id.txtParecerDenuncia);
 
+        recyclerView = (RecyclerView) layout.findViewById(R.id.gridFotos);
+        recyclerView.setHasFixedSize(false);
+        layoutManager = new DenunciaGridLayoutManager(getActivity(), 3);
+        recyclerView.setLayoutManager(layoutManager);
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         NumberFormat numberFormat = NumberFormat.getInstance();
 
@@ -85,6 +101,12 @@ public class DenunciaFragment extends GenericFragment {
         txtDenuncia.setText(denuncia.getTexto());
         txtDataDenuncia.setText(dateFormat.format(denuncia.getDataDenuncia()));
         txtParecerDenuncia.setText(denuncia.getParecer());
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity()).build();
+        ImageLoader.getInstance().init(config);
+
+        FotoDenunciaResponseAdapter adapter = new FotoDenunciaResponseAdapter(denuncia.getFotosUrl(), DenunciaFragment.this);
+        recyclerView.setAdapter(adapter);
 
         return layout;
     }

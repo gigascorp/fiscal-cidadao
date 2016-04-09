@@ -21,6 +21,9 @@ android {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -36,4 +39,5 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'com.roughike:bottom-bar:1.2.4'
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'com.github.nostra13:Android-Universal-Image-Loader:v1.9.5'
 }

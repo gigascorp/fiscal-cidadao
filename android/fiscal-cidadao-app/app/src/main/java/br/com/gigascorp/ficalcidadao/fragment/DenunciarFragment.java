@@ -169,7 +169,7 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(DenunciarFragment.this.getActivity(), "Erro ao realizara a denúncia.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao realizara a denúncia.", Toast.LENGTH_LONG).show();
                 t.printStackTrace();
                 progressBar.setVisibility(View.GONE);
                 tela.setVisibility(View.VISIBLE);

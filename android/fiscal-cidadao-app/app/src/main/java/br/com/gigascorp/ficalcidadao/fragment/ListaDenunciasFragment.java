@@ -101,7 +101,7 @@ public class ListaDenunciasFragment extends GenericFragment {
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(ListaDenunciasFragment.super.getActivity(), "Erro ao recuperar os convênios da sua região", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar os convênios da sua região", Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
                 tela.setVisibility(View.VISIBLE);
                 t.printStackTrace();

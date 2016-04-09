@@ -15,6 +15,7 @@ class MapaViewController: UIViewController
     @IBOutlet weak var mapView: MKMapView!
     
     let regionRadius: CLLocationDistance = 6000
+
     
     // São Luís UFMA: -2,554014, -44,307548
     override func viewDidLoad()
@@ -27,11 +28,38 @@ class MapaViewController: UIViewController
         {
             let locationController = LocationController.sharedInstance;
             
-            dataController.getConvenios(locationController.getLocation(), onCompletion: {convenios in
+            dataController.getConvenios(locationController.getLocation(), onCompletion:
+            {
+                convenios in
+                
+                var annotationsDic = [String : [Convenio]]()
                 
                 for c in convenios
                 {
-                    self.loadAnnotation(c)
+                    let str = String(c.location.0) + " " + String(c.location.1)
+                    
+                    if var currentConvenios = annotationsDic[str]
+                    {
+                        currentConvenios.append(c)
+                        annotationsDic[str] = currentConvenios
+                    }
+                    else
+                    {
+                        let currentConvenios = [c]
+                        annotationsDic[str] = currentConvenios
+                    }
+                }
+                
+                for (_, array) in annotationsDic
+                {
+                    if array.count == 1
+                    {
+                        self.loadAnnotation(array.first!)
+                    }
+                    else
+                    {
+                        self.loadMultipleAnnotation(array)
+                    }
                 }
         
             })
@@ -50,8 +78,24 @@ class MapaViewController: UIViewController
         let (lat, lng) = convenio.location
         let loc =  CLLocationCoordinate2DMake(lat, lng)
         
-        mapView.addAnnotation(MapaAnnotation(id: convenio.id, title: convenio.desc, locationName: convenio.responsible, coordinate: loc))
-        
+        mapView.addAnnotation(MapaAnnotation(id: convenio.id, title: convenio.desc, responsible: convenio.responsible, coordinate: loc))
+    }
+    
+    func loadMultipleAnnotation(convenios : [Convenio])
+    {
+        if !convenios.isEmpty
+        {
+            let (lat, lng) = (convenios.first?.location)!
+            let loc =  CLLocationCoordinate2DMake(lat, lng)
+            
+            var ids = [Int]()
+            for c in convenios
+            {
+                ids.append(c.id)
+            }
+            
+            mapView.addAnnotation(MapaAnnotation(conveniosId: ids, coordinate: loc))
+        }
     }
     
     override func viewDidAppear(animated: Bool)

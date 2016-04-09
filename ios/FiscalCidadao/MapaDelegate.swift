@@ -42,7 +42,16 @@ extension MapaViewController : MKMapViewDelegate
             let location = view.annotation as! MapaAnnotation
 //            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
 //            location.mapItem().openInMapsWithLaunchOptions(launchOptions)
-        performSegueWithIdentifier("DetailSegue", sender: location)
+        
+        if location.ids.count == 1
+        {
+            performSegueWithIdentifier("DetailSegue", sender: location)
+        }
+        else if location.ids.count > 1
+        {
+            performSegueWithIdentifier("MultipleConveniosSegue", sender: location)
+        }
+        
         
     }
     
@@ -56,19 +65,40 @@ extension MapaViewController : MKMapViewDelegate
             if let location = sender as? MapaAnnotation
             {
                 let data = DataController.sharedInstance
-                let convenio = data.getConvenio(location.id)
                 
-                if let nvc = segue.destinationViewController as? UINavigationController
+                if location.ids.count == 1
                 {
-                    if let cvc = nvc.viewControllers.first as? ConvenioViewController
+                    let convenio = data.getConvenio(location.ids.first!)
+                    
+                    if let nvc = segue.destinationViewController as? UINavigationController
                     {
-                        cvc.convenio = convenio
+                        if let cvc = nvc.viewControllers.first as? ConvenioViewController
+                        {
+                            cvc.convenio = convenio
+                        }
                     }
                 }
-//                    if let cvc = segue.destinationViewController as? ConvenioViewController
-//                    {
-//                        cvc.convenio = convenio
-//                    }
+            }
+        }
+        else if segue.identifier == "MultipleConveniosSegue"
+        {
+            if let location = sender as? MapaAnnotation
+            {
+                if let nvc = segue.destinationViewController as? UINavigationController
+                {
+                    if let cvc = nvc.viewControllers.first as? ConveniosListViewController
+                    {
+                        var convenios  = [Convenio]()
+                        
+                        let data = DataController.sharedInstance
+                        for id  in location.ids
+                        {
+                            convenios.append(data.getConvenio(id)!)
+                        }
+                        
+                        cvc.convenios = convenios
+                    }
+                }
             }
         }
     }

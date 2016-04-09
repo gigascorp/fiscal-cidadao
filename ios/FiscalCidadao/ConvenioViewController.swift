@@ -96,7 +96,7 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
         switch indexPath.row
         {
         case 0:
-            cell?.textLabel?.text = "Objeto"
+            cell?.textLabel?.text = "Descrição"
         case 1:
             cell?.textLabel?.text = convenio?.desc
         case 2:

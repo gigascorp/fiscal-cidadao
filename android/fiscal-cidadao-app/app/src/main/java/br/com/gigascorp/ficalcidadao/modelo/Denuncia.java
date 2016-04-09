@@ -30,6 +30,9 @@ public class Denuncia implements Serializable {
     @SerializedName("DataDenuncia")
     private Date dataDenuncia;
 
+    @SerializedName("Fotos")
+    private String[] fotosUrl;
+
     public String getTexto() {
         return texto;
     }
@@ -86,5 +89,13 @@ public class Denuncia implements Serializable {
 
     public void setDataDenuncia(Date dataDenuncia) {
         this.dataDenuncia = dataDenuncia;
+    }
+
+    public String[] getFotosUrl() {
+        return fotosUrl;
+    }
+
+    public void setFotosUrl(String[] fotosUrl) {
+        this.fotosUrl = fotosUrl;
     }
 }

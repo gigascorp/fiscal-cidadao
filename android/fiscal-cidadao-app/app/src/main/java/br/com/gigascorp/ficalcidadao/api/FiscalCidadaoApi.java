@@ -5,8 +5,10 @@ import com.squareup.okhttp.ResponseBody;
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
 import br.com.gigascorp.ficalcidadao.modelo.FacebookLogin;
 import br.com.gigascorp.ficalcidadao.modelo.LoginResponse;
+import br.com.gigascorp.ficalcidadao.modelo.Perfil;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.DenunciasWrapper;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.PerfilWrapper;
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -26,5 +28,8 @@ public interface FiscalCidadaoApi {
 
     @GET("GetDenunciaByUsuario/{usuarioid}")
     public Call<DenunciasWrapper> getDenuncias(@Path("usuarioid") String id);
+
+    @GET("GetUsuario/{usuarioid}")
+    public Call<PerfilWrapper> getPerfil(@Path("usuarioid") String id);
 
 }

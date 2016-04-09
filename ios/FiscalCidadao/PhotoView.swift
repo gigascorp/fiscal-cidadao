@@ -58,7 +58,6 @@ class PhotoView: UIView
     
     func setRemovable()
     {
-        
         let removeIcon = UIImage(named: "ic_remove_circle_white_18pt")
         let imageView = UIImageView(image: removeIcon?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))
         imageView.frame.origin.x = self.frame.width - (removeIcon?.size.width)!

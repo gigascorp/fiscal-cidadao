@@ -8,15 +8,18 @@
 
 import UIKit
 
-class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, PhotoGalleryDelegate
+class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, UITextViewDelegate, PhotoGalleryDelegate
 {
-    @IBOutlet weak var descLabel: UILabel!
     
     @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var textPlaceholder: UILabel!
+    
+    
     
     var convenio : Convenio?
     
@@ -31,27 +34,23 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        if convenio != nil
-        {
-            descLabel.text = convenio?.desc
-        }
         
         if navigationController != nil
         {
             navigationController?.title = "Fazer Denúncia"
         }
         
-        textView.layer.cornerRadius = 8
-        textView.layer.borderWidth = 2
-        textView.layer.borderColor = UIColor.grayColor().CGColor
+        textView.delegate = self
+        
+//        textView.layer.cornerRadius = 8
+//        textView.layer.borderWidth = 2
+//        textView.layer.borderColor = UIColor.grayColor().CGColor
         
         photoGalleryView.galleryDelegate = self
         
         photoGalleryView.addToScrollView(scrollView)
         
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-//        view.addGestureRecognizer(tap)
+        textView.returnKeyType = UIReturnKeyType.Done
     }
     
     override func viewDidAppear(animated: Bool)
@@ -67,7 +66,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         {
             self.view.endEditing(true)
         }
-        
     }
 
     func dismissKeyboard()
@@ -90,7 +88,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             
             for img in images
             {
-//                if let data = UIImagePNGRepresentation(img)
                 if let data = UIImageJPEGRepresentation(img, 0.5)
                 {
                     let data64 = data.base64EncodedDataWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
@@ -216,6 +213,34 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     {
         images.removeAtIndex(index)
     }
+    
+    func textViewDidEndEditing(textView: UITextView)
+    {
+        textPlaceholder.hidden = textView.hasText()
+        
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView)
+    {
+        textPlaceholder.hidden = true
+    }
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
+    {
+        if text == "\n"
+        {
+            textView.endEditing(true)
+            return false
+        }
+        return true;
+
+    }
+    
     /*
     // MARK: - Navigation
 

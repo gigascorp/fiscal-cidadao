@@ -16,7 +16,6 @@
 		D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */; };
 		D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */; };
 		D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8B91C8FA02D00AA8831 /* Main.storyboard */; };
-		D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */; };
 		D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */; };
 		D85FF9CB1CAF579A00DC0E35 /* slz.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D85FF9CA1CAF579A00DC0E35 /* slz.gpx */; };
 		D85FF9CE1CB1F31300DC0E35 /* Denuncia.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FF9CD1CB1F31300DC0E35 /* Denuncia.swift */; };
@@ -45,7 +44,6 @@
 		D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D84CE8BA1C8FA02D00AA8831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D84CE8BF1C8FA02D00AA8831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D84CE8C11C8FA02D00AA8831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D85FF9CA1CAF579A00DC0E35 /* slz.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = slz.gpx; path = ../slz.gpx; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				D85FF9CA1CAF579A00DC0E35 /* slz.gpx */,
-				D84CE8BC1C8FA02D00AA8831 /* Assets.xcassets */,
 				D84CE8C11C8FA02D00AA8831 /* Info.plist */,
 				D84CE8BE1C8FA02D00AA8831 /* LaunchScreen.storyboard */,
 				D84CE8B91C8FA02D00AA8831 /* Main.storyboard */,
@@ -241,7 +238,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D84CE8C01C8FA02D00AA8831 /* LaunchScreen.storyboard in Resources */,
-				D84CE8BD1C8FA02D00AA8831 /* Assets.xcassets in Resources */,
 				D85FF9CB1CAF579A00DC0E35 /* slz.gpx in Resources */,
 				D84CE8BB1C8FA02D00AA8831 /* Main.storyboard in Resources */,
 			);

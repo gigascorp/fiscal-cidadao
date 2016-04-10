@@ -196,6 +196,7 @@
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Proponente.cs" />
     <Compile Include="Models\RetornoGetUsuario.cs" />
+    <Compile Include="Models\RetornoRanking.cs" />
     <Compile Include="Models\Situacao.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,9 +219,18 @@
     <Content Include="Content\Images\asc.gif" />
     <Content Include="Content\Images\bg.gif" />
     <Content Include="Content\Images\desc.gif" />
+    <Content Include="Content\Images\icon128.png" />
+    <Content Include="Content\Images\icon16.png" />
+    <Content Include="Content\Images\icon256.png" />
+    <Content Include="Content\Images\icon32.png" />
+    <Content Include="Content\Images\icon512.png" />
+    <Content Include="Content\Images\icon64.png" />
+    <Content Include="Content\Images\logo-name-horizontal.png" />
+    <Content Include="Content\Images\logo-name.png" />
     <Content Include="Content\Images\sort_asc.png" />
     <Content Include="Content\Images\sort_both.png" />
     <Content Include="Content\Images\sort_desc.png" />
+    <Content Include="Content\Images\splash.png" />
     <Content Include="Content\Images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Content\Images\ui-bg_diagonals-thick_20_666666_40x40.png" />
     <Content Include="Content\Images\ui-bg_flat_10_000000_40x100.png" />
@@ -264,6 +274,8 @@
     <Content Include="ImagensDenuncias\57_1.jpg" />
     <Content Include="ImagensDenuncias\60_2.jpg" />
     <Content Include="ImagensDenuncias\57_2.jpg" />
+    <Content Include="ImagensDenuncias\perfil.jpg" />
+    <Content Include="ImagensDenuncias\perfil.png" />
     <Content Include="Scripts\App\DetalhesConvenio.js" />
     <Content Include="Scripts\App\ListagemConvenios.js" />
     <Content Include="Scripts\bootstrap.js" />

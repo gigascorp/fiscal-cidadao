@@ -111,6 +111,7 @@ public class PerfilFragment extends GenericFragment {
                             .showImageOnLoading(R.drawable.ic_cached_black_36dp)
                             .considerExifParams(true)
                             .cacheInMemory(true)
+                            .cacheOnDisk(true)
                             .build();
 
                     imageLoader.displayImage(perfil.getFotoPerfil(), imgFotoPerfil, options);

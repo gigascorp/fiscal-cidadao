@@ -8,21 +8,24 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import br.com.gigascorp.ficalcidadao.R;
+import br.com.gigascorp.ficalcidadao.fragment.RankingFragment;
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
 import br.com.gigascorp.ficalcidadao.modelo.Ranking;
 
 public class RankingAdapter extends RecyclerView.Adapter<RankingViewHolder> {
 
+    private RankingFragment fragment;
     private List<Ranking> lista;
 
-    public RankingAdapter(List<Ranking> lista){
+    public RankingAdapter(List<Ranking> lista, RankingFragment fragment){
         this.lista = lista;
+        this.fragment = fragment;
     }
 
     @Override
     public RankingViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ranking_item_view, parent, false);
-        return new RankingViewHolder(itemView);
+        return new RankingViewHolder(itemView, fragment);
     }
 
     @Override

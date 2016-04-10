@@ -88,7 +88,7 @@ public class RankingFragment extends GenericFragment {
 
                     lista = wrapper.getGetRankingResult().getLista();
 
-                    RankingAdapter adapter = new RankingAdapter(lista);
+                    RankingAdapter adapter = new RankingAdapter(lista, RankingFragment.this);
                     recyclerView.setAdapter(adapter);
 
                 } else {

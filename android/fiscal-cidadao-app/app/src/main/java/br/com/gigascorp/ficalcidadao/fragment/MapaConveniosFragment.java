@@ -179,7 +179,7 @@ public class MapaConveniosFragment extends GenericFragment implements OnMapReady
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar os convênios da sua região", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar os convênios da sua região", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 tela.setVisibility(View.VISIBLE);
                 t.printStackTrace();

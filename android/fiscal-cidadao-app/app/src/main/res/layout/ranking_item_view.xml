@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtRankingNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorPrimaryText"
+        android:text="@string/texto_default_teste"
+        android:paddingBottom="4dp"
+        />
+
+    <TextView
+        android:id="@+id/txtRankingPontuacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:textSize="@dimen/text_size"
+        android:layout_below="@id/txtRankingNome"
+        android:textColor="@color/colorSecondaryText"
+        android:text="@string/texto_default_teste"
+        />
+
+</RelativeLayout>

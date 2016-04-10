@@ -9,6 +9,8 @@ import br.com.gigascorp.ficalcidadao.modelo.Perfil;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.ConveniosWrapper;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.DenunciasWrapper;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.PerfilWrapper;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.RankingResultWrapper;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.RankingWrapper;
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -31,5 +33,8 @@ public interface FiscalCidadaoApi {
 
     @GET("GetUsuario/{usuarioid}")
     public Call<PerfilWrapper> getPerfil(@Path("usuarioid") String id);
+
+    @GET("GetRanking/{usuarioid}")
+    public Call<RankingResultWrapper> getRanking(@Path("usuarioid") String id);
 
 }

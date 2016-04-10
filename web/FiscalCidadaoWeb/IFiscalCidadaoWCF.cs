@@ -42,5 +42,9 @@ namespace FiscalCidadaoWCF
         [OperationContract]
         [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetUsuario/{usuarioId}")]
         RetornoGetUsuario GetUsuario(string usuarioId);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetRanking/{usuarioId}")]
+        RetornoRanking GetRanking(string usuarioId);
     }
 }

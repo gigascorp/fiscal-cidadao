@@ -334,13 +334,74 @@ namespace FiscalCidadaoWCF
                     retorno.Nome = user.Nome;
                     retorno.Email = user.Email;
                     retorno.Pontuacao = user.Pontuacao;
+                    retorno.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
+
                     if (user.Denuncias != null)
                     {
                         retorno.CountDenuncias = user.Denuncias.Count;
+
+                        if (user.Denuncias.Count > 0)
+                        {
+                            retorno.DataCadastro = user.Denuncias.OrderBy(x => x.Data).FirstOrDefault().Data.ToString();
+                        }
                     }
                     retorno.Message = "OK";
                     retorno.HttpStatus = 200;
                 }
+            }
+            catch (Exception ex)
+            {
+                retorno.Message = "Error: " + ex.Message;
+                retorno.HttpStatus = 500;
+            }
+
+            return retorno;
+        }
+
+        public RetornoRanking GetRanking(string usuarioId)
+        {
+            RetornoRanking retorno = new RetornoRanking();
+            var lista = new List<UsuarionRankingViewModel>();
+
+            try
+            {
+                using (var context = new ApplicationDBContext())
+                {
+                    var user = context.Usuario.Include(x => x.Denuncias)
+                        .FirstOrDefault(x => x.FacebookId == usuarioId);
+
+                    UsuarionRankingViewModel usuario = new UsuarionRankingViewModel();
+
+                    usuario.Id = user.FacebookId;
+                    usuario.Nome = user.Nome;
+                    usuario.Pontuacao = user.Pontuacao;
+                    usuario.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
+
+                    lista.Add(usuario);
+                }
+
+                string[] id = new string[] { "1", "2", "3", "4" };
+                string[] nomes = new string[] { "João", "Ribamar", "Fernanda", "Isadora" };
+                double[] pontuacao = new double[] { 14, 45, 27, 68 };
+                string[] fotos = new string[] { "usuarioTeste1.jpg", "usuarioTeste2.jpg", "usuarioTeste3.jpg", "usuarioTeste4.jpg" };
+
+                for (int i = 0; i < 4; i++)
+                {
+                    UsuarionRankingViewModel usuario = new UsuarionRankingViewModel();
+
+                    usuario.Id = id[i];
+                    usuario.Nome = nomes[i];
+                    usuario.Pontuacao = pontuacao[i];
+                    usuario.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/" + fotos[i];
+
+                    lista.Add(usuario);
+                }
+
+                retorno.Lista = lista.OrderByDescending(x => x.Pontuacao).ToList();
+                retorno.Count = lista.Count;
+
+                retorno.Message = "OK";
+                retorno.HttpStatus = 200;
             }
             catch (Exception ex)
             {

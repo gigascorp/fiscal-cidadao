@@ -16,8 +16,10 @@ LocationStatus
     case NO_STATUS, LOCATION_RESTRICTED, LOCATION_DENIED, LOCATION_ALLOWED
 }
 
-class LocationController : NSObject, CLLocationManagerDelegate
+
+class LocationController : BaseController, CLLocationManagerDelegate
 {
+    static let InitializedLocationMessage = 1
     static let sharedInstance = LocationController()
     var locationManager: CLLocationManager!
     
@@ -85,7 +87,14 @@ class LocationController : NSObject, CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
+        let isNewLocation = currentLocation == nil
         currentLocation =  locations.last
+        
+        if isNewLocation
+        {
+            notify(LocationController.InitializedLocationMessage)
+        }
+        
 //        print("Last location : \(currentLocation)")
     }
     
@@ -145,7 +154,6 @@ class LocationController : NSObject, CLLocationManagerDelegate
                 locationManager.startUpdatingLocation()
                 
                 print(locationManager.location)
-                
             }
             else
             {

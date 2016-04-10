@@ -56,8 +56,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
-        
-        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)

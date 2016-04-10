@@ -22,49 +22,16 @@ class MapaViewController: UIViewController
     {
         navigationController?.setNavigationBarHidden(false, animated: true)
         
+        LocationController.sharedInstance.addObserver(self)
         let dataController = DataController.sharedInstance
+        
+        
         
         if(dataController.allConvenios.isEmpty && LocationController.sharedInstance.hasLocation())
         {
-            let locationController = LocationController.sharedInstance;
-            
-            dataController.getConvenios(locationController.getLocation(), onCompletion:
-            {
-                convenios in
-                
-                var annotationsDic = [String : [Convenio]]()
-                
-                for c in convenios
-                {
-                    let str = String(c.location.0) + " " + String(c.location.1)
-                    
-                    if var currentConvenios = annotationsDic[str]
-                    {
-                        currentConvenios.append(c)
-                        annotationsDic[str] = currentConvenios
-                    }
-                    else
-                    {
-                        let currentConvenios = [c]
-                        annotationsDic[str] = currentConvenios
-                    }
-                }
-                
-                for (_, array) in annotationsDic
-                {
-                    if array.count == 1
-                    {
-                        self.loadAnnotation(array.first!)
-                    }
-                    else
-                    {
-                        self.loadMultipleAnnotation(array)
-                    }
-                }
-        
-            })
-            
+            requestLocation()
         }
+        
         
         for convenio in dataController.allConvenios
         {
@@ -125,5 +92,47 @@ class MapaViewController: UIViewController
             mapView.showsUserLocation = true
             centerMapOnLocation(locationController.currentLocation!)
         }
+    }
+    
+    func requestLocation()
+    {
+        let locationController = LocationController.sharedInstance;
+        let dataController = DataController.sharedInstance
+        dataController.getConvenios(locationController.getLocation(), onCompletion:
+            {
+                convenios in
+                
+                var annotationsDic = [String : [Convenio]]()
+                
+                for c in convenios
+                {
+                    let str = String(c.location.0) + " " + String(c.location.1)
+                    
+                    if var currentConvenios = annotationsDic[str]
+                    {
+                        currentConvenios.append(c)
+                        annotationsDic[str] = currentConvenios
+                    }
+                    else
+                    {
+                        let currentConvenios = [c]
+                        annotationsDic[str] = currentConvenios
+                    }
+                }
+                
+                for (_, array) in annotationsDic
+                {
+                    if array.count == 1
+                    {
+                        self.loadAnnotation(array.first!)
+                    }
+                    else
+                    {
+                        self.loadMultipleAnnotation(array)
+                    }
+                }
+                
+        })
+        
     }
 }

@@ -12,8 +12,9 @@ import Foundation
 import MapKit
 import UIKit
 
-extension MapaViewController : MKMapViewDelegate
+extension MapaViewController : MKMapViewDelegate, Observer
 {
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
         if let annotation = annotation as? MapaAnnotation
@@ -103,6 +104,22 @@ extension MapaViewController : MKMapViewDelegate
         }
     }
     
+    func getSelectorForMessage(message: Int, sender: AnyObject?) -> Selector?
+    {
+        if message == LocationController.InitializedLocationMessage
+        {
+            return #selector(MapaViewController.onLocationInitialized)
+        }
+        return nil
+    }
     
+    var theObserver: NSObject?
+    {
+        return self
+    }
     
+    func onLocationInitialized()
+    {
+        requestLocation()
+    }
 }

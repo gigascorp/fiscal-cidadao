@@ -13,8 +13,10 @@ class Denuncia: NSObject
     var id  = 0
     var photos = [String]()
     var convenioId : Int
-    var userId : String?
+    let userId : String?
     var comments : String
+    var denunciaDate : String?
+    var status : String?
     var convenio : Convenio?
     
     init(convenioId : Int)

@@ -274,12 +274,11 @@
     <Content Include="ImagensDenuncias\57_1.jpg" />
     <Content Include="ImagensDenuncias\60_2.jpg" />
     <Content Include="ImagensDenuncias\57_2.jpg" />
-    <Content Include="ImagensDenuncias\perfil.jpg" />
+    <Content Include="ImagensDenuncias\dea.jpg" />
+    <Content Include="ImagensDenuncias\guilherme.jpg" />
+    <Content Include="ImagensDenuncias\marcio.jpg" />
     <Content Include="ImagensDenuncias\perfil.png" />
-    <Content Include="ImagensDenuncias\usuarioTeste1.jpg" />
-    <Content Include="ImagensDenuncias\usuarioTeste2.jpg" />
-    <Content Include="ImagensDenuncias\usuarioTeste3.jpg" />
-    <Content Include="ImagensDenuncias\usuarioTeste4.jpg" />
+    <Content Include="ImagensDenuncias\wallas.jpg" />
     <Content Include="Scripts\App\DetalhesConvenio.js" />
     <Content Include="Scripts\App\ListagemConvenios.js" />
     <Content Include="Scripts\bootstrap.js" />

@@ -383,7 +383,7 @@ namespace FiscalCidadaoWCF
                 string[] id = new string[] { "1", "2", "3", "4" };
                 string[] nomes = new string[] { "João", "Ribamar", "Fernanda", "Isadora" };
                 double[] pontuacao = new double[] { 14, 45, 27, 68 };
-                string[] fotos = new string[] { "usuarioTeste1", "usuarioTeste2", "usuarioTeste3", "usuarioTeste4" };
+                string[] fotos = new string[] { "usuarioTeste1.jpg", "usuarioTeste2.jpg", "usuarioTeste3.jpg", "usuarioTeste4.jpg" };
 
                 for (int i = 0; i < 4; i++)
                 {

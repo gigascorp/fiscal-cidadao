@@ -121,8 +121,9 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
         String texto = edTexto.getText().toString();
 
-        if(texto == null || texto.trim().equals("")){
-            Toast.makeText(getActivity(), "Nos envie algum texto junto com a sua denúncia.", Toast.LENGTH_LONG).show();
+        if(texto == null || texto.trim().equals("") || texto.trim().length() < FiscalCidadaoApp.MINIMO_CARACTERES_DENUNCIA){
+            Toast.makeText(getActivity(), "Nos envie um texto com pelo menos " + String.valueOf(FiscalCidadaoApp.MINIMO_CARACTERES_DENUNCIA) +
+                    " caracteres junto com a sua denúncia.", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -168,7 +169,7 @@ public class DenunciarFragment extends GenericFragment implements View.OnClickLi
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(DenunciarFragment.this.getActivity(), "Erro ao realizara a denúncia.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao realizara a denúncia.", Toast.LENGTH_LONG).show();
                 t.printStackTrace();
                 progressBar.setVisibility(View.GONE);
                 tela.setVisibility(View.VISIBLE);

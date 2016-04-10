@@ -273,7 +273,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionCell" textLabel="lTB-bk-EYE" style="IBUITableViewCellStyleDefault" id="hRJ-Zt-2rf">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="40"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hRJ-Zt-2rf" id="Y1H-pK-keV">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
@@ -290,7 +290,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" textLabel="L4H-rc-dvr" style="IBUITableViewCellStyleDefault" id="9t9-bH-dOu">
-                                        <rect key="frame" x="0.0" y="68" width="600" height="40"/>
+                                        <rect key="frame" x="0.0" y="132" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9t9-bH-dOu" id="T9z-Z9-cta">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
@@ -348,7 +348,7 @@
             </objects>
             <point key="canvasLocation" x="785" y="1941"/>
         </scene>
-        <!--Denúncia-->
+        <!--Denunciar-->
         <scene sceneID="c1a-Pt-JnA">
             <objects>
                 <viewController id="CNC-eM-e4v" customClass="DenunciaViewController" customModule="FiscalCidadao" customModuleProvider="target" sceneMemberID="viewController">
@@ -360,70 +360,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Convenio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbA-KF-OqO">
-                                <rect key="frame" x="20" y="72" width="72" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Deixe sua denúncia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYo-oo-yKf">
-                                <rect key="frame" x="20" y="127" width="149" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="--" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYC-cg-5BM">
-                                <rect key="frame" x="20" y="101" width="560" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PE7-Ty-mpF">
-                                <rect key="frame" x="241" y="513" width="119" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="119" id="mbj-FF-dLQ"/>
-                                </constraints>
+                                <rect key="frame" x="245" y="534" width="111" height="30"/>
                                 <state key="normal" title="Enviar Denúncia"/>
                                 <connections>
                                     <action selector="sendDenunciaAction:" destination="CNC-eM-e4v" eventType="touchUpInside" id="Pjr-BT-bbL"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8ny-Df-seD">
-                                <rect key="frame" x="20" y="156" width="560" height="136"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8ny-Df-seD">
+                                <rect key="frame" x="20" y="72" width="560" height="356"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.94999999999999996" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="136" id="FWL-sY-CDn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fotos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q55-Qf-Xw3">
-                                <rect key="frame" x="20" y="295" width="43" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escrever Denúncia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oR-SA-uPh">
+                                <rect key="frame" x="25" y="81" width="143" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rY5-Sc-Y0c">
+                                <rect key="frame" x="0.0" y="436" width="600" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="8G2-sz-9gT"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cbA-KF-OqO" firstAttribute="top" secondItem="LmY-Vs-8zg" secondAttribute="bottom" constant="8" symbolic="YES" id="9cV-aK-OFq"/>
-                            <constraint firstItem="8ny-Df-seD" firstAttribute="centerX" secondItem="PE7-Ty-mpF" secondAttribute="centerX" id="Eie-oh-pQv"/>
-                            <constraint firstItem="8ny-Df-seD" firstAttribute="top" secondItem="sYo-oo-yKf" secondAttribute="bottom" constant="8" symbolic="YES" id="G8B-xZ-3kW"/>
-                            <constraint firstItem="GYC-cg-5BM" firstAttribute="top" secondItem="cbA-KF-OqO" secondAttribute="bottom" constant="8" symbolic="YES" id="HGh-4r-ZIR"/>
-                            <constraint firstItem="8ny-Df-seD" firstAttribute="leading" secondItem="sYo-oo-yKf" secondAttribute="leading" id="UN0-Kj-l1w"/>
-                            <constraint firstItem="uvO-6U-Kxo" firstAttribute="top" secondItem="PE7-Ty-mpF" secondAttribute="bottom" constant="57" id="UgC-b5-YjN"/>
-                            <constraint firstItem="cbA-KF-OqO" firstAttribute="leading" secondItem="AEh-hr-ldZ" secondAttribute="leadingMargin" id="XRJ-JQ-0xY"/>
-                            <constraint firstItem="q55-Qf-Xw3" firstAttribute="top" secondItem="8ny-Df-seD" secondAttribute="bottom" constant="3" id="bbx-KX-eXQ"/>
-                            <constraint firstItem="cbA-KF-OqO" firstAttribute="leading" secondItem="GYC-cg-5BM" secondAttribute="leading" id="cjH-Xp-G5J"/>
-                            <constraint firstItem="sYo-oo-yKf" firstAttribute="top" secondItem="GYC-cg-5BM" secondAttribute="bottom" constant="8" symbolic="YES" id="jSG-y9-KLc"/>
-                            <constraint firstItem="GYC-cg-5BM" firstAttribute="trailing" secondItem="AEh-hr-ldZ" secondAttribute="trailingMargin" id="oGg-Pt-yFo"/>
-                            <constraint firstItem="8ny-Df-seD" firstAttribute="trailing" secondItem="GYC-cg-5BM" secondAttribute="trailing" id="odN-9C-cWC"/>
-                            <constraint firstItem="GYC-cg-5BM" firstAttribute="leading" secondItem="sYo-oo-yKf" secondAttribute="leading" id="uJr-Zx-2Ov"/>
-                            <constraint firstItem="q55-Qf-Xw3" firstAttribute="leading" secondItem="8ny-Df-seD" secondAttribute="leading" id="xkm-Az-p8V"/>
+                            <constraint firstItem="rY5-Sc-Y0c" firstAttribute="centerX" secondItem="AEh-hr-ldZ" secondAttribute="centerX" id="8ot-eX-5nO"/>
+                            <constraint firstItem="rY5-Sc-Y0c" firstAttribute="leading" secondItem="AEh-hr-ldZ" secondAttribute="leadingMargin" constant="-20" id="9bg-ff-ota"/>
+                            <constraint firstItem="PE7-Ty-mpF" firstAttribute="centerX" secondItem="AEh-hr-ldZ" secondAttribute="centerX" id="A07-Db-mzd"/>
+                            <constraint firstItem="rY5-Sc-Y0c" firstAttribute="top" secondItem="8ny-Df-seD" secondAttribute="bottom" constant="8" id="AIn-Dw-WSB"/>
+                            <constraint firstItem="3oR-SA-uPh" firstAttribute="leading" secondItem="AEh-hr-ldZ" secondAttribute="leadingMargin" constant="5" id="DPz-bu-nuu"/>
+                            <constraint firstItem="3oR-SA-uPh" firstAttribute="top" secondItem="LmY-Vs-8zg" secondAttribute="bottom" constant="17" id="Fze-dK-qGv"/>
+                            <constraint firstItem="8ny-Df-seD" firstAttribute="trailing" secondItem="AEh-hr-ldZ" secondAttribute="trailingMargin" id="SuY-1O-rBg"/>
+                            <constraint firstItem="8ny-Df-seD" firstAttribute="leading" secondItem="AEh-hr-ldZ" secondAttribute="leadingMargin" id="V7o-m8-Jg5"/>
+                            <constraint firstItem="uvO-6U-Kxo" firstAttribute="top" secondItem="PE7-Ty-mpF" secondAttribute="bottom" constant="36" id="XJp-Jw-z7X"/>
+                            <constraint firstItem="PE7-Ty-mpF" firstAttribute="top" secondItem="rY5-Sc-Y0c" secondAttribute="bottom" constant="8" id="Xtb-GV-Mw0"/>
+                            <constraint firstItem="8ny-Df-seD" firstAttribute="centerX" secondItem="AEh-hr-ldZ" secondAttribute="centerX" id="amf-SX-Wg3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rY5-Sc-Y0c" secondAttribute="trailing" constant="-20" id="fk8-KW-3Gd"/>
+                            <constraint firstItem="8ny-Df-seD" firstAttribute="centerY" secondItem="AEh-hr-ldZ" secondAttribute="centerY" id="kcz-6D-g7T"/>
+                            <constraint firstItem="rY5-Sc-Y0c" firstAttribute="top" secondItem="8ny-Df-seD" secondAttribute="bottom" constant="8" id="pwW-Sb-C6w"/>
+                            <constraint firstItem="rY5-Sc-Y0c" firstAttribute="centerX" secondItem="AEh-hr-ldZ" secondAttribute="centerX" id="q5A-NU-8EZ"/>
+                            <constraint firstItem="rY5-Sc-Y0c" firstAttribute="top" secondItem="8ny-Df-seD" secondAttribute="bottom" constant="8" id="sSb-W0-nnU"/>
+                            <constraint firstItem="8ny-Df-seD" firstAttribute="top" secondItem="LmY-Vs-8zg" secondAttribute="bottom" constant="8" id="sZM-YB-Iqx"/>
+                            <constraint firstItem="PE7-Ty-mpF" firstAttribute="top" secondItem="rY5-Sc-Y0c" secondAttribute="bottom" constant="8" id="vji-Gw-1nJ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kcz-6D-g7T"/>
+                                <exclude reference="AIn-Dw-WSB"/>
+                                <exclude reference="pwW-Sb-C6w"/>
+                                <exclude reference="vji-Gw-1nJ"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Denúncia" id="R2Q-8M-Gey">
+                    <navigationItem key="navigationItem" title="Denunciar" id="R2Q-8M-Gey">
                         <barButtonItem key="rightBarButtonItem" image="ic_photo_camera_white" id="FCe-ge-Ybv">
                             <connections>
                                 <action selector="photoAction:" destination="CNC-eM-e4v" id="oud-3Z-sNr"/>
@@ -431,7 +424,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="descLabel" destination="GYC-cg-5BM" id="eqT-11-83X"/>
+                        <outlet property="scrollView" destination="rY5-Sc-Y0c" id="lnr-xE-qi2"/>
+                        <outlet property="textPlaceholder" destination="3oR-SA-uPh" id="FE1-rt-l9C"/>
                         <outlet property="textView" destination="8ny-Df-seD" id="03H-tv-vce"/>
                     </connections>
                 </viewController>
@@ -504,6 +498,6 @@
         <image name="ic_view_list_white_36pt" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s5L-YF-rUb"/>
+        <segue reference="R0L-LE-dxe"/>
     </inferredMetricsTieBreakers>
 </document>

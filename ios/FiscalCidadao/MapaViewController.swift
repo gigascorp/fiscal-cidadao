@@ -14,7 +14,7 @@ class MapaViewController: UIViewController
 {
     @IBOutlet weak var mapView: MKMapView!
     
-    let regionRadius: CLLocationDistance = 3000
+    let regionRadius: CLLocationDistance = 6000
     
     // São Luís UFMA: -2,554014, -44,307548
     override func viewDidLoad()
@@ -33,7 +33,7 @@ class MapaViewController: UIViewController
                 {
                     self.loadAnnotation(c)
                 }
-                
+        
             })
             
         }

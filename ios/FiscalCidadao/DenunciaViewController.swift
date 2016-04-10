@@ -1,4 +1,4 @@
-//
+    //
 //  ComplaintsViewController.swift
 //  FiscalCidadao
 //
@@ -8,13 +8,18 @@
 
 import UIKit
 
-class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate
+class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, UITextViewDelegate, PhotoGalleryDelegate
 {
-    @IBOutlet weak var descLabel: UILabel!
     
     @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var textPlaceholder: UILabel!
+    
+    
     
     var convenio : Convenio?
     
@@ -24,27 +29,35 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     
     let loadingView = LoadingView()
     
+    let photoGalleryView = PhotoGalleryView()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        if convenio != nil
-        {
-            descLabel.text = convenio?.desc
-        }
         
         if navigationController != nil
         {
             navigationController?.title = "Fazer Denúncia"
         }
         
-        textView.layer.cornerRadius = 8
-        textView.layer.borderWidth = 2
-        textView.layer.borderColor = UIColor.grayColor().CGColor
+        textView.delegate = self
+        
+//        textView.layer.cornerRadius = 8
+//        textView.layer.borderWidth = 2
+//        textView.layer.borderColor = UIColor.grayColor().CGColor
+        
+        photoGalleryView.galleryDelegate = self
+        
+        photoGalleryView.addToScrollView(scrollView)
+        
+        textView.returnKeyType = UIReturnKeyType.Done
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
         
         
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-//        view.addGestureRecognizer(tap)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
@@ -53,7 +66,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         {
             self.view.endEditing(true)
         }
-        
     }
 
     func dismissKeyboard()
@@ -76,7 +88,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             
             for img in images
             {
-//                if let data = UIImagePNGRepresentation(img)
                 if let data = UIImageJPEGRepresentation(img, 0.5)
                 {
                     let data64 = data.base64EncodedDataWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
@@ -98,9 +109,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
                     self.denunciaSent = true
                     alert.delegate = self
                     alert.show()
-                    
-                    
-                    
                 }
                 else
                 {
@@ -153,6 +161,7 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             images.append(image)
+            photoGalleryView.addPhoto(image, removable: true)
         }
     }
     
@@ -164,7 +173,7 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         {
             tab.enabled = false
         }
-        loadingView.showLoadView(self);
+        loadingView.showLoadView(self.view);
     }
     
     func enableView()
@@ -199,6 +208,39 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         denunciaSent = false
         
     }
+    
+    func onPhotoRemoved(index : Int)
+    {
+        images.removeAtIndex(index)
+    }
+    
+    func textViewDidEndEditing(textView: UITextView)
+    {
+        textPlaceholder.hidden = textView.hasText()
+        
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView)
+    {
+        textPlaceholder.hidden = true
+    }
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool
+    {
+        if text == "\n"
+        {
+            textView.endEditing(true)
+            return false
+        }
+        return true;
+
+    }
+    
     /*
     // MARK: - Navigation
 

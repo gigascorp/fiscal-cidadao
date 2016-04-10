@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
 
+import java.security.PublicKey;
 import java.util.concurrent.TimeUnit;
 
 import br.com.gigascorp.ficalcidadao.api.FiscalCidadaoApi;
@@ -19,6 +20,7 @@ public class FiscalCidadaoApp extends Application {
 
     public static final String TAG = "FISCAL_CIDADAO_APP";
     public static final String API_URI = "http://www.fiscalcidadao.site/FiscalCidadaoWCF.svc/";
+    public static int MINIMO_CARACTERES_DENUNCIA = 10;
 
     private Retrofit retrofit = null;
     private FiscalCidadaoApi fiscalCidadaoApi = null;

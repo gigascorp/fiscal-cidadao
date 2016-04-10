@@ -14,15 +14,15 @@ class LoadingView: NSObject
     var loadingIndicator : UIActivityIndicatorView?
     
     
-    func showLoadView(viewController: UIViewController)
+    func showLoadView(rootView: UIView)
     {
         if overlay == nil
         {
-            overlay = UIView(frame: viewController.view.frame)
+            overlay = UIView(frame: rootView.frame)
             overlay?.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         }
         
-        viewController.view.addSubview(overlay!)
+        rootView.addSubview(overlay!)
         
         if loadingIndicator == nil
         {

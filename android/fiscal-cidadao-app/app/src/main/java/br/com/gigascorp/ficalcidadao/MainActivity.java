@@ -1,5 +1,6 @@
 package br.com.gigascorp.ficalcidadao;
 
+import android.Manifest;
 import android.content.Intent;
 
 import com.facebook.AccessToken;
@@ -15,9 +16,13 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -33,18 +38,12 @@ import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int PERMISSIONS_REQUEST_RETURN = 1;
+
     CallbackManager callbackManager;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void login(){
         String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
 
         FiscalCidadaoApp app = (FiscalCidadaoApp) this.getApplication();
@@ -57,6 +56,37 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
         finish();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+
+            if (Build.VERSION.SDK_INT >= 23) {
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{
+                                Manifest.permission.INTERNET,
+                                Manifest.permission.ACCESS_NETWORK_STATE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.ACCESS_COARSE_LOCATION,
+                                Manifest.permission.ACCESS_FINE_LOCATION
+                        },
+                        PERMISSIONS_REQUEST_RETURN);
+            } else {
+                login();
+            }
+
+        } else {
+            login();
+        }
+
 
         /*FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_main);
@@ -245,4 +275,27 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }*/
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        if (requestCode == PERMISSIONS_REQUEST_RETURN) {
+
+            if (grantResults.length > 0) {
+
+                for(int i : grantResults){
+                    if( i != PackageManager.PERMISSION_GRANTED ){
+                        Toast.makeText(this, "Você precisa garantir as permissões de acesso necessárias para que o aplicativo funcione bem.", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }
+
+                login();
+
+            } else {
+                Toast.makeText(this, "Você precisa garantir as permissões de acesso necessárias para que o aplicativo funcione bem.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+        }
+    }
 }

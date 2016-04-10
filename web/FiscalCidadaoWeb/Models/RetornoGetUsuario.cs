@@ -17,6 +17,10 @@ namespace FiscalCidadaoWCF.Models
 
         public double Pontuacao { get; set; }
 
+        public string UrlFoto { get; set; }
+
+        public string DataCadastro { get; set; }
+
         public string Message { get; set; }
 
         public int HttpStatus { get; set; }

@@ -3,14 +3,19 @@ package br.com.gigascorp.ficalcidadao;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
 import br.com.gigascorp.ficalcidadao.fragment.ListaDenunciasFragment;
 import br.com.gigascorp.ficalcidadao.fragment.MapaConveniosFragment;
 import br.com.gigascorp.ficalcidadao.fragment.PerfilFragment;
+import br.com.gigascorp.ficalcidadao.fragment.RankingFragment;
+import br.com.gigascorp.ficalcidadao.modelo.Ranking;
 
 public class HomeActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
@@ -25,13 +30,14 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
         mostrarBotaoVoltar();
 
         mBottomBar = BottomBar.attach(this, savedInstanceState);
+        mBottomBar.ignoreNightMode();
         mBottomBar.setItemsFromMenu(R.menu.bottombar_menu, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
 
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                if(menuItemId == R.id.bottomBarMapa){
+                if (menuItemId == R.id.bottomBarMapa) {
 
                     setTitle("Fiscal Cidadão");
 
@@ -45,7 +51,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
                     return;
                 }
 
-                if(menuItemId == R.id.bottomBarDenuncias){
+                if (menuItemId == R.id.bottomBarDenuncias) {
 
                     setTitle("Suas Denúncias");
 
@@ -59,11 +65,25 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
                     return;
                 }
 
-                if(menuItemId == R.id.bottomBarPerfil){
+                if (menuItemId == R.id.bottomBarPerfil) {
 
                     setTitle("Perfil");
 
                     PerfilFragment fragment = new PerfilFragment();
+
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.telaHome, fragment)
+                            .commit();
+
+                    return;
+                }
+
+                if (menuItemId == R.id.bottomBarRanking) {
+
+                    setTitle("Pontuação dos Amigos");
+
+                    RankingFragment fragment = new RankingFragment();
 
                     getSupportFragmentManager()
                             .beginTransaction()
@@ -82,6 +102,15 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
             }
         });
 
+        /*mBottomBar.mapColorForTab(0, ContextCompat.getColor(this, R.color.white));
+        mBottomBar.mapColorForTab(1, ContextCompat.getColor(this, R.color.white));
+        mBottomBar.mapColorForTab(2, ContextCompat.getColor(this, R.color.white));
+        mBottomBar.mapColorForTab(3, ContextCompat.getColor(this, R.color.white));*/
+
+        if(!ImageLoader.getInstance().isInited()){
+            ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+            ImageLoader.getInstance().init(config);
+        }
     }
 
     @Override
@@ -133,6 +162,12 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
             setTitle("Perfil");
             return;
         }
+
+        if(pos == 2){
+            setTitle("Pontuação dos Amigos");
+            return;
+        }
+
     }
 
 }

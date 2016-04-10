@@ -11,6 +11,11 @@
         android:title="Denúncias" />
 
     <item
+        android:id="@+id/bottomBarRanking"
+        android:icon="@drawable/ic_group_black_36dp"
+        android:title="Ranking" />
+
+    <item
         android:id="@+id/bottomBarPerfil"
         android:icon="@drawable/ic_person_white_36dp"
         android:title="Perfil" />

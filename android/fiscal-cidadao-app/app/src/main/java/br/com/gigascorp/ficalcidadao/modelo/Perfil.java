@@ -2,6 +2,8 @@ package br.com.gigascorp.ficalcidadao.modelo;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class Perfil {
 
     @SerializedName("Nome")
@@ -18,6 +20,12 @@ public class Perfil {
 
     @SerializedName("CountDenuncias")
     private int totalDenuncias;
+
+    @SerializedName("DataCadastro")
+    private Date dataCadastro;
+
+    @SerializedName("UrlFoto")
+    private String fotoPerfil;
 
     public String getNome() {
         return nome;
@@ -57,5 +65,21 @@ public class Perfil {
 
     public void setTotalDenuncias(int totalDenuncias) {
         this.totalDenuncias = totalDenuncias;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 }

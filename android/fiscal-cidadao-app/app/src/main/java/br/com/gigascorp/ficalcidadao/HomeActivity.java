@@ -5,6 +5,8 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
@@ -31,7 +33,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
 
                 getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
-                if(menuItemId == R.id.bottomBarMapa){
+                if (menuItemId == R.id.bottomBarMapa) {
 
                     setTitle("Fiscal Cidadão");
 
@@ -45,7 +47,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
                     return;
                 }
 
-                if(menuItemId == R.id.bottomBarDenuncias){
+                if (menuItemId == R.id.bottomBarDenuncias) {
 
                     setTitle("Suas Denúncias");
 
@@ -59,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
                     return;
                 }
 
-                if(menuItemId == R.id.bottomBarPerfil){
+                if (menuItemId == R.id.bottomBarPerfil) {
 
                     setTitle("Perfil");
 
@@ -82,6 +84,10 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
             }
         });
 
+        if(!ImageLoader.getInstance().isInited()){
+            ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+            ImageLoader.getInstance().init(config);
+        }
     }
 
     @Override

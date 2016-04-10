@@ -102,9 +102,6 @@ public class DenunciaFragment extends GenericFragment {
         txtDataDenuncia.setText(dateFormat.format(denuncia.getDataDenuncia()));
         txtParecerDenuncia.setText(denuncia.getParecer());
 
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity()).build();
-        ImageLoader.getInstance().init(config);
-
         FotoDenunciaResponseAdapter adapter = new FotoDenunciaResponseAdapter(denuncia.getFotosUrl(), DenunciaFragment.this);
         recyclerView.setAdapter(adapter);
 

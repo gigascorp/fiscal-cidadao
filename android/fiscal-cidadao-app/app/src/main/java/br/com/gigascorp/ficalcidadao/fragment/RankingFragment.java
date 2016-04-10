@@ -17,20 +17,21 @@ import java.util.List;
 
 import br.com.gigascorp.ficalcidadao.FiscalCidadaoApp;
 import br.com.gigascorp.ficalcidadao.R;
-import br.com.gigascorp.ficalcidadao.modelo.Convenio;
 import br.com.gigascorp.ficalcidadao.modelo.Denuncia;
+import br.com.gigascorp.ficalcidadao.modelo.Ranking;
 import br.com.gigascorp.ficalcidadao.modelo.wrapper.DenunciasWrapper;
-import br.com.gigascorp.ficalcidadao.ui.ConvenioAdapter;
+import br.com.gigascorp.ficalcidadao.modelo.wrapper.RankingResultWrapper;
 import br.com.gigascorp.ficalcidadao.ui.DenunciaAdapter;
 import br.com.gigascorp.ficalcidadao.ui.DividerItemDecoration;
+import br.com.gigascorp.ficalcidadao.ui.RankingAdapter;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class ListaDenunciasFragment extends GenericFragment {
+public class RankingFragment extends GenericFragment {
 
-    private List<Denuncia> denuncias;
+    private List<Ranking> lista;
 
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
@@ -38,18 +39,18 @@ public class ListaDenunciasFragment extends GenericFragment {
     private RelativeLayout tela;
     private ProgressBar progressBar;
 
-    private Call<DenunciasWrapper> denunciasWrapperCall;
+    private Call<RankingResultWrapper> rankingResultWrapperCall;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        RelativeLayout layout    = (RelativeLayout) inflater.inflate(R.layout.fragment_lista_denuncias, container, false);
+        RelativeLayout layout    = (RelativeLayout) inflater.inflate(R.layout.fragment_ranking, container, false);
 
         progressBar = (ProgressBar) layout.findViewById(R.id.progress_bar);
         tela = (RelativeLayout) layout.findViewById(R.id.tela);
 
-        recyclerView = (RecyclerView) layout.findViewById(R.id.listaDenuncias);
+        recyclerView = (RecyclerView) layout.findViewById(R.id.listaRanking);
         recyclerView.setHasFixedSize(false);
         recyclerView.addItemDecoration(new DividerItemDecoration(ActivityCompat.getDrawable(super.getActivity(), R.drawable.divisor)));
         layoutManager = new LinearLayoutManager(super.getActivity());
@@ -63,36 +64,35 @@ public class ListaDenunciasFragment extends GenericFragment {
     public void onStart() {
         super.onStart();
 
-        //Após recuperar a localização, chama a API para encontrar os convênios das proximidades
         progressBar.setVisibility(View.VISIBLE);
         tela.setVisibility(View.INVISIBLE);
 
         Log.d(FiscalCidadaoApp.TAG, "Vai enviar a requisição");
-        denunciasWrapperCall = getFiscalCidadaoApi().getDenuncias(getUsuarioLogado().getId());
+        rankingResultWrapperCall = getFiscalCidadaoApi().getRanking(getUsuarioLogado().getId());
         Log.d(FiscalCidadaoApp.TAG, "Requisição enviada");
 
-        denunciasWrapperCall.enqueue(new Callback<DenunciasWrapper>() {
+        rankingResultWrapperCall.enqueue(new Callback<RankingResultWrapper>() {
             @Override
-            public void onResponse(Response<DenunciasWrapper> response, Retrofit retrofit) {
+            public void onResponse(Response<RankingResultWrapper> response, Retrofit retrofit) {
 
                 Log.d(FiscalCidadaoApp.TAG, "Resposta recebida");
 
                 if (response.body() != null && (response.code() >= 200 && response.code() < 300)) {
 
-                    DenunciasWrapper denunciasWrapper = response.body();
+                    RankingResultWrapper wrapper = response.body();
 
-                    if (denunciasWrapper.getGetDenunciaByUsuarioResult() == null) {
-                        Toast.makeText(ListaDenunciasFragment.super.getActivity(), "Erro ao recuperar denúncias", Toast.LENGTH_SHORT).show();
+                    if (wrapper.getGetRankingResult() == null ) {
+                        Toast.makeText(RankingFragment.super.getActivity(), "Erro ao recuperar o ranking", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
-                    denuncias = denunciasWrapper.getGetDenunciaByUsuarioResult();
+                    lista = wrapper.getGetRankingResult().getLista();
 
-                    DenunciaAdapter adapter = new DenunciaAdapter(denuncias);
+                    RankingAdapter adapter = new RankingAdapter(lista, RankingFragment.this);
                     recyclerView.setAdapter(adapter);
 
                 } else {
-                    Toast.makeText(ListaDenunciasFragment.super.getActivity(), "Erro ao recuperar as suas denúncias\n" + response.code() + "" + response.message(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(RankingFragment.super.getActivity(), "Erro ao recuperar o ranking\n" + response.code() + "" + response.message(), Toast.LENGTH_LONG).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
@@ -101,7 +101,7 @@ public class ListaDenunciasFragment extends GenericFragment {
 
             @Override
             public void onFailure(Throwable t) {
-                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar as suas denúncias", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContextoFiscalCidadaoApp(), "Erro ao recuperar o ranking", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 tela.setVisibility(View.VISIBLE);
                 t.printStackTrace();

@@ -13,4 +13,5 @@
     <string name="title_activity_perfil">PerfilActivity</string>
     <string name="title_activity_lista_denuncias">ListaDenunciasActivity</string>
     <string name="title_activity_home">Fiscal Cidadão</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

@@ -36,8 +36,8 @@ namespace FiscalCidadaoWCF
         List<DenunciaEnvioViewModel> GetDenunciaByUsuario(string usuarioId);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Login")]
-        RetornoLogin Login(FazerLoginViewModel data);
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Login/{usuarioId}")]
+        RetornoLogin Login(string usuarioId);
 
         [OperationContract]
         [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetUsuario/{usuarioId}")]

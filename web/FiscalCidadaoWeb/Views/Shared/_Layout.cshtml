@@ -9,6 +9,10 @@
     <link href="@Url.Content("~/Content/timeline.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/sb-admin-2.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/dataTable")
+
+    @*@Scripts.Render("~/bundles/font-awesome")*@
     <!-- TODO: add font awesome via nuget -->
     @RenderSection("styles", required: false)
 </head>
@@ -161,12 +165,10 @@
 
     </div>
     <!-- /#wrapper -->
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="@Url.Content("~/Scripts/metisMenu.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/sb-admin-2.js")" type="text/javascript"></script>
-    @Scripts.Render("~/bundles/font-awesome")
     @RenderSection("scripts", required: false)
 </body>
 </html>

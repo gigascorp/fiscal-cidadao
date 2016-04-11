@@ -73,10 +73,9 @@
                     <div class="list-group">
                         @foreach (var top3 in Model.MaisDenunciados)
                         {
-                            <a href="@Url.Action( "Index", "Home", new { id = top3.Id } )" class="list-group-item">
+                            <a href="@Url.Action("DetalhesConvenio", "Convenio", new { id = top3.Id })" class="list-group-item">
                                 <i class="fa fa-building"></i> @top3.Objeto
                                 <span class="pull-right text-muted small">
-                                    <em>TODO:DATA DO CONVÊNIO</em>
                                 </span>
                             </a>
                         }

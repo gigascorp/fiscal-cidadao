@@ -14,6 +14,7 @@
 		D812A9161CB5F95000F8E871 /* ModalmageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9151CB5F95000F8E871 /* ModalmageView.swift */; };
 		D812A9181CB991EB00F8E871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D812A9171CB991EB00F8E871 /* Assets.xcassets */; };
 		D812A91A1CBC29CA00F8E871 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9191CBC29CA00F8E871 /* ProfileViewController.swift */; };
+		D812A91C1CBC3B0A00F8E871 /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A91B1CBC3B0A00F8E871 /* Perfil.swift */; };
 		D82E81F71C9F5450000DA2C2 /* DenunciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */; };
 		D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */; };
 		D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */; };
@@ -22,6 +23,8 @@
 		D85FF9CB1CAF579A00DC0E35 /* slz.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D85FF9CA1CAF579A00DC0E35 /* slz.gpx */; };
 		D85FF9CE1CB1F31300DC0E35 /* Denuncia.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FF9CD1CB1F31300DC0E35 /* Denuncia.swift */; };
 		D85FF9D01CB3017300DC0E35 /* XmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FF9CF1CB3017300DC0E35 /* XmlParser.swift */; };
+		D8D4742D1CBC45ED00422D99 /* DenunciaReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D4742C1CBC45ED00422D99 /* DenunciaReadViewController.swift */; };
+		D8D4742F1CBC501300422D99 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D4742E1CBC501300422D99 /* GalleryTableViewCell.swift */; };
 		D8DAF2DD1C924CE50021B6E3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */; };
 		D8F32BBF1C9B869D00430F2E /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */; };
 		D8F32BC11C9B88C600430F2E /* MapaAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */; };
@@ -43,6 +46,7 @@
 		D812A9151CB5F95000F8E871 /* ModalmageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalmageView.swift; sourceTree = "<group>"; };
 		D812A9171CB991EB00F8E871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D812A9191CBC29CA00F8E871 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D812A91B1CBC3B0A00F8E871 /* Perfil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perfil.swift; sourceTree = "<group>"; };
 		D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenunciaViewController.swift; sourceTree = "<group>"; };
 		D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiscalCidadao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 		D85FF9CA1CAF579A00DC0E35 /* slz.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = slz.gpx; path = ../slz.gpx; sourceTree = "<group>"; };
 		D85FF9CD1CB1F31300DC0E35 /* Denuncia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Denuncia.swift; sourceTree = "<group>"; };
 		D85FF9CF1CB3017300DC0E35 /* XmlParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XmlParser.swift; sourceTree = "<group>"; };
+		D8D4742C1CBC45ED00422D99 /* DenunciaReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenunciaReadViewController.swift; sourceTree = "<group>"; };
+		D8D4742E1CBC501300422D99 /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
 		D8DAF2DC1C924CE50021B6E3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D8F32BBE1C9B869D00430F2E /* MapaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		D8F32BC01C9B88C600430F2E /* MapaAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapaAnnotation.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 				D8F32BCA1C9DD10800430F2E /* Observer.swift */,
 				D8F32BC81C9D7BC500430F2E /* Convenio.swift */,
 				D85FF9CD1CB1F31300DC0E35 /* Denuncia.swift */,
+				D812A91B1CBC3B0A00F8E871 /* Perfil.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 				D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */,
 				D812A90D1CB319C000F8E871 /* DenunciasTableViewController.swift */,
 				D812A9191CBC29CA00F8E871 /* ProfileViewController.swift */,
+				D8D4742C1CBC45ED00422D99 /* DenunciaReadViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 				D812A9111CB497D200F8E871 /* PhotoGalleryView.swift */,
 				D812A9131CB497FE00F8E871 /* PhotoView.swift */,
 				D812A9151CB5F95000F8E871 /* ModalmageView.swift */,
+				D8D4742E1CBC501300422D99 /* GalleryTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -257,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D4742D1CBC45ED00422D99 /* DenunciaReadViewController.swift in Sources */,
 				D85FF9CE1CB1F31300DC0E35 /* Denuncia.swift in Sources */,
 				D8F32BC91C9D7BC500430F2E /* Convenio.swift in Sources */,
 				D8F32BCB1C9DD10800430F2E /* Observer.swift in Sources */,
@@ -264,6 +274,7 @@
 				D812A9161CB5F95000F8E871 /* ModalmageView.swift in Sources */,
 				D812A9101CB32ED600F8E871 /* LoadingView.swift in Sources */,
 				D8F32BD91C9E032E00430F2E /* ConvenioViewController.swift in Sources */,
+				D8D4742F1CBC501300422D99 /* GalleryTableViewCell.swift in Sources */,
 				D85FF9D01CB3017300DC0E35 /* XmlParser.swift in Sources */,
 				D812A9141CB497FE00F8E871 /* PhotoView.swift in Sources */,
 				D812A90E1CB319C000F8E871 /* DenunciasTableViewController.swift in Sources */,
@@ -272,6 +283,7 @@
 				D82E81F71C9F5450000DA2C2 /* DenunciaViewController.swift in Sources */,
 				D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */,
 				D812A9121CB497D200F8E871 /* PhotoGalleryView.swift in Sources */,
+				D812A91C1CBC3B0A00F8E871 /* Perfil.swift in Sources */,
 				D8F32BC71C9CDA0800430F2E /* DataController.swift in Sources */,
 				D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */,
 				D8F32BD71C9DF8CC00430F2E /* ConveniosListViewController.swift in Sources */,

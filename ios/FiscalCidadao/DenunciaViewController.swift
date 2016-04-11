@@ -20,7 +20,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     @IBOutlet weak var textPlaceholder: UILabel!
     
     
-    
     var convenio : Convenio?
     
     var images = [UIImage]()

@@ -34,7 +34,7 @@ class DenunciasTableViewController: UITableViewController
     {
         let data = DataController.sharedInstance
         
-        let id =  UIDevice.currentDevice().identifierForVendor?.UUIDString
+        let id = Perfil.getUserIdByDevice()
         data.getDenuncias(id!, onCompletion: {denuncias in
             
             self.denuncias = denuncias
@@ -117,14 +117,32 @@ class DenunciasTableViewController: UITableViewController
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if(segue.identifier == "DetailSegue")
+        {
+            if let cell = sender as? UITableViewCell
+            {
+                let idx = tableView.indexPathForCell(cell)
+                if let row = idx?.row
+                {
+                    if let destination = segue.destinationViewController as? DenunciaReadViewController
+                    {
+                        destination.denuncia = denuncias[row]
+                    }
+                    
+                }
+            }
+        }
+
     }
-    */
+ 
 
 }

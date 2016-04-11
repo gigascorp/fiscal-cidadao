@@ -24,6 +24,7 @@ class DataController: BaseController
     let getConveniosPath = "GetConveniosByCoordinate"
     let sendDenunciaPath = "FazerDenuncia"
     let getDenunciaPath = "GetDenunciaByUsuario"
+    let getUserPath = "GetUsuario"
     
     var allConvenios : [Convenio] = []
     
@@ -191,6 +192,74 @@ class DataController: BaseController
         }
         
         return []
+
+    }
+    
+    func parseProfile (data : NSData) -> Perfil?
+    {
+        do{
+            var jsonData : AnyObject!
+            
+            let strData = String(data: data, encoding: NSUTF8StringEncoding)
+            print(strData)
+            try jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
+            
+            
+            if(jsonData == nil)
+            {
+                print("perfil is nil data!")
+                return nil
+            }
+            else
+            {
+                print("successfully parsed data")
+                
+                if let user = jsonData["GetUsuarioResult"] as? [String: AnyObject]
+                {
+                    let perfil = Perfil()
+                    
+                    if let id = user["Id"] as? String
+                    {
+                        perfil.id = id
+                    }
+                    
+                    if let registerDate = user["DataCadastro"] as? String
+                    {
+                        perfil.registerDate = registerDate
+                    }
+                    
+                    if let count = user["CountDenuncias"] as? NSNumber
+                    {
+                        perfil.countDenuncias = Int((count.intValue))
+                    }
+                    
+                    if let name = user["Nome"] as? String
+                    {
+                        perfil.name = name
+                    }
+                    
+                    if let urlPhoto = user["UrlFoto"] as? String
+                    {
+                        perfil.urlPhoto = urlPhoto
+                    }
+                    
+                        
+                    if perfil.isValid()
+                    {
+                        return perfil
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        catch
+        {
+            print("Perfil: failed to parse data!")
+            return nil
+        }
+        return nil
 
     }
     
@@ -391,6 +460,19 @@ class DataController: BaseController
         getConvenios(location, onCompletion: { (convenios) -> Void in
             self.allConvenios = convenios
             print("loaded \(self.allConvenios.count) convenios")
+        })
+    }
+    
+    func loadProfile(id : String, onCompletion : (Perfil?) -> Void)
+    {
+        let route = baseUrl + getUserPath + "/" + id
+        makeHTTPGetRequest(route, body: nil, onCompletion:
+        {
+            data, err in
+            
+            let dataStr = String(data: data, encoding: NSUTF8StringEncoding)
+            print(dataStr)
+            onCompletion(self.parseProfile(data))
         })
     }
     

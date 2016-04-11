@@ -48,6 +48,7 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         photoGalleryView.galleryDelegate = self
         
         photoGalleryView.addToScrollView(scrollView)
+        photoGalleryView.topView = self.view
         
         textView.returnKeyType = UIReturnKeyType.Done
     }

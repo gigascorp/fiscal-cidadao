@@ -18,6 +18,8 @@ class PhotoGalleryView: UIView, PhotoViewDelegate, UIActionSheetDelegate
     var photos = [PhotoView]()
     var galleryDelegate : PhotoGalleryDelegate? = nil
     
+    var topView : UIView?
+    
     var removeActionSheet : UIActionSheet? = nil
     
     private let MARGIN : CGFloat = 5
@@ -133,13 +135,10 @@ class PhotoGalleryView: UIView, PhotoViewDelegate, UIActionSheetDelegate
     }
     
     func clickedPhoto(photo: PhotoView)
-    {    
-        if self.superview != nil // scrollview
+    {
+        if self.topView != nil
         {
-            if ((self.superview?.superview) != nil) // rootView
-            {
-                popupPreview.showWithImage((self.superview?.superview)!, image: photo.photo!)
-            }
+            popupPreview.showWithImage(self.topView!, image: photo.photo!)
         }
         
     }

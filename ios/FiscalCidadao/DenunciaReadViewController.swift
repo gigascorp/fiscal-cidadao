@@ -179,6 +179,7 @@ class DenunciaReadViewController: UITableViewController
         case 19:
             if let galleryCell = cell as? GalleryTableViewCell
             {
+                photoGalleryView.topView = self.view
                 photoGalleryView.addToScrollView(galleryCell.scrollView)
             }
         default:

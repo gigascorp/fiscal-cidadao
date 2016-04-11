@@ -25,13 +25,10 @@ class MapaViewController: UIViewController
         LocationController.sharedInstance.addObserver(self)
         let dataController = DataController.sharedInstance
         
-        
-        
         if(dataController.allConvenios.isEmpty && LocationController.sharedInstance.hasLocation())
         {
             requestLocation()
         }
-        
         
         for convenio in dataController.allConvenios
         {

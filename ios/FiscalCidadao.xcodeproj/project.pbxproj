@@ -13,6 +13,7 @@
 		D812A9141CB497FE00F8E871 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9131CB497FE00F8E871 /* PhotoView.swift */; };
 		D812A9161CB5F95000F8E871 /* ModalmageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9151CB5F95000F8E871 /* ModalmageView.swift */; };
 		D812A9181CB991EB00F8E871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D812A9171CB991EB00F8E871 /* Assets.xcassets */; };
+		D812A91A1CBC29CA00F8E871 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D812A9191CBC29CA00F8E871 /* ProfileViewController.swift */; };
 		D82E81F71C9F5450000DA2C2 /* DenunciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */; };
 		D84CE8B41C8FA02D00AA8831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */; };
 		D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CE8B51C8FA02D00AA8831 /* FirstViewController.swift */; };
@@ -41,6 +42,7 @@
 		D812A9131CB497FE00F8E871 /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		D812A9151CB5F95000F8E871 /* ModalmageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalmageView.swift; sourceTree = "<group>"; };
 		D812A9171CB991EB00F8E871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D812A9191CBC29CA00F8E871 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DenunciaViewController.swift; sourceTree = "<group>"; };
 		D84CE8B01C8FA02D00AA8831 /* FiscalCidadao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiscalCidadao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84CE8B31C8FA02D00AA8831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				D8F32BD81C9E032E00430F2E /* ConvenioViewController.swift */,
 				D82E81F61C9F5450000DA2C2 /* DenunciaViewController.swift */,
 				D812A90D1CB319C000F8E871 /* DenunciasTableViewController.swift */,
+				D812A9191CBC29CA00F8E871 /* ProfileViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				D8F32BC71C9CDA0800430F2E /* DataController.swift in Sources */,
 				D84CE8B61C8FA02D00AA8831 /* FirstViewController.swift in Sources */,
 				D8F32BD71C9DF8CC00430F2E /* ConveniosListViewController.swift in Sources */,
+				D812A91A1CBC29CA00F8E871 /* ProfileViewController.swift in Sources */,
 				D8F32BD51C9DD6C600430F2E /* BaseController.swift in Sources */,
 				D8F32BC51C9CD70000430F2E /* LocationController.swift in Sources */,
 			);

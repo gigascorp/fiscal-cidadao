@@ -507,7 +507,7 @@
         <!--Meu Perfil-->
         <scene sceneID="QxU-u7-MV5">
             <objects>
-                <viewController id="d7O-LG-dG7" sceneMemberID="viewController">
+                <viewController id="d7O-LG-dG7" customClass="ProfileViewController" customModule="FiscalCidadao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AMa-1U-RkK"/>
                         <viewControllerLayoutGuide type="bottom" id="Kkt-bw-cjA"/>
@@ -515,9 +515,61 @@
                     <view key="view" contentMode="scaleToFill" id="Mbs-2h-j0C">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GR5-1j-bV5">
+                                <rect key="frame" x="122" y="28" width="357" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="357" id="IDo-Rp-tIl"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2K-Ry-qvJ">
+                                <rect key="frame" x="252" y="353" width="97" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mq3-qg-Jzc">
+                                <rect key="frame" x="282" y="389" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Denuncias Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-6a-xWp">
+                                <rect key="frame" x="235" y="418" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0JW-iy-WPf">
+                                <rect key="frame" x="274" y="447" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GR5-1j-bV5" firstAttribute="centerX" secondItem="W2K-Ry-qvJ" secondAttribute="centerX" id="5ap-mb-B5p"/>
+                            <constraint firstItem="Kkt-bw-cjA" firstAttribute="top" secondItem="0JW-iy-WPf" secondAttribute="bottom" constant="83" id="8fB-2T-KM2"/>
+                            <constraint firstItem="GR5-1j-bV5" firstAttribute="top" secondItem="AMa-1U-RkK" secondAttribute="bottom" constant="8" symbolic="YES" id="DKO-cE-4J4"/>
+                            <constraint firstItem="Mq3-qg-Jzc" firstAttribute="top" secondItem="W2K-Ry-qvJ" secondAttribute="bottom" constant="8" symbolic="YES" id="O0w-JR-56w"/>
+                            <constraint firstItem="W2K-Ry-qvJ" firstAttribute="centerX" secondItem="Mq3-qg-Jzc" secondAttribute="centerX" id="SID-12-A7o"/>
+                            <constraint firstItem="Yas-6a-xWp" firstAttribute="top" secondItem="Mq3-qg-Jzc" secondAttribute="bottom" constant="8" symbolic="YES" id="U0S-R4-oUV"/>
+                            <constraint firstItem="0JW-iy-WPf" firstAttribute="top" secondItem="Yas-6a-xWp" secondAttribute="bottom" constant="8" symbolic="YES" id="Vze-dj-dyX"/>
+                            <constraint firstItem="Mq3-qg-Jzc" firstAttribute="centerX" secondItem="Yas-6a-xWp" secondAttribute="centerX" id="aiL-Lj-tB4"/>
+                            <constraint firstItem="GR5-1j-bV5" firstAttribute="centerX" secondItem="Mbs-2h-j0C" secondAttribute="centerX" id="pMe-ZU-wON"/>
+                            <constraint firstItem="Yas-6a-xWp" firstAttribute="centerX" secondItem="0JW-iy-WPf" secondAttribute="centerX" id="uXf-0P-1x2"/>
+                            <constraint firstItem="W2K-Ry-qvJ" firstAttribute="top" secondItem="GR5-1j-bV5" secondAttribute="bottom" constant="25" id="xis-Y0-Qxb"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Meu Perfil" image="ic_person_white_36pt" id="xXk-o8-3NQ"/>
+                    <connections>
+                        <outlet property="countLabel" destination="Yas-6a-xWp" id="2JM-2P-CgO"/>
+                        <outlet property="dateLabel" destination="Mq3-qg-Jzc" id="qWY-I9-ICk"/>
+                        <outlet property="profileImageView" destination="GR5-1j-bV5" id="Sq6-6N-GGt"/>
+                        <outlet property="scoresLabel" destination="0JW-iy-WPf" id="jBl-ZZ-C4Y"/>
+                        <outlet property="usernamLabel" destination="W2K-Ry-qvJ" id="7t4-dp-JlI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCW-gg-46S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseController : NSObject
+class BaseController: NSObject
 {
     var observers : [Observer] = []
     
@@ -16,6 +16,7 @@ class BaseController : NSObject
     {
         observers.append(observer)
     }
+    
     func removeObserver(observer : Observer)
     {
         var i = 0;
@@ -32,6 +33,20 @@ class BaseController : NSObject
         if i < observers.count
         {
             observers.removeAtIndex(i)
+        }
+    }
+    
+    func notify(message: Int)
+    {
+        for o in observers
+        {
+            if let selector = o.getSelectorForMessage(message, sender: self)
+            {
+                if o.theObserver!.respondsToSelector(selector)
+                {
+                    o.theObserver?.performSelector(selector)
+                }
+            }
         }
     }
 

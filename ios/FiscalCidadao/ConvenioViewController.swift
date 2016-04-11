@@ -24,6 +24,8 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
     
     let formarter = NSNumberFormatter()
     
+    var descHeight : CGFloat = 0
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -59,6 +61,63 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
 //            }
         }
         
+//        let font = UIFont(name: "Helvetica", size: 10)
+        
+        var attributes = [String : AnyObject]()
+        
+        let font  = UIFont.systemFontOfSize(15)
+        
+        attributes[NSFontAttributeName] = font
+        
+        let margin : CGFloat = 15 // Cell margin checked in storyboard
+        let width = (tableView.frame.size.width - 2 * margin)
+        
+        // This is very tricky.
+        // 
+        let baseSize = CGSize(width: width * 0.5,height: CGFloat.max)
+//        let baseSize = CGSize(width: width ,height: CGFloat.max)
+        
+        if let desc = convenio?.desc
+        {
+            let boundingRect = desc.boundingRectWithSize(baseSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil)
+            
+            
+            // Add a padding
+            descHeight = boundingRect.height + 40
+            
+            // DEBUG CODE
+//            print(desc)
+//            print("Size: ")
+//            print(boundingRect)
+//            let origin = CGPoint(x : 15.0/2.0, y: 400)
+//            boundingRect.origin = origin
+//            
+//            let width : CGFloat = 570/2.0
+//            boundingRect.size = CGSize(width: width, height:boundingRect.size.height)
+//            let label = UILabel(frame: CGRect(origin: CGPoint(x : 15.0/2.0, y: 400), size: CGSize(width: width, height: 100)))
+////            label.backgroundColor = UIColor.redColor()
+//            label.text = desc
+//            label.layer.borderColor = UIColor.redColor().CGColor
+//            label.layer.borderWidth = 2.0
+//            label.numberOfLines = 0
+//            label.font = font
+//            label.textAlignment = NSTextAlignment.Left
+//            label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+//            
+//            
+//            let dummyView = UIView(frame: boundingRect)
+//            dummyView.backgroundColor = UIColor.blueColor()
+//            dummyView.layer.borderColor = UIColor.magentaColor().CGColor
+//            dummyView.layer.borderWidth = 2.0
+//            view.addSubview(dummyView)
+//            
+//            self.view.addSubview(label)
+            
+        }
+        else
+        {
+            descHeight = tableView.rowHeight
+        }
     }
 
 
@@ -96,7 +155,7 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
         switch indexPath.row
         {
         case 0:
-            cell?.textLabel?.text = "Objeto"
+            cell?.textLabel?.text = "Descrição"
         case 1:
             cell?.textLabel?.text = convenio?.desc
         case 2:
@@ -130,7 +189,17 @@ class ConvenioViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     
-
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if( indexPath.row == 1)
+        {
+            return descHeight
+        }
+        else
+        {
+            return self.tableView.rowHeight
+        }
+    }
     
     // MARK: - Navigation
 

@@ -11,28 +11,38 @@ import AddressBook
 
 class MapaAnnotation: NSObject, MKAnnotation
 {
-    let _title : String?
-    let locationName: String
+    let convenioName : String?
+    let responsibleName: String
     let coordinate: CLLocationCoordinate2D
-    let id : Int
+    let ids : [Int]
     
-    init(id: Int, title: String, locationName: String, coordinate: CLLocationCoordinate2D)
+    
+    init(id: Int, title: String, responsible: String, coordinate: CLLocationCoordinate2D)
     {
-        self._title = title
-        self.locationName = locationName
+        self.convenioName = title
+        self.responsibleName = responsible
         self.coordinate = coordinate
-        self.id = id
+        self.ids = [id]
+        super.init()
+    }
+    
+    init (conveniosId : [Int], coordinate: CLLocationCoordinate2D)
+    {
+        self.convenioName = "Múltiplos convênios"
+        self.responsibleName = "Número de convênios: " + String(conveniosId.count)
+        self.coordinate = coordinate
+        self.ids = conveniosId
         super.init()
     }
     
     var title : String?
     {
-        return _title
+        return convenioName
     }
     
     var subtitle: String?
     {
-        return locationName
+        return responsibleName
     }
     
     func mapItem() -> MKMapItem

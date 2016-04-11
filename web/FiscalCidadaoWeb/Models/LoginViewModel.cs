@@ -14,9 +14,9 @@ namespace FiscalCidadaoWCF.Models
 
     public class RetornoLogin
     {
-        public string Nome { get; set; }
+        //public string Nome { get; set; }
 
-        public string FotoPerfil { get; set; }
+        //public string FotoPerfil { get; set; }
 
         public int HttpStatus { get; set; }
 

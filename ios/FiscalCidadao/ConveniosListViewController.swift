@@ -11,12 +11,14 @@ import UIKit
 class ConveniosListViewController: UITableViewController
 {
     
+    var convenios = [Convenio]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+//        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -25,6 +27,7 @@ class ConveniosListViewController: UITableViewController
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
+//        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning()
@@ -40,28 +43,26 @@ class ConveniosListViewController: UITableViewController
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        let data = DataController.sharedInstance
-        return data.allConvenios.count
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return convenios.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellId", forIndexPath: indexPath)
         
-        let data = DataController.sharedInstance
-        let convenio = data.allConvenios[indexPath.row]
+        let convenio = convenios[indexPath.row]
         
         cell.textLabel?.text = convenio.desc
         
-        if convenio.startDate != nil && convenio.endDate != nil
+        if convenio.startDate != nil
         {
-            cell.detailTextLabel?.text = convenio.responsible + " " + convenio.startDate! + " - " + convenio.endDate!
+            cell.detailTextLabel?.text = "Data de Conclusão: " + convenio.endDate! + "\n" + convenio.status!
         }
         else
         {
-            cell.detailTextLabel?.text = convenio.responsible
+            cell.detailTextLabel?.text = convenio.status
         }
         
         // Configure the cell...
@@ -125,8 +126,7 @@ class ConveniosListViewController: UITableViewController
                 if let row = idx?.row
                 {
                     let destination : ConvenioViewController = segue.destinationViewController as! ConvenioViewController
-                    let data  = DataController.sharedInstance
-                    destination.convenio = data.allConvenios[row]
+                    destination.convenio = convenios[row]
                 }
             }
         }

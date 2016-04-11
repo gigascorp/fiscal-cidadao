@@ -19,6 +19,10 @@ class DenunciasTableViewController: UITableViewController
 
         self.loadData()
         
+        self.refreshControl = UIRefreshControl()
+        
+        self.refreshControl?.addTarget(self, action: #selector(DenunciasTableViewController.loadData), forControlEvents: UIControlEvents.ValueChanged)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,15 +39,17 @@ class DenunciasTableViewController: UITableViewController
             
             self.denuncias = denuncias
             self.tableView.reloadData()
-            
+            if self.refreshControl != nil
+            {
+                self.refreshControl?.endRefreshing()
+            }
         })
-
     }
     
-    override func viewDidAppear(animated: Bool) {
+    
+    override func viewDidAppear(animated: Bool)
+    {
         super.viewDidAppear(animated)
-        tableView.reloadData()
-        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +76,7 @@ class DenunciasTableViewController: UITableViewController
         let denuncia = denuncias[indexPath.row]
         
         cell.textLabel?.text = denuncia.convenio?.desc
-        cell.detailTextLabel?.text = "\"" + denuncia.comments + "\""
+        cell.detailTextLabel?.text = "Data da Denúncia: " + denuncia.denunciaDate! + "\n" + denuncia.status!
 
         return cell
     }

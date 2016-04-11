@@ -12,6 +12,8 @@ import Foundation
 protocol Observer
 {
     var theObserver : NSObject? {get}
+    
+    func getSelectorForMessage(message : Int, sender : AnyObject?) -> Selector?
 }
 
 extension Observer

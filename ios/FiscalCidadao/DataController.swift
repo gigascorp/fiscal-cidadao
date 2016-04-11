@@ -163,11 +163,20 @@ class DataController: BaseController
                             denuncia.id = Int(id)
                         }
                         
+                        if let denunciaDate = item["DataDenuncia"] as? String
+                        {
+                            denuncia.denunciaDate = denunciaDate
+                        }
+                        
+                        if let status = item["Parecer"] as? String
+                        {
+                            denuncia.status = status
+                        }
+                        
                         if(denuncia.convenio != nil)
                         {
                             denuncia.convenioId = denuncia.convenio!.id
                         }
-                        denuncia.userId = userId
                         
                         denuncias.append(denuncia)
                     }

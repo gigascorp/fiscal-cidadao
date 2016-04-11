@@ -59,7 +59,7 @@ public class DenunciaFragment extends GenericFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        getActivity().setTitle("Convênio");
+        getActivity().setTitle("Denúncia");
 
         RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.fragment_denuncia, container, false);
 

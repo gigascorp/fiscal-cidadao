@@ -159,12 +159,12 @@ public class HomeActivity extends AppCompatActivity implements FragmentManager.O
         }
 
         if(pos == 2){
-            setTitle("Perfil");
+            setTitle("Pontuação dos Amigos");
             return;
         }
 
-        if(pos == 2){
-            setTitle("Pontuação dos Amigos");
+        if(pos == 3){
+            setTitle("Perfil");
             return;
         }
 

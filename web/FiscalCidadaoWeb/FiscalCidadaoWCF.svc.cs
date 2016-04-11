@@ -113,19 +113,17 @@ namespace FiscalCidadaoWCF
                         }
                         else
                         {
-                            var denunciasList = new List<Denuncia>();
-                            denunciasList.Add(denuncia);
-
-                            context.Usuario.Add(new Usuario
+                            Usuario usu = new Usuario
                             {
                                 FacebookId = model.UsuarioId,
                                 Pontuacao = 10,
-                                Nome = "Usuario Teste",
+                                Nome = "Usuário Teste",
                                 Email = "Email Teste",
-                                Denuncias = denunciasList
-                            });
-                        }
+                                Denuncias = new List<Denuncia> { denuncia }
+                            };
 
+                            context.Usuario.Add(usu);
+                        }
                     }
 
                     context.SaveChanges();
@@ -272,7 +270,54 @@ namespace FiscalCidadaoWCF
             return retorno;
         }
 
-        public RetornoLogin Login(FazerLoginViewModel data)
+        //public RetornoLogin Login(FazerLoginViewModel data)
+        //{
+        //    RetornoLogin retorno = new RetornoLogin();
+
+        //    try
+        //    {
+        //        using (var context = new ApplicationDBContext())
+        //        {
+        //            var usuario = context.Usuario.FirstOrDefault(x => x.FacebookId.Equals(data.Id));
+
+        //            var fb = new FacebookClient(data.AccessToken);
+
+        //            dynamic result = fb.Get("me?fields=name,picture{url},email");
+
+        //            if (result.email != null && result.name != null && result.picture != null)
+        //            {
+        //                retorno.Nome = result.name;
+        //                retorno.FotoPerfil = result.picture.data.url;
+        //                retorno.HttpStatus = 200;
+        //                retorno.Message = "OK";
+
+        //                if (usuario == null) // caso for primeiro acesso, grava no banco
+        //                {
+        //                    context.Usuario.Add(new Usuario
+        //                    {
+        //                        FacebookId = data.Id,
+        //                        Pontuacao = 0,
+        //                        Nome = result.name,
+        //                        Email = result.email
+        //                    });
+
+        //                    context.SaveChanges();
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        retorno.HttpStatus = 500;
+        //        retorno.Message = "Error: " + ex.Message;
+
+        //        return retorno;
+        //    }
+
+        //    return retorno;
+        //}
+
+        public RetornoLogin Login(string usuarioId)
         {
             RetornoLogin retorno = new RetornoLogin();
 
@@ -280,33 +325,24 @@ namespace FiscalCidadaoWCF
             {
                 using (var context = new ApplicationDBContext())
                 {
-                    var usuario = context.Usuario.FirstOrDefault(x => x.FacebookId.Equals(data.Id));
+                    var usuario = context.Usuario.FirstOrDefault(x => x.FacebookId.Equals(usuarioId));
 
-                    var fb = new FacebookClient(data.AccessToken);
-
-                    dynamic result = fb.Get("me?fields=name,picture{url},email");
-
-                    if (result.email != null && result.name != null && result.picture != null)
+                    if (usuario == null)
                     {
-                        retorno.Nome = result.name;
-                        retorno.FotoPerfil = result.picture.data.url;
-                        retorno.HttpStatus = 200;
-                        retorno.Message = "OK";
-
-                        if (usuario == null) // caso for primeiro acesso, grava no banco
+                        context.Usuario.Add(new Usuario
                         {
-                            context.Usuario.Add(new Usuario
-                            {
-                                FacebookId = data.Id,
-                                Pontuacao = 0,
-                                Nome = result.name,
-                                Email = result.email
-                            });
-
-                            context.SaveChanges();
-                        }
+                            FacebookId = usuarioId,
+                            Pontuacao = 0,
+                            Nome = "Usuário Teste",
+                            Email = "Email Teste",
+                        });
                     }
+
+                    context.SaveChanges();
                 }
+
+                retorno.HttpStatus = 200;
+                retorno.Message = "OK";
             }
             catch (Exception ex)
             {
@@ -330,21 +366,50 @@ namespace FiscalCidadaoWCF
                     var user = context.Usuario.Include(x => x.Denuncias)
                         .FirstOrDefault(x => x.FacebookId == usuarioId);
 
-                    retorno.Id = user.FacebookId;
-                    retorno.Nome = user.Nome;
-                    retorno.Email = user.Email;
-                    retorno.Pontuacao = user.Pontuacao;
-                    retorno.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
-
-                    if (user.Denuncias != null)
+                    if (user != null)
                     {
-                        retorno.CountDenuncias = user.Denuncias.Count;
+                        retorno.Id = user.FacebookId;
+                        retorno.Nome = user.Nome;
+                        retorno.Email = user.Email;
+                        retorno.Pontuacao = user.Pontuacao;
+                        retorno.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
 
-                        if (user.Denuncias.Count > 0)
+                        if (user.Denuncias != null)
                         {
-                            retorno.DataCadastro = user.Denuncias.OrderBy(x => x.Data).FirstOrDefault().Data.ToString();
+                            retorno.CountDenuncias = user.Denuncias.Count;
+
+                            if (user.Denuncias.Count > 0)
+                            {
+                                retorno.DataCadastro = user.Denuncias.OrderBy(x => x.Data).FirstOrDefault().Data.ToString();
+                            }
+                            else
+                            {
+                                retorno.DataCadastro = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time")).ToString("dd/MM/yy");
+                            }
                         }
                     }
+                    else
+                    {
+                        Usuario usu = new Usuario
+                        {
+                            FacebookId = usuarioId,
+                            Pontuacao = 0,
+                            Nome = "Usuário Teste",
+                            Email = "Email Teste",
+                        };
+
+                        context.Usuario.Add(usu);
+                        context.SaveChanges();
+
+                        retorno.Id = usu.FacebookId;
+                        retorno.Nome = usu.Nome;
+                        retorno.Email = usu.Email;
+                        retorno.Pontuacao = usu.Pontuacao;
+                        retorno.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
+                        retorno.CountDenuncias = 0;
+                        retorno.DataCadastro = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time")).ToString();
+                    }
+
                     retorno.Message = "OK";
                     retorno.HttpStatus = 200;
                 }
@@ -372,12 +437,35 @@ namespace FiscalCidadaoWCF
 
                     UsuarionRankingViewModel usuario = new UsuarionRankingViewModel();
 
-                    usuario.Id = user.FacebookId;
-                    usuario.Nome = user.Nome;
-                    usuario.Pontuacao = user.Pontuacao;
-                    usuario.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
+                    if (user != null)
+                    {
+                        usuario.Id = user.FacebookId;
+                        usuario.Nome = user.Nome;
+                        usuario.Pontuacao = user.Pontuacao;
+                        usuario.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
 
-                    lista.Add(usuario);
+                        lista.Add(usuario);
+                    }
+                    else
+                    {
+                        Usuario usu = new Usuario
+                        {
+                            FacebookId = usuarioId,
+                            Pontuacao = 0,
+                            Nome = "Usuário Teste",
+                            Email = "Email Teste",
+                        };
+
+                        context.Usuario.Add(usu);
+                        context.SaveChanges();
+
+                        usuario.Id = usu.FacebookId;
+                        usuario.Nome = usu.Nome;
+                        usuario.Pontuacao = usu.Pontuacao;
+                        usuario.UrlFoto = "http://www.fiscalcidadao.site/ImagensDenuncias/perfil.png";
+
+                        lista.Add(usuario);
+                    }
                 }
 
                 string[] id = new string[] { "1", "2", "3", "4" };

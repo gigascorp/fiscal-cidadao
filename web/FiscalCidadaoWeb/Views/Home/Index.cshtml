@@ -4,46 +4,84 @@
     ViewBag.Title = "Página Inicial";
 }
 
-<h1>Olá Usuário, bem vindo!</h1>
-@*<h1>Olá, @Model.NomeUsuario! Bem vindo!</h1>*@
 
-<h3>
-    Convênios com maiores números de denúncias
-</h3>
-<br />
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Olá, Usuário! Bem-vindo!</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
 @if (Model != null)
 {
-    foreach (var top3 in Model.MaisDenunciados)
-    {
-        <div>
-            <div class="displayInline divDenunciados">
-                @Html.Hidden("convenioId", top3.Id)
-                <label class="alignLabel detailsDenunciados">@top3.Objeto</label>
-            </div>
-            <div class="displayInline divCountDenunciados">
-                <label class="alignLabel">@top3.Count</label>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-bullhorn fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">@Model.CountDenunciasNaoAnalisadas</div>
+                            <div>Denúncias não analisadas</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">Ver detalhes</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
             </div>
         </div>
-        <br />
-        //}
-    }
-    <br />
-    <div>
-        <div class="displayInline divDown">
-            <h3>
-                Convênios denunciados não analisados
-            </h3>
-            <label class="alignLabel labelWithBorder">@Model.CountDenunciasNaoAnalisadas</label>
+        <div class="col-md-4">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-map-marker fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">@Model.CountAtualizacoesEndereco</div>
+                            <div>Atualizações de endereço</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">Ver detalhes</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
         </div>
-
-        <div class="displayInline divDown">
-            <h3>
-                Atualizações de endereço de convênio
-            </h3>
-            <label class="alignLabel labelWithBorder">@Model.CountAtualizacoesEndereco</label>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bullhorn"></i> Convênios mais denunciados
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        @foreach (var top3 in Model.MaisDenunciados)
+                        {
+                            <a href="@Url.Action("DetalhesConvenio", "Convenio", new { id = top3.Id })" class="list-group-item">
+                                <i class="fa fa-building"></i> @top3.Objeto
+                                <span class="pull-right text-muted small">
+                                </span>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
-
-<link href="~/Content/App/Home.css" rel="stylesheet" />
-<script src="~/Scripts/App/Index.js"></script>

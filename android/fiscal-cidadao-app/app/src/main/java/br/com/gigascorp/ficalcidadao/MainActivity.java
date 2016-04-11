@@ -3,7 +3,7 @@ package br.com.gigascorp.ficalcidadao;
 import android.Manifest;
 import android.content.Intent;
 
-import com.facebook.AccessToken;
+/*import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -11,7 +11,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+import com.facebook.login.widget.LoginButton;*/
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int PERMISSIONS_REQUEST_RETURN = 1;
 
-    CallbackManager callbackManager;
+    //CallbackManager callbackManager;
     private GoogleApiClient client;
 
     public void login(){

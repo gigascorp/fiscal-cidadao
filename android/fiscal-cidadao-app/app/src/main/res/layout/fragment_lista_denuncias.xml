@@ -22,6 +22,19 @@
             android:background="@color/colorActivityBackground"
             android:orientation="vertical"
             />
+
+        <TextView
+            android:id="@+id/txtMsgListaDenuncia"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/colorSecondaryText"
+            android:text="Você ainda não realizou nenhuma denúncia"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            />
+
     </RelativeLayout>
 
 </RelativeLayout>

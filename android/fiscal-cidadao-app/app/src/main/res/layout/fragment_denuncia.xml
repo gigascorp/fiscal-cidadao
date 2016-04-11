@@ -18,6 +18,75 @@
             android:layout_height="wrap_content">
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Denúncia"
+                android:textColor="@color/colorTextHint"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/txtDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:text="@string/texto_default_teste"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Data da Denúncia"
+                android:textColor="@color/colorTextHint"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/txtDataDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:text="@string/texto_default_teste"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/label_size"
+                android:text="Parecer do Governo"
+                android:textColor="@color/colorTextHint"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/txtParecerDenuncia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size"
+                android:text="@string/texto_default_teste"
+                android:textColor="@color/colorPrimaryText"
+                android:paddingLeft="@dimen/txt_horizontal_margin"
+                android:paddingRight="@dimen/txt_horizontal_margin"
+                android:paddingTop="@dimen/txt_margin_top"
+                android:paddingBottom="@dimen/txt_margin_bottom"
+                android:textStyle="bold"
+                />
+
             <!--Objeto-->
             <TextView
                 android:layout_width="wrap_content"
@@ -177,65 +246,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/label_size"
-                android:text="Denúncia"
+                android:text="Fotos Enviadas"
                 android:textColor="@color/colorTextHint"
+                android:textStyle="bold"
                 />
-
-            <TextView
-                android:id="@+id/txtDenuncia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/texto_default_teste"
-                android:textColor="@color/colorPrimaryText"
-                android:paddingLeft="@dimen/txt_horizontal_margin"
-                android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_margin_top"
-                android:paddingBottom="@dimen/txt_margin_bottom"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/label_size"
-                android:text="Data da Denúncia"
-                android:textColor="@color/colorTextHint"
-                />
-
-            <TextView
-                android:id="@+id/txtDataDenuncia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/texto_default_teste"
-                android:textColor="@color/colorPrimaryText"
-                android:paddingLeft="@dimen/txt_horizontal_margin"
-                android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_margin_top"
-                android:paddingBottom="@dimen/txt_margin_bottom"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/label_size"
-                android:text="Parecer do Governo"
-                android:textColor="@color/colorTextHint"
-                />
-
-            <TextView
-                android:id="@+id/txtParecerDenuncia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size"
-                android:text="@string/texto_default_teste"
-                android:textColor="@color/colorPrimaryText"
-                android:paddingLeft="@dimen/txt_horizontal_margin"
-                android:paddingRight="@dimen/txt_horizontal_margin"
-                android:paddingTop="@dimen/txt_margin_top"
-                android:paddingBottom="@dimen/txt_margin_bottom"
-                />
-
 
             <!-- Fotos -->
             <android.support.v7.widget.RecyclerView

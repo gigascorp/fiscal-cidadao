@@ -302,6 +302,11 @@ class DataController: BaseController
                     {
                         perfil.urlPhoto = urlPhoto
                     }
+                    
+                    if let score = user["Pontuacao"] as? NSNumber
+                    {
+                        perfil.score = Int(score.intValue)
+                    }
                         
                     if perfil.isValid()
                     {

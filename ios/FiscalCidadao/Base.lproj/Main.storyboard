@@ -106,7 +106,7 @@
         <scene sceneID="h1R-nT-Cxj">
             <objects>
                 <navigationController title="Lista Convênios" id="UoC-t5-bBb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lista" image="ic_view_list_white_36pt" id="CJn-uZ-2cf"/>
+                    <tabBarItem key="tabBarItem" title="Denúncias" image="ic_view_list_white_36pt" id="CJn-uZ-2cf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xq6-p1-tzf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -560,11 +560,11 @@
             </objects>
             <point key="canvasLocation" x="-769" y="1170"/>
         </scene>
-        <!--Item-->
+        <!--Perfil-->
         <scene sceneID="Fhy-l9-Dxi">
             <objects>
                 <navigationController id="vmg-6y-cD9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="ic_person_white_36pt" id="sKs-8F-iOo"/>
+                    <tabBarItem key="tabBarItem" title="Perfil" image="ic_person_white_36pt" id="sKs-8F-iOo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3BR-SK-LJ6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -641,11 +641,11 @@
             </objects>
             <point key="canvasLocation" x="2150" y="524"/>
         </scene>
-        <!--Rank-->
+        <!--Ranking-->
         <scene sceneID="B22-PJ-68D">
             <objects>
                 <navigationController id="ofK-Iq-laK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rank" image="ic_people_36pt" id="kZ5-UP-nsV"/>
+                    <tabBarItem key="tabBarItem" title="Ranking" image="ic_people_36pt" id="kZ5-UP-nsV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yHv-yi-99Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

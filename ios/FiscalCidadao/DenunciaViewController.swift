@@ -161,6 +161,8 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             images.append(image)
             photoGalleryView.addPhoto(image, removable: true)
         }
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
     }
     
     func disableView()

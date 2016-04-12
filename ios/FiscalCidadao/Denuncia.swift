@@ -21,7 +21,7 @@ class Denuncia: NSObject
     
     init(convenioId : Int)
     {
-        userId =  UIDevice.currentDevice().identifierForVendor?.UUIDString
+        userId =  Perfil.getUserIdByDevice()
         self.convenioId = convenioId;
         comments = ""
     }

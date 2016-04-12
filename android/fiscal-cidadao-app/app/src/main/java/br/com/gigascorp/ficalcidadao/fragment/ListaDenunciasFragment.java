@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class ListaDenunciasFragment extends GenericFragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
 
+    private TextView txtMsgListaDenuncia;
     private RelativeLayout tela;
     private ProgressBar progressBar;
 
@@ -46,6 +48,8 @@ public class ListaDenunciasFragment extends GenericFragment {
 
         RelativeLayout layout    = (RelativeLayout) inflater.inflate(R.layout.fragment_lista_denuncias, container, false);
 
+        txtMsgListaDenuncia = (TextView) layout.findViewById(R.id.txtMsgListaDenuncia);
+        txtMsgListaDenuncia.setVisibility(View.GONE);
         progressBar = (ProgressBar) layout.findViewById(R.id.progress_bar);
         tela = (RelativeLayout) layout.findViewById(R.id.tela);
 
@@ -90,6 +94,10 @@ public class ListaDenunciasFragment extends GenericFragment {
 
                     DenunciaAdapter adapter = new DenunciaAdapter(denuncias);
                     recyclerView.setAdapter(adapter);
+
+                    if(denuncias == null || denuncias.size() == 0){
+                        txtMsgListaDenuncia.setVisibility(View.VISIBLE);
+                    }
 
                 } else {
                     Toast.makeText(ListaDenunciasFragment.super.getActivity(), "Erro ao recuperar as suas denúncias\n" + response.code() + "" + response.message(), Toast.LENGTH_LONG).show();

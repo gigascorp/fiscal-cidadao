@@ -28,8 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             locationController.requestAuth()
         }
         
-        UINavigationBar.appearance().tintColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0);
-        UITabBar.appearance().tintColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0);
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navBackground"), forBarMetrics: .Default)
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
+//        UITabBar.appearance().thumbTintColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+        //UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0);
+        UITabBar.appearance().backgroundImage = UIImage(named: "tabBarBackground")
+        
+        UINavigationBar.appearance().barStyle = UIBarStyle.BlackOpaque
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
+//        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         
         return true
     }

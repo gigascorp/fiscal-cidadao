@@ -121,5 +121,6 @@ extension MapaViewController : MKMapViewDelegate, Observer
     func onLocationInitialized()
     {
         requestLocation()
+        initializeLocation()
     }
 }

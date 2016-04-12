@@ -1,39 +1,35 @@
 # Fiscal Cidadão
+O aplicativo Fiscal Cidadão tem como proposta apresentar para o usuário, em sua interface, convênios georeferenciados no mapa ﬁrmados entre governo e proponentes, de forma que o cidadão possa ﬁscalizar esses convênios e enviar dados sobre o andamento dos mesmos através do seu smartphone. Além disso, o sistema oferece para o governo a administração total desses dados através de uma plataforma web, permitindo a análise de informações relevantes, como relatório com os proponentes com maior número de denúncias, região com maior índice de convênios irregulares, dentre outras possibilidades.
 
-Projeto de fiscalização de convênios públicos para o cidadão.
+## Aplicação Web
+http://www.fiscalcidadao.site
 
-## Definição da API
+### Módulos e funcionalidades implementadas no MVP
+* Home
+    * Top 3 dos convênios mais denunciados.
+    * Contador de denúncias não analisadas.
+    * Contador de solicitações de atualizações de endereço de convênio.
+* Convênios
+    * Listagem de convênios
+    * Filtragem de convênios por texto e data.
+    * Fornecer um parecer (NÃO VERIFICADO, EM ANÁLISE, VERIFICADO - REGULAR, VERIFICADO - IRREGULAR) sobre o convênio para a população.
+    * Detalhes do convênio
+        * Ver o convênio no sincov
+        * Dados do convênio
+        * Lista de denúncias do convênio
+            * Mensagem do usuário
+            * Data da denúncia
+            * Fotos da denúncia
 
-### GET /convenio
+## Aplicação Móvel
 
-Recebe uma localização e retorna os convênios próximos a ela. Caso não haja nenhum convênio retorna status code 404
-- Parâmetro de entrada
-```json
-{
-    "lat": -2.45,
-    "long": 0.437
-}
-```
-- Retorno
-```json
-[
-  	{
-  	    "id": "ksje3rejr98745",
-  		"justificativa": "Primeiro Ponto",
-  		"data_inicio": "2015-12-01",
-  		"data_fim": "2016-01-05",
-  		"valor": 1500000.00,
-  		"situacao": "pendente",
-  		"proponente":{
-  		    "nome": "Fulano de Tal",
-  		    "telefone": "(98) 99876-5432"
-  		},
-  		"coordenada": {
-  			"lat": -2.532783, 
-  			"long": -44.291549
-  		}
-  	}, {
-  	...
-  	}
-]
-```
+### Módulos e funcionalidades implementadas no MVP
+* Convênios
+    * Visualização de convênios (mapa) próximos ao usuário.
+    * Ver detalhes do convênio (Descrição, Proponente, Responsável)    
+    * Denunciar convênio
+        * Adição de mensagem de denúncia.
+        * Adição de fotos à denúncia.
+* Listagem de Denúncias
+* Ranking de amigos fiscalizadores
+* Perfil

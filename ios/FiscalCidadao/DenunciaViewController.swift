@@ -20,7 +20,6 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
     @IBOutlet weak var textPlaceholder: UILabel!
     
     
-    
     var convenio : Convenio?
     
     var images = [UIImage]()
@@ -49,6 +48,7 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
         photoGalleryView.galleryDelegate = self
         
         photoGalleryView.addToScrollView(scrollView)
+        photoGalleryView.topView = self.view
         
         textView.returnKeyType = UIReturnKeyType.Done
     }
@@ -161,6 +161,8 @@ class DenunciaViewController: UIViewController, UIActionSheetDelegate, UIImagePi
             images.append(image)
             photoGalleryView.addPhoto(image, removable: true)
         }
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+
     }
     
     func disableView()

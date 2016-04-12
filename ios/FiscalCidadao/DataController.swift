@@ -24,6 +24,8 @@ class DataController: BaseController
     let getConveniosPath = "GetConveniosByCoordinate"
     let sendDenunciaPath = "FazerDenuncia"
     let getDenunciaPath = "GetDenunciaByUsuario"
+    let getUserPath = "GetUsuario"
+    let getRanking = "GetRanking"
     
     var allConvenios : [Convenio] = []
     
@@ -39,6 +41,8 @@ class DataController: BaseController
         return nil
     }
     
+    
+    // MARK: - Parser
     func parseConvenio(item : [String: AnyObject]) -> Convenio?
     {
         var id : Int?
@@ -194,6 +198,133 @@ class DataController: BaseController
 
     }
     
+    func parseRank(data : NSData) -> [FriendRank]
+    {
+        do{
+            var jsonData : AnyObject!
+            
+            let strData = String(data: data, encoding: NSUTF8StringEncoding)
+            print(strData)
+            try jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
+            
+            if(jsonData == nil)
+            {
+                print("nil data!")
+                return []
+            }
+            else
+            {
+                if let rankingResult = jsonData["GetRankingResult"] as? [String: AnyObject]
+                {
+                    if let list = rankingResult["Lista"] as? [[String: AnyObject]]
+                    {
+                        var friends = [FriendRank]()
+                        for item in list
+                        {
+                            let friend = FriendRank()
+                            
+                            if let name = item["Nome"] as? String
+                            {
+                                friend.name = name
+                            }
+                            
+                            if let name = item["UrlFoto"] as? String
+                            {
+                                friend.urlPhoto = name
+                            }
+                            
+                            if let score = item["Pontuacao"] as? NSNumber
+                            {
+                                friend.score = Int(score.intValue)
+                            }
+                            
+                            friends.append(friend)
+                        }
+                        return friends
+                    }
+                }
+            }
+        }
+        catch
+        {
+            print("failed to parse data!")
+            return []
+        }
+        
+        return []
+
+    }
+    
+    func parseProfile (data : NSData) -> Perfil?
+    {
+        do{
+            var jsonData : AnyObject!
+            
+            let strData = String(data: data, encoding: NSUTF8StringEncoding)
+            print(strData)
+            try jsonData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
+            
+            
+            if(jsonData == nil)
+            {
+                print("perfil is nil data!")
+                return nil
+            }
+            else
+            {
+                print("successfully parsed data")
+                
+                if let user = jsonData["GetUsuarioResult"] as? [String: AnyObject]
+                {
+                    let perfil = Perfil()
+                    
+                    if let id = user["Id"] as? String
+                    {
+                        perfil.id = id
+                    }
+                    
+                    if let registerDate = user["DataCadastro"] as? String
+                    {
+                        perfil.registerDate = registerDate
+                    }
+                    
+                    if let count = user["CountDenuncias"] as? NSNumber
+                    {
+                        perfil.countDenuncias = Int((count.intValue))
+                    }
+                    
+                    if let name = user["Nome"] as? String
+                    {
+                        perfil.name = name
+                    }
+                    
+                    if let urlPhoto = user["UrlFoto"] as? String
+                    {
+                        perfil.urlPhoto = urlPhoto
+                    }
+                    
+                    if let score = user["Pontuacao"] as? NSNumber
+                    {
+                        perfil.score = Int(score.intValue)
+                    }
+                        
+                    if perfil.isValid()
+                    {
+                        return perfil
+                    }
+                }
+                
+            }
+        }
+        catch
+        {
+            print("Perfil: failed to parse data!")
+            return nil
+        }
+        return nil
+
+    }
+    
     func parseConvenios(data : NSData) -> [Convenio]
     {
         do{
@@ -311,6 +442,8 @@ class DataController: BaseController
         return []
     }
     
+    // MARK: - Operations
+    
     func sendDenuncia(denuncia : Denuncia, onCompletion: (Bool) -> Void)
     {
         let route = baseUrl + sendDenunciaPath
@@ -365,7 +498,7 @@ class DataController: BaseController
         }
         catch
         {
-            
+            print("Failed to send denuncia")
         }
         
     }
@@ -386,11 +519,39 @@ class DataController: BaseController
         })
     }
     
+    func getFriendsRanking(id : String, onCompletion: ([FriendRank]) -> Void)
+    {
+        let route = baseUrl + getRanking + "/" + id
+        
+        makeHTTPGetRequest(route, body: nil, onCompletion:
+        {
+            data, err in
+            
+            let dataStr = String(data: data, encoding: NSUTF8StringEncoding)
+            print(dataStr)
+            onCompletion(self.parseRank(data))
+        })
+
+    }
+    
     func loadConvenios(location : (Double, Double))
     {
         getConvenios(location, onCompletion: { (convenios) -> Void in
             self.allConvenios = convenios
             print("loaded \(self.allConvenios.count) convenios")
+        })
+    }
+    
+    func loadProfile(id : String, onCompletion : (Perfil?) -> Void)
+    {
+        let route = baseUrl + getUserPath + "/" + id
+        makeHTTPGetRequest(route, body: nil, onCompletion:
+        {
+            data, err in
+            
+            let dataStr = String(data: data, encoding: NSUTF8StringEncoding)
+            print(dataStr)
+            onCompletion(self.parseProfile(data))
         })
     }
     

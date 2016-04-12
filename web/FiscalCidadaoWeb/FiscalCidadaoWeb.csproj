@@ -270,6 +270,7 @@
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\tablesorter.css" />
     <Content Include="Content\timeline.css" />
+    <Content Include="COPYING.txt" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="favicon.ico" />

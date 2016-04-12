@@ -16,7 +16,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Rq5-le-TJA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-icon-trimmed" translatesAutoresizingMaskIntoConstraints="NO" id="ZP1-eJ-7t4">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="fcZ-rn-KRF"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rq5-le-TJA" firstAttribute="centerY" secondItem="ZP1-eJ-7t4" secondAttribute="centerY" id="C8H-vc-pLf"/>
+                            <constraint firstItem="ZP1-eJ-7t4" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="216" id="Gbw-0g-0FF"/>
+                            <constraint firstAttribute="trailing" secondItem="Rq5-le-TJA" secondAttribute="trailing" id="HpT-mV-HXs"/>
+                            <constraint firstItem="Rq5-le-TJA" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="g0o-GC-2Uq"/>
+                            <constraint firstItem="Rq5-le-TJA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="l59-Al-IJd"/>
+                            <constraint firstItem="Rq5-le-TJA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="rqc-tP-O3U"/>
+                            <constraint firstItem="Rq5-le-TJA" firstAttribute="centerX" secondItem="ZP1-eJ-7t4" secondAttribute="centerX" id="u1h-MT-alm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +44,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splash-bg" width="360" height="640"/>
+        <image name="splash-icon-trimmed" width="261" height="134"/>
+    </resources>
 </document>

@@ -20,6 +20,7 @@ class MapaViewController: UIViewController
     // São Luís UFMA: -2,554014, -44,307548
     override func viewDidLoad()
     {
+        
         navigationController?.setNavigationBarHidden(false, animated: true)
         
         LocationController.sharedInstance.addObserver(self)
@@ -35,6 +36,11 @@ class MapaViewController: UIViewController
             loadAnnotation(convenio)
         }
         mapView.delegate = self
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle
+    {
+        return UIStatusBarStyle.LightContent
     }
     
     func loadAnnotation(convenio : Convenio)

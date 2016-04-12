@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FiscalCidadao/DataController.swift"
-            timestampString = "482100002.916764"
+            timestampString = "482108081.102259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "sendDenuncia(_:onCompletion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FiscalCidadao/DataController.swift"
-            timestampString = "482100002.916764"
+            timestampString = "482108081.102259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
             landmarkName = "loadProfile(_:onCompletion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FiscalCidadao/DataController.swift"
-            timestampString = "482100002.916764"
+            timestampString = "482108081.102259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "parseProfile(_:)"
             landmarkType = "5">
             <Locations>
@@ -256,6 +256,22 @@
             startingLineNumber = "183"
             endingLineNumber = "183"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FiscalCidadao/FriendsTableViewController.swift"
+            timestampString = "482109180.048694"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "loadFriendPhoto(_:index:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

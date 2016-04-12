@@ -236,7 +236,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLu-cE-bJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="Denúncia" id="SQ9-9s-iFN" customClass="DenunciaReadViewController" customModule="FiscalCidadao" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7QR-No-zOd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7QR-No-zOd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -531,12 +531,13 @@
                     <connections>
                         <segue destination="Q8c-1y-RN3" kind="relationship" relationship="viewControllers" id="5EY-1G-mR3"/>
                         <segue destination="UoC-t5-bBb" kind="relationship" relationship="viewControllers" id="kN8-Er-Ddk"/>
+                        <segue destination="ofK-Iq-laK" kind="relationship" relationship="viewControllers" id="nsp-Q9-ja4"/>
                         <segue destination="vmg-6y-cD9" kind="relationship" relationship="viewControllers" id="6Lf-pH-Rha"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="51"/>
+            <point key="canvasLocation" x="390" y="51"/>
         </scene>
         <!--Convênios Próximos-->
         <scene sceneID="DGx-6x-e1x">
@@ -571,6 +572,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vc8-54-W9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1329" y="-351"/>
+        </scene>
+        <!--Pontuação dos Amigos-->
+        <scene sceneID="eqP-gX-dOA">
+            <objects>
+                <tableViewController id="Ezc-xR-icG" customClass="FriendsTableViewController" customModule="FiscalCidadao" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="rqG-u2-JCn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellId" rowHeight="100" id="23x-Zt-jOV" customClass="FriendTableViewCell" customModule="FiscalCidadao" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="122" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23x-Zt-jOV" id="9je-a4-Ax5">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9B-hQ-5KB">
+                                            <rect key="frame" x="98" y="10" width="45" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jx-RV-FgZ">
+                                            <rect key="frame" x="98" y="39" width="40" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2RT-MN-chk">
+                                            <rect key="frame" x="10" y="10" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="D0Q-7Y-9op"/>
+                                                <constraint firstAttribute="height" constant="80" id="LbF-W3-CXs"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2RT-MN-chk" firstAttribute="top" secondItem="9je-a4-Ax5" secondAttribute="topMargin" constant="2" id="7XQ-2W-90v"/>
+                                        <constraint firstItem="6jx-RV-FgZ" firstAttribute="top" secondItem="z9B-hQ-5KB" secondAttribute="bottom" constant="8" id="Kct-DU-rZg"/>
+                                        <constraint firstItem="2RT-MN-chk" firstAttribute="leading" secondItem="9je-a4-Ax5" secondAttribute="leadingMargin" constant="2" id="Soq-oc-p9K"/>
+                                        <constraint firstItem="6jx-RV-FgZ" firstAttribute="leading" secondItem="2RT-MN-chk" secondAttribute="trailing" constant="8" id="eOm-KJ-JT7"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2RT-MN-chk" secondAttribute="bottom" constant="1" id="iJo-k5-Qrm"/>
+                                        <constraint firstItem="z9B-hQ-5KB" firstAttribute="top" secondItem="9je-a4-Ax5" secondAttribute="topMargin" constant="2" id="jND-I8-P9s"/>
+                                        <constraint firstItem="z9B-hQ-5KB" firstAttribute="leading" secondItem="2RT-MN-chk" secondAttribute="trailing" constant="8" id="ps8-tl-Qyy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="friendImageView" destination="2RT-MN-chk" id="oaZ-pM-6he"/>
+                                    <outlet property="nameLabel" destination="z9B-hQ-5KB" id="8TT-jG-4ml"/>
+                                    <outlet property="scoreLabel" destination="6jx-RV-FgZ" id="tnc-r8-WN7"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ezc-xR-icG" id="jW7-sm-Omc"/>
+                            <outlet property="delegate" destination="Ezc-xR-icG" id="MFP-NL-Fxd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Pontuação dos Amigos" id="l2r-7Z-gSA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RtZ-T6-aD8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2150" y="524"/>
+        </scene>
+        <!--Rank-->
+        <scene sceneID="B22-PJ-68D">
+            <objects>
+                <navigationController id="ofK-Iq-laK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Rank" image="ic_people_36pt" id="kZ5-UP-nsV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yHv-yi-99Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ezc-xR-icG" kind="relationship" relationship="rootViewController" id="Xpd-Gn-Pri"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ETo-U1-f9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1288" y="408"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="QxU-u7-MV5">
@@ -653,6 +735,7 @@
     </scenes>
     <resources>
         <image name="ic_map_white_36pt" width="36" height="36"/>
+        <image name="ic_people_36pt" width="36" height="36"/>
         <image name="ic_person_white_36pt" width="36" height="36"/>
         <image name="ic_photo_camera_white" width="24" height="24"/>
         <image name="ic_view_list_white_36pt" width="36" height="36"/>

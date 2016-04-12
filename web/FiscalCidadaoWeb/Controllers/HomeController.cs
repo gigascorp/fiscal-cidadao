@@ -33,16 +33,6 @@ namespace FiscalCidadaoWeb.Controllers
             HomeViewModel retorno = new HomeViewModel();
             try
             {
-                //retorno.MaisDenunciados = new List<MaisDenunciados>
-                //{
-                //    new MaisDenunciados { Count = 3, Id = 51, Objeto = "Cobertura e Reforma de Vestiário e da Quadra Poliesportiva da UEB São Raimundo." },
-                //    new MaisDenunciados { Count = 10, Id = 52, Objeto = "O presente projeto tem como objetivo criar um ambiente saudável e dentro dos padrões técnicos e higiênicos através da implantação de uma feira para comercialização de produtos oriundos das cadeias produtivas da agricultura familiar dos pólos de produção assistidos pela SEMAPA através de suas competências internas formadas por Agrônomos  Veterinários  Técnicos Agrícolas e Administradores para garantir a oferta dos produtos ao consumidor e o aumento da renda familiar dos produtores." },
-                //    new MaisDenunciados { Count = 5, Id = 53, Objeto = "Compra de Maquinas e Equipamentos para manutenção de redes de Aguas Pluviais em todo Distrito Federal." }
-                //};
-
-                //retorno.CountDenunciasNaoAnalisadas = 1;
-                //retorno.CountAtualizacoesEndereco = 4;
-
                 using (var context = new ApplicationDBContext())
                 {
                     retorno.NomeUsuario = "Renier"; // tem que mudar
@@ -59,8 +49,8 @@ namespace FiscalCidadaoWeb.Controllers
                         .Take(3) // top 3
                         .ToList();
 
-                    retorno.CountDenunciasNaoAnalisadas = context.Convenio.Include(x => x.ParecerGoverno)
-                        .Where(x => x.ParecerGoverno.Id == 1 && x.Denuncias.Count > 0) // Nao analisado e denunciado
+                    retorno.CountDenunciasNaoAnalisadas = context.Denuncia.Include(x => x.Convenio.ParecerGoverno)
+                        .Where(x => x.Convenio.ParecerGoverno.Id == 1) // Nao analisado e denunciado
                         .Count();
 
                     retorno.CountAtualizacoesEndereco = context.PedidoAtualizacaoLocalizacao

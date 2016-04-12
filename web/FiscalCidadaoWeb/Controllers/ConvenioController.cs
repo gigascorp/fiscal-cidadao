@@ -30,7 +30,7 @@ namespace FiscalCidadaoWeb.Controllers
     public class ConvenioController : Controller
     {
         [HttpGet]
-        public ActionResult ListagemConvenios()
+        public ActionResult ListagemConvenios(string status)
         {
             ListagemConvenioViewModel viewModel = new ListagemConvenioViewModel();
             viewModel.Lista = new List<ListaConvenioViewModel>();
@@ -39,11 +39,25 @@ namespace FiscalCidadaoWeb.Controllers
             {
                 using (var context = new ApplicationDBContext())
                 {
-                    var listConvenio = context.Convenio
-                        .Include(x => x.ParecerGoverno)
-                        .Include(x => x.Situacao)
-                        .Include(x => x.Denuncias)
-                        .ToList();
+                    List<Convenio> listConvenio = null;
+
+                    if (string.IsNullOrEmpty(status))
+                    {
+                       listConvenio = context.Convenio
+                            .Include(x => x.ParecerGoverno)
+                            .Include(x => x.Situacao)
+                            .Include(x => x.Denuncias)
+                            .ToList();
+                    }
+                    else
+                    {
+                        listConvenio = context.Convenio
+                            .Include(x => x.ParecerGoverno)
+                            .Include(x => x.Situacao)
+                            .Include(x => x.Denuncias)
+                            .Where(x => x.ParecerGoverno.Parecer == status && x.Denuncias.Count > 0)
+                            .ToList();
+                    }
 
                     foreach (var convenio in listConvenio)
                     {

@@ -1,5 +1,5 @@
-<!--
-Copyright (C) 2016  Andrea Mendonça, Emílio Weba, Guiherme Ribeiro, Márcio Oliveira, Thiago Nunes, Wallas Henrique
+/*
+ Copyright (C) 2016  Andrea Mendonça, Emílio Weba, Guiherme Ribeiro, Márcio Oliveira, Thiago Nunes, Wallas Henrique
 
    This file is part of Fiscal Cidadão.
 
@@ -15,13 +15,4 @@ Copyright (C) 2016  Andrea Mendonça, Emílio Weba, Guiherme Ribeiro, Márcio Ol
 
    You should have received a copy of the GNU General Public License
    along with Fiscal Cidadão.  If not, see <http://www.gnu.org/licenses/>.
--->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/telaHome"
-    tools:context="br.com.gigascorp.ficalcidadao.HomeActivity">
-
-</RelativeLayout>
+*/

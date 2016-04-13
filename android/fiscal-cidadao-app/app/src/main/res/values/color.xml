@@ -16,8 +16,6 @@ Copyright (C) 2016  Andrea Mendonça, Emílio Weba, Guiherme Ribeiro, Márcio Ol
    You should have received a copy of the GNU General Public License
    along with Fiscal Cidadão.  If not, see <http://www.gnu.org/licenses/>.
 -->
-
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#0c317c</color>
     <color name="colorPrimaryDark">#1d315b</color>

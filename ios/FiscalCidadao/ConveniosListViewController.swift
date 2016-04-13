@@ -1,4 +1,6 @@
 /*
+ Copyright (c) 2009-2014, Apple Inc. All rights reserved.
+ 
  Copyright (C) 2016  Andrea Mendonça, Emílio Weba, Guilherme Ribeiro, Márcio Oliveira, Thiago Nunes, Wallas Henrique
  
  This file is part of Fiscal Cidadão.

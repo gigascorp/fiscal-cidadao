@@ -1,5 +1,5 @@
 # Fiscal Cidadão
-O aplicativo Fiscal Cidadão tem como proposta apresentar para o usuário, em sua interface, convênios georeferenciados no mapa ﬁrmados entre governo e proponentes, de forma que o cidadão possa ﬁscalizar esses convênios e enviar dados sobre o andamento dos mesmos através do seu smartphone. Além disso, o sistema oferece para o governo a administração total desses dados através de uma plataforma web, permitindo a análise de informações relevantes, como relatório com os proponentes com maior número de denúncias, região com maior índice de convênios irregulares, dentre outras possibilidades.
+O aplicativo Fiscal Cidadão tem como proposta apresentar para o usuário, em sua interface, convênios ﬁrmados entre governo e proponentes em um mapa georeferenciado, de forma que o cidadão possa ﬁscalizar esses convênios e enviar dados sobre o andamento dos mesmos através do seu smartphone. Além disso, o sistema oferece para o governo a administração total desses dados através de uma plataforma web, permitindo a análise de informações relevantes, como um relatório com os proponentes com maior número de denúncias ou a região com maior índice de convênios irregulares, dentre outras possibilidades.
 
 ## Aplicação Web
 http://www.fiscalcidadao.site
@@ -21,15 +21,20 @@ http://www.fiscalcidadao.site
             * Data da denúncia
             * Fotos da denúncia
 
-## Aplicação Móvel
+## Aplicação Móvel - Android e IOS
 
-### Módulos e funcionalidades implementadas no MVP
+### Módulos e funcionalidades implementadas no MVP (funcionando em ambas as plataformas)
 * Convênios
     * Visualização de convênios (mapa) próximos ao usuário.
-    * Ver detalhes do convênio (Descrição, Proponente, Responsável)    
+    * Ver detalhes do convênio (Descrição, Proponente, Responsável, Prazos, Valores)    
     * Denunciar convênio
         * Adição de mensagem de denúncia.
         * Adição de fotos à denúncia.
 * Listagem de Denúncias
 * Ranking de amigos fiscalizadores
 * Perfil
+
+## Como rodar o aplicativo
+### Android
+   
+### IOS

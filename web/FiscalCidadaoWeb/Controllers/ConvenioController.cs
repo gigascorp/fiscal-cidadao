@@ -1,4 +1,21 @@
-﻿using FiscalCidadaoWeb.Models;
+﻿/* Copyright (C) 2016  Andrea Mendonça, Emílio Weba, Guiherme Ribeiro, Márcio Oliveira, Thiago Nunes, Wallas Henrique
+
+  This file is part of Fiscal Cidadão.
+
+  Fiscal Cidadão is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Fiscal Cidadão is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Fiscal Cidadão.  If not, see <http://www.gnu.org/licenses/>. */
+
+using FiscalCidadaoWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +30,7 @@ namespace FiscalCidadaoWeb.Controllers
     public class ConvenioController : Controller
     {
         [HttpGet]
-        public ActionResult ListagemConvenios()
+        public ActionResult ListagemConvenios(string status)
         {
             ListagemConvenioViewModel viewModel = new ListagemConvenioViewModel();
             viewModel.Lista = new List<ListaConvenioViewModel>();
@@ -22,11 +39,25 @@ namespace FiscalCidadaoWeb.Controllers
             {
                 using (var context = new ApplicationDBContext())
                 {
-                    var listConvenio = context.Convenio
-                        .Include(x => x.ParecerGoverno)
-                        .Include(x => x.Situacao)
-                        .Include(x => x.Denuncias)
-                        .ToList();
+                    List<Convenio> listConvenio = null;
+
+                    if (string.IsNullOrEmpty(status))
+                    {
+                       listConvenio = context.Convenio
+                            .Include(x => x.ParecerGoverno)
+                            .Include(x => x.Situacao)
+                            .Include(x => x.Denuncias)
+                            .ToList();
+                    }
+                    else
+                    {
+                        listConvenio = context.Convenio
+                            .Include(x => x.ParecerGoverno)
+                            .Include(x => x.Situacao)
+                            .Include(x => x.Denuncias)
+                            .Where(x => x.ParecerGoverno.Parecer == status && x.Denuncias.Count > 0)
+                            .ToList();
+                    }
 
                     foreach (var convenio in listConvenio)
                     {

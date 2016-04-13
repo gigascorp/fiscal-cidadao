@@ -1,10 +1,24 @@
-﻿@model FiscalCidadaoWeb.Models.HomeViewModel
+﻿@* Copyright (C) 2016  Andrea Mendonça, Emílio Weba, Guiherme Ribeiro, Márcio Oliveira, Thiago Nunes, Wallas Henrique
+
+    This file is part of Fiscal Cidadão.
+
+    Fiscal Cidadão is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Fiscal Cidadão is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Fiscal Cidadão.  If not, see <http: />/www.gnu.org/licenses/>.*@
+@model FiscalCidadaoWeb.Models.HomeViewModel
 
 @{
     ViewBag.Title = "Página Inicial";
 }
-
-
 
 <div class="row">
     <div class="col-lg-12">
@@ -13,9 +27,39 @@
     <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-
 @if (Model != null)
 {
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bullhorn"></i> Convênios mais denunciados
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        @foreach (var top3 in Model.MaisDenunciados)
+                        {
+                            <a href="@Url.Action("DetalhesConvenio", "Convenio", new { id = top3.Id })" class="list-group-item">
+
+                                <div class="row">
+                                    <i class="fa fa-building"></i>
+                                    <div class="col-md-9"><label>@top3.Objeto</label></div>
+                                    <div class="col-md-3"><label>@top3.Count @(top3.Count > 0 ? Html.Raw("denúncias") : Html.Raw("denúncia"))</label></div>
+                                </div>
+                            </a>
+
+                            @*<a href="@Url.Action("DetalhesConvenio", "Convenio", new { id = top3.Id })" class="list-group-item">
+                                    <i class="fa fa-building"></i> @top3.Objeto
+                                    <span class="pull-right text-muted small">
+                                    </span>
+                                </a>*@
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-primary">
@@ -30,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="@Url.Action("ListagemConvenios", "Convenio", new { status = "Não Verificado" })">
                     <div class="panel-footer">
                         <span class="pull-left">Ver detalhes</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -63,25 +107,4 @@
         </div>
     </div>
     <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bullhorn"></i> Convênios mais denunciados
-                </div>
-                <div class="panel-body">
-                    <div class="list-group">
-                        @foreach (var top3 in Model.MaisDenunciados)
-                        {
-                            <a href="@Url.Action("DetalhesConvenio", "Convenio", new { id = top3.Id })" class="list-group-item">
-                                <i class="fa fa-building"></i> @top3.Objeto
-                                <span class="pull-right text-muted small">
-                                </span>
-                            </a>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 }

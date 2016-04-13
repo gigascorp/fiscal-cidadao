@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -23,19 +24,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-icon-trimmed" translatesAutoresizingMaskIntoConstraints="NO" id="ZP1-eJ-7t4">
                                 <rect key="frame" x="180" y="236" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="fcZ-rn-KRF"/>
+                                    <constraint firstAttribute="width" constant="240" id="At1-dY-dYy"/>
+                                    <constraint firstAttribute="height" constant="128" id="U7G-vY-8N0"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Rq5-le-TJA" firstAttribute="centerY" secondItem="ZP1-eJ-7t4" secondAttribute="centerY" id="C8H-vc-pLf"/>
-                            <constraint firstItem="ZP1-eJ-7t4" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="216" id="Gbw-0g-0FF"/>
-                            <constraint firstAttribute="trailing" secondItem="Rq5-le-TJA" secondAttribute="trailing" id="HpT-mV-HXs"/>
-                            <constraint firstItem="Rq5-le-TJA" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="g0o-GC-2Uq"/>
-                            <constraint firstItem="Rq5-le-TJA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="l59-Al-IJd"/>
-                            <constraint firstItem="Rq5-le-TJA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="rqc-tP-O3U"/>
-                            <constraint firstItem="Rq5-le-TJA" firstAttribute="centerX" secondItem="ZP1-eJ-7t4" secondAttribute="centerX" id="u1h-MT-alm"/>
+                            <constraint firstItem="Rq5-le-TJA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="TnJ-OL-mZB"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Rq5-le-TJA" secondAttribute="bottom" id="VUD-1b-hO7"/>
+                            <constraint firstItem="Rq5-le-TJA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="WhS-QJ-9ng"/>
+                            <constraint firstItem="ZP1-eJ-7t4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="aKk-MN-zRK"/>
+                            <constraint firstItem="ZP1-eJ-7t4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mgV-M2-zIc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rq5-le-TJA" secondAttribute="trailing" constant="-20" id="uGl-a9-jRq"/>
                         </constraints>
                     </view>
                 </viewController>

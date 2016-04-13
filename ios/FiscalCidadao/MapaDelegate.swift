@@ -71,12 +71,9 @@ extension MapaViewController : MKMapViewDelegate, Observer
                 {
                     let convenio = data.getConvenio(location.ids.first!)
                     
-                    if let nvc = segue.destinationViewController as? UINavigationController
+                    if let cvc = segue.destinationViewController as? ConvenioViewController
                     {
-                        if let cvc = nvc.viewControllers.first as? ConvenioViewController
-                        {
-                            cvc.convenio = convenio
-                        }
+                        cvc.convenio = convenio
                     }
                 }
             }
@@ -85,20 +82,17 @@ extension MapaViewController : MKMapViewDelegate, Observer
         {
             if let location = sender as? MapaAnnotation
             {
-                if let nvc = segue.destinationViewController as? UINavigationController
+                if let cvc = segue.destinationViewController as? ConveniosListViewController
                 {
-                    if let cvc = nvc.viewControllers.first as? ConveniosListViewController
+                    var convenios  = [Convenio]()
+                        
+                    let data = DataController.sharedInstance
+                    for id  in location.ids
                     {
-                        var convenios  = [Convenio]()
-                        
-                        let data = DataController.sharedInstance
-                        for id  in location.ids
-                        {
-                            convenios.append(data.getConvenio(id)!)
-                        }
-                        
-                        cvc.convenios = convenios
+                        convenios.append(data.getConvenio(id)!)
                     }
+                        
+                    cvc.convenios = convenios
                 }
             }
         }

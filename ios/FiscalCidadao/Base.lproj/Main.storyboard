@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiscal Cidadão" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbZ-Q6-L9X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fiscal Cidadão" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbZ-Q6-L9X">
                                 <rect key="frame" x="163" y="72" width="274" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="274" id="G7A-fH-56y"/>
@@ -42,7 +42,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" identifier="RandomSegue" id="CPX-KM-yWM"/>
+                                    <segue destination="49e-Tb-3d3" kind="showDetail" identifier="RandomSegue" action="showViewController:sender:" id="CPX-KM-yWM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -60,7 +60,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Login" id="Qc6-jB-HYd"/>
+                    <navigationItem key="navigationItem" title="Login" prompt="Login" id="Qc6-jB-HYd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,8 +94,8 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="mapView" destination="U6o-J5-zPb" id="RwV-Co-H7O"/>
-                        <segue destination="ePP-S6-SZv" kind="custom" identifier="DetailSegue" id="M7x-KO-cSn"/>
-                        <segue destination="tXZ-xr-Cw0" kind="custom" identifier="MultipleConveniosSegue" id="bAA-Bc-GTm"/>
+                        <segue destination="ppC-g3-6EZ" kind="show" identifier="DetailSegue" id="UKX-ht-mde"/>
+                        <segue destination="yW1-sh-v8w" kind="show" identifier="MultipleConveniosSegue" id="oUu-QD-cfb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9a-dM-vua" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,22 +118,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxK-3f-3tb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="785" y="1170"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Hbz-AQ-Aem">
-            <objects>
-                <navigationController id="tXZ-xr-Cw0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ybc-E1-M5z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="yW1-sh-v8w" kind="relationship" relationship="rootViewController" id="ZNp-Di-klj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5a-xg-Nbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-769" y="1924"/>
         </scene>
         <!--ListConvenios-->
         <scene sceneID="lPy-g8-hDy">
@@ -182,7 +166,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUV-xx-KRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-19" y="2680"/>
+            <point key="canvasLocation" x="-81" y="1990"/>
         </scene>
         <!--Suas Denúncias-->
         <scene sceneID="a2W-YI-hV8">
@@ -236,7 +220,6 @@
         <!--Denúncia-->
         <scene sceneID="H5a-4Y-Ik0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tLu-cE-bJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="Denúncia" id="SQ9-9s-iFN" customClass="DenunciaReadViewController" customModule="FiscalCidadao" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7QR-No-zOd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -307,24 +290,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Denúncia" id="5dt-fN-nkW"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tLu-cE-bJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2455" y="1163"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Kaq-aM-f9P">
-            <objects>
-                <navigationController id="ePP-S6-SZv" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TKm-ig-avT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ppC-g3-6EZ" kind="relationship" relationship="rootViewController" id="R0L-LE-dxe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BMq-gZ-xO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-35" y="1941"/>
         </scene>
         <!--Convênio-->
         <scene sceneID="Xxw-bq-Od1">
@@ -746,6 +714,6 @@
         <image name="ic_view_list_white_36pt" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s5L-YF-rUb"/>
+        <segue reference="UKX-ht-mde"/>
     </inferredMetricsTieBreakers>
 </document>

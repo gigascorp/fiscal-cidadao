@@ -42,8 +42,8 @@
                             <a href="@Url.Action("DetalhesConvenio", "Convenio", new { id = top3.Id })" class="list-group-item">
 
                                 <div class="row">
-                                    <div class="col-xs-9"><i class="fa fa-building"></i><label class="top3-object">@top3.Objeto</label></div>
-                                    <div class="col-xs-3 text-right"><label class="top3-count"><i class="fa fa-bullhorn"></i>&nbsp;top3.Count @(top3.Count > 0 ? Html.Raw("denúncias") : Html.Raw("denúncia"))</label></div>
+                                    <div class="col-xs-9"><i class="fa fa-building"></i><label class="top3-object">&nbsp;@top3.Objeto</label></div>
+                                    <div class="col-xs-3 text-right"><label class="top3-count"><i class="fa fa-bullhorn"></i>&nbsp;@top3.Count @(top3.Count > 0 ? Html.Raw("denúncias") : Html.Raw("denúncia"))</label></div>
                                 </div>
                             </a>
 

@@ -28,3 +28,12 @@ textarea {
     margin-top: 10px;
     margin-left: 15px;
 }
+
+.top3-content { margin-left:10px; }
+
+.top3-count 
+{
+    padding:5px;
+    color:#e74c3c;
+
+}

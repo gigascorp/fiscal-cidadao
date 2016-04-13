@@ -38,5 +38,4 @@ http://www.fiscalcidadao.site
 ### Android
    
 ### IOS
-   Para rodar este aplicativo no IOS, acesse nosso tutorial [neste link](https://www.dropbox.com/s/ssx49f3o3g4dzyv/Procedimento%20para%20executar%20o%20aplicativo%20Fiscal%20Cidad%C3%A3o%20no%20Xcode.pdf?dl=0)
-   
+   Para rodar este aplicativo no IOS, acesse nosso tutorial <a href="https://www.dropbox.com/s/ssx49f3o3g4dzyv/Procedimento%20para%20executar%20o%20aplicativo%20Fiscal%20Cidad%C3%A3o%20no%20Xcode.pdf?dl=0" target="_blank">neste link</a>

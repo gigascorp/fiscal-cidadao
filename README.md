@@ -36,7 +36,7 @@ http://www.fiscalcidadao.site
 
 ## Como rodar o aplicativo
 ### Android
-Para executar o aplicatido do Fiscal Cidadão você deve:
+Para executar o aplicativo do Fiscal Cidadão você deve:
    * Habilitar a aplicativos de Fontes de Desconhecidas em seu celular através da opção Configurações > Segurança > Fontes Desconhecidas
    * Baixar, no seu celular, o apk do aplicativo que está neste repositório em "android/apk/fiscal-cidadao.apk" ou diretamente <a href="https://github.com/gigascorp/fiscal-cidadao/blob/master/android/apk/fiscal-cidadao.apk?raw=true">através deste link</a>
    * Utilizar no navegador de arquivos do seu celular para abrir o arquivo baixado, com isso a aplicação será instalada.
